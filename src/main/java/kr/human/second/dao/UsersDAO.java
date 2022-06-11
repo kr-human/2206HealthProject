@@ -6,19 +6,27 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import kr.human.second.vo.TrainerVO;
 import kr.human.second.vo.UsersVO;
 
 public interface UsersDAO {
-	
-	public void insert(SqlSession sqlSession, UsersVO usersVO) throws SQLException;  // 삽입
-	public void delete(SqlSession sqlSession, String u_id) throws SQLException; // 삭제
-	public void update(SqlSession sqlSession, UsersVO usersVO) throws SQLException; // 수정
-	public int SelectByUserId(SqlSession sqlSession, String u_id) throws SQLException; // id유무확인
-	public UsersVO SelectByUserInfo(SqlSession sqlSession, String u_id) throws SQLException; // 1개얻기
-	public void updatePt(SqlSession sqlSession, HashMap<String, Integer> map) throws SQLException; // pt회원권, 등록일~마감일 수정
-	public int SelectByUserCount(SqlSession sqlSession) throws SQLException; // 전체수 얻기
-	public List<UsersVO> SelectByUserList(SqlSession sqlSession, String t_id) throws SQLException; // 자신의 회원목록 가져오기
-	public void ChangePassword(SqlSession sqlSession, HashMap<String, Integer> map) throws SQLException; // 비밀번호 변경
-	public String FindUserId(SqlSession sqlSession, HashMap<String, Integer> map) throws SQLException; // 아이디 찾기
+	//회원가입
+	void insert(SqlSession sqlSession, UsersVO usersVO) throws SQLException;  
+	//회원 탈퇴
+	void delete(SqlSession sqlSession, String u_id) throws SQLException;
+	//회원 정보 수정
+	void update(SqlSession sqlSession, UsersVO usersVO) throws SQLException;
+	//동일한 아이디 갯수 얻기 (중복확인)
+	int SelectByUserId(SqlSession sqlSession, String u_id) throws SQLException;
+	//동일한 닉네임 갯수 얻기 (중복확인)
+	int SelectByUserNickname(SqlSession sqlSession, String u_nicname) throws SQLException;	
+	//1개 얻기 (user_id)로 얻기
+	UsersVO SelectByUserInfo(SqlSession sqlSession, String u_id) throws SQLException; 	
+	// 자신의 강사목록 가져오기
+	List<TrainerVO> SelectByTrainerList(SqlSession sqlSession, String t_id) throws SQLException; 
+	// 비밀번호 변경
+	void ChangePassword(SqlSession sqlSession, HashMap<String, Integer> map) throws SQLException; 
+	// 아이디 찾기 (name으로 가져오기)
+	List<UsersVO> FindUserId(SqlSession sqlSession, String name) throws SQLException; 
 	
 }
