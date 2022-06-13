@@ -25,7 +25,7 @@ public class TrainerVO {
 	private String t_addr;
 	private String t_email;
 	private String t_nicname;
-	private String t_gender;
+	private boolean t_gender;
 	private Date t_birth;
 	private int lev;
 }

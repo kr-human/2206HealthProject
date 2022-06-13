@@ -17,4 +17,5 @@ public class PTClassVO {
 	private String pt_code;
 	private Date ptTime;
 	private String t_id;
+	private boolean r_check;
 }

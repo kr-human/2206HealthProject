@@ -39,7 +39,8 @@ CREATE TABLE ptclass(
    pt_code varchar2(10) PRIMARY key,
    pttime DATE NOT null,
    t_id varchar2(30) NOT NULL,
-   CONSTRAINT fk_t_id_ptclass FOREIGN key(t_id) REFERENCES trainer(t_id)
+   CONSTRAINT fk_t_id_ptclass FOREIGN key(t_id) REFERENCES trainer(t_id),
+   r_check char(1)
 );
 SELECT * FROM ptclass;
 
@@ -47,7 +48,9 @@ CREATE TABLE reservation(
    t_id varchar2(30) NOT NULL,
    CONSTRAINT fk_t_id_reservation FOREIGN key(t_id) REFERENCES trainer(t_id),
    pt_code varchar2(10) NOT NULL,
-   CONSTRAINT fk_pt_code_reservation FOREIGN key(pt_code) REFERENCES ptclass(pt_code)
+   CONSTRAINT fk_pt_code_reservation FOREIGN key(pt_code) REFERENCES ptclass(pt_code),
+   u_id varchar2(30) NOT NULL,
+   CONSTRAINT fk_u_id_reservation FOREIGN key(u_id) REFERENCES users(u_id)
 );
 SELECT * FROM reservation;
 DROP TABLE reservation;

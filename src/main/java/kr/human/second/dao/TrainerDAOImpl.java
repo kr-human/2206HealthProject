@@ -15,27 +15,34 @@ public class TrainerDAOImpl implements TrainerDAO {
 		return instance;
 	}
 	@Override
-	public void delete(SqlSession sqlSession, String t_id) throws SQLException {
+	public void T_delete(SqlSession sqlSession, String u_id) throws SQLException {
+		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	public List<UsersVO> SelectByAllUserList(SqlSession sqlSession, String u_id) throws SQLException {
+	public List<UsersVO> SelectByAllUserList(SqlSession sqlSession, String t_id) throws SQLException {
+		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public int selectCount(SqlSession sqlSession) throws SQLException {
-		return 0;
+	public UsersVO selectByUserInfo(SqlSession sqlSession, String t_id, String u_id) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	@Override
-	public void insert(SqlSession sqlSession, PTClassVO ptclassVO) throws SQLException {
+	public void P_insert(SqlSession sqlSession, PTClassVO ptclassVO) throws SQLException {
+		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	public void update(SqlSession sqlSession, PTClassVO ptclassVO) throws SQLException {
+	public void P_update(SqlSession sqlSession, PTClassVO ptclassVO) throws SQLException {
+		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	public void delete(SqlSession sqlSession, PTClassVO ptclassVO) throws SQLException {
+	public void P_delete(SqlSession sqlSession, String pt_Code) throws SQLException {
+		// TODO Auto-generated method stub
 		
 	}
+	
 }

@@ -12,6 +12,7 @@ import lombok.Data;
  */
 @Data
 public class ReservationVO {
-	private String t_id;
+	private String u_id;
 	private String pt_code;
+	private String t_id;
 }

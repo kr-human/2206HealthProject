@@ -17,61 +17,65 @@ public class UsersDAOImpl implements UsersDAO{
 		return instance;
 	}
 	@Override
-	public void insert(SqlSession sqlSession, UsersVO usersVO) throws SQLException {
-		sqlSession.insert("users.insert", usersVO);
+	public void U_insert(SqlSession sqlSession, UsersVO usersVO) throws SQLException {
+		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	public void delete(SqlSession sqlSession, String u_id) throws SQLException {
-		sqlSession.delete("users.delete", u_id);
+	public void U_delete(SqlSession sqlSession, String u_id) throws SQLException {
+		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	public void update(SqlSession sqlSession, UsersVO usersVO) throws SQLException {
-		sqlSession.update("users.update", usersVO);
+	public void U_update(SqlSession sqlSession, UsersVO usersVO) throws SQLException {
+		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public int SelectByUserId(SqlSession sqlSession, String u_id) throws SQLException {
-		return sqlSession.selectOne("users.SelectByUserId", u_id);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	@Override
 	public int SelectByUserNickname(SqlSession sqlSession, String u_nicname) throws SQLException {
-		
-		return sqlSession.selectOne("users.SelectByUserNickname", u_nicname);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	@Override
 	public UsersVO SelectByUserInfo(SqlSession sqlSession, String u_id) throws SQLException {
-		return sqlSession.selectOne("users.SelectByUserInfo", u_id);
-		
+		// TODO Auto-generated method stub
+		return null;
 	}
 	@Override
 	public List<TrainerVO> SelectByTrainerList(SqlSession sqlSession, String t_id) throws SQLException {
-		return sqlSession.selectList("users.SelectByTrainerList",t_id);
+		// TODO Auto-generated method stub
+		return null;
 	}
 	@Override
 	public void ChangePassword(SqlSession sqlSession, HashMap<String, Integer> map) throws SQLException {
-		sqlSession.update("users.ChangePassword", map);
+		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public List<UsersVO> FindUserId(SqlSession sqlSession, String name) throws SQLException {
-		return sqlSession.selectList("users.FindUserId", name);
+		// TODO Auto-generated method stub
+		return null;
 	}
 	@Override
-	public void insert(SqlSession sqlSession, ReservationVO reservationVO) throws SQLException {
+	public void R_insert(SqlSession sqlSession, ReservationVO reservationVO) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	public void update(SqlSession sqlSession, ReservationVO reservationVO) throws SQLException {
+	public void R_update(SqlSession sqlSession, ReservationVO reservationVO) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	public void delete(SqlSession sqlSession, ReservationVO reservationVO) throws SQLException {
+	public void R_delete(SqlSession sqlSession, ReservationVO reservationVO) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
+	
 	
 }

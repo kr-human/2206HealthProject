@@ -16,9 +16,8 @@ public class AdminDAOImpl implements AdminDAO {
 	public static AdminDAO getInstance(){
 		return instance;
 	}
-	
 	@Override
-	public void updatePt(SqlSession sqlSession, HashMap<String, Integer> map) throws SQLException {
+	public void Pt_update(SqlSession sqlSession, HashMap<String, Integer> map) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
@@ -28,7 +27,7 @@ public class AdminDAOImpl implements AdminDAO {
 		return null;
 	}
 	@Override
-	public UsersVO SelectByUserList(SqlSession sqlSession, String u_id) throws SQLException {
+	public UsersVO SelectByUserInfo(SqlSession sqlSession, String u_id) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -38,15 +37,13 @@ public class AdminDAOImpl implements AdminDAO {
 		return null;
 	}
 	@Override
-	public TrainerVO SelectByTraninerList(SqlSession sqlSession, String t_id) throws SQLException {
+	public TrainerVO SelectByTraninerInfo(SqlSession sqlSession, String t_id) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public void insert(SqlSession sqlSession, TrainerVO trainerVO) throws SQLException {
+	public void T_insert(SqlSession sqlSession, TrainerVO trainerVO) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
-
-		
 }
