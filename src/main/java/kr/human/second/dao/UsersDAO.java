@@ -12,11 +12,11 @@ import kr.human.second.vo.UsersVO;
 
 public interface UsersDAO {
 	//회원가입
-	void insert(SqlSession sqlSession, UsersVO usersVO) throws SQLException;  
+	void U_insert(SqlSession sqlSession, UsersVO usersVO) throws SQLException;  
 	//회원 탈퇴
-	void delete(SqlSession sqlSession, String u_id) throws SQLException;
+	void U_delete(SqlSession sqlSession, String u_id) throws SQLException;
 	//회원 정보 수정
-	void update(SqlSession sqlSession, UsersVO usersVO) throws SQLException;
+	void U_update(SqlSession sqlSession, UsersVO usersVO) throws SQLException;
 	//동일한 아이디 갯수 얻기 (중복확인)
 	int SelectByUserId(SqlSession sqlSession, String u_id) throws SQLException;
 	//동일한 닉네임 갯수 얻기 (중복확인)
@@ -30,10 +30,10 @@ public interface UsersDAO {
 	// 아이디 찾기 (name으로 가져오기)
 	List<UsersVO> FindUserId(SqlSession sqlSession, String name) throws SQLException; 
 	//pt예약하기 
-	void insert(SqlSession sqlSession, ReservationVO reservationVO) throws SQLException;
+	void R_insert(SqlSession sqlSession, ReservationVO reservationVO) throws SQLException;
 	//pt예약 변경하기
-	void update(SqlSession sqlSession, ReservationVO reservationVO) throws SQLException;
+	void R_update(SqlSession sqlSession, ReservationVO reservationVO) throws SQLException;
 	//pt예약 취소하기
-	void delete(SqlSession sqlSession, ReservationVO reservationVO) throws SQLException;
+	void R_delete(SqlSession sqlSession, ReservationVO reservationVO) throws SQLException;
 	
 }
