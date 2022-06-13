@@ -1,11 +1,8 @@
-package kr.human.second.mybatis;
+package kr.human.mybatis;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import java.sql.SQLException;
 
-import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,6 +21,5 @@ public class MybatisAppTest {
 	public void getSession() {
 		assertNotNull(MybatisApp.getSqlSessionFactory());
 	}
-	
 
 }

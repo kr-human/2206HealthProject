@@ -21,4 +21,6 @@ public interface TrainerDAO {
 	void P_update(SqlSession sqlSession, PTClassVO ptclassVO) throws SQLException;
 	// pt일정표 삭제하기
 	void P_delete(SqlSession sqlSession, String pt_Code) throws SQLException;
+	// pt일정표 확인하기
+	void P_check(SqlSession sqlSession, PTClassVO ptclassVO) throws SQLException;
 }
