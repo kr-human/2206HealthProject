@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import kr.human.second.vo.ReservationVO;
 import kr.human.second.vo.TrainerVO;
 import kr.human.second.vo.UsersVO;
 
@@ -56,6 +57,21 @@ public class UsersDAOImpl implements UsersDAO{
 	@Override
 	public List<UsersVO> FindUserId(SqlSession sqlSession, String name) throws SQLException {
 		return sqlSession.selectList("users.FindUserId", name);
+	}
+	@Override
+	public void insert(SqlSession sqlSession, ReservationVO reservationVO) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void update(SqlSession sqlSession, ReservationVO reservationVO) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void delete(SqlSession sqlSession, ReservationVO reservationVO) throws SQLException {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

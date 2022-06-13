@@ -16,21 +16,37 @@ public class AdminDAOImpl implements AdminDAO {
 	public static AdminDAO getInstance(){
 		return instance;
 	}
+	
 	@Override
 	public void updatePt(SqlSession sqlSession, HashMap<String, Integer> map) throws SQLException {
-		sqlSession.update("member.update", map);
+		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	public List<UsersVO> SelectByAllUserList(SqlSession sqlSession, String u_id) throws SQLException {
-		return sqlSession.selectList("admin.SelectByAllUserList",u_id);
+	public List<UsersVO> SelectByAllUserList(SqlSession sqlSession) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	@Override
-	public List<TrainerVO> SelectByAllTraninerList(SqlSession sqlSession, String t_id) throws SQLException {
-		return sqlSession.selectList("admin.SelectByAllTraninerList",t_id);
+	public UsersVO SelectByUserList(SqlSession sqlSession, String u_id) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	@Override
-	public List<NoticeVO> SelectByNoteice(SqlSession sqlSession, int idx) throws SQLException {
-		return sqlSession.selectList("admin.SelectByNoteice",idx);
+	public List<TrainerVO> SelectByAllTraninerList(SqlSession sqlSession) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
 	}
+	@Override
+	public TrainerVO SelectByTraninerList(SqlSession sqlSession, String t_id) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public void insert(SqlSession sqlSession, TrainerVO trainerVO) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+		
 }

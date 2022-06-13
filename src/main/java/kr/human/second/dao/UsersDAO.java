@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import kr.human.second.vo.ReservationVO;
 import kr.human.second.vo.TrainerVO;
 import kr.human.second.vo.UsersVO;
 
@@ -28,5 +29,11 @@ public interface UsersDAO {
 	void ChangePassword(SqlSession sqlSession, HashMap<String, Integer> map) throws SQLException; 
 	// 아이디 찾기 (name으로 가져오기)
 	List<UsersVO> FindUserId(SqlSession sqlSession, String name) throws SQLException; 
+	//pt예약하기 
+	void insert(SqlSession sqlSession, ReservationVO reservationVO) throws SQLException;
+	//pt예약 변경하기
+	void update(SqlSession sqlSession, ReservationVO reservationVO) throws SQLException;
+	//pt예약 취소하기
+	void delete(SqlSession sqlSession, ReservationVO reservationVO) throws SQLException;
 	
 }
