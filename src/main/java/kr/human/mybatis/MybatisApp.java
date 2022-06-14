@@ -1,4 +1,4 @@
-package kr.human.second.mybatis;
+package kr.human.mybatis;
 
 import java.io.IOException;
 import java.io.InputStream;

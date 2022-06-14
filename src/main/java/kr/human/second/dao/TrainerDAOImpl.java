@@ -44,5 +44,10 @@ public class TrainerDAOImpl implements TrainerDAO {
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public void P_check(SqlSession sqlSession, String pt_Code) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

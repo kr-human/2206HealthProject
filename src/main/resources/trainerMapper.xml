@@ -4,11 +4,16 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="trainer">
 	<!-- 탈퇴 -->
+<<<<<<< HEAD
 	<delete id="delete" parameterType="String">
+=======
+	<delete id="T_delete" parameterType="t_id">
+>>>>>>> seongseok
 		delete from trainer where t_id=#{t_id} 
 	</delete>
 	
 	<!-- 나의 회원 목록 보기 -->
+<<<<<<< HEAD
 	<select id="SelectByAllUserList" parameterType="String" resultType="List">
 		select * from user WHERE t_id=#{t_id} order by u_id desc
 	</select>
@@ -16,6 +21,15 @@
 	<!-- 나의 회원 정보 보기 -->
 	<select id="selectmember" parameterType="String" resultType="usersVO">
 		select * from user where userid=#{userid}
+=======
+	<select id="SelectByAllUserList" resultType="List">
+		
+	</select>
+	
+	<!-- 나의 회원 정보 보기 -->
+	<select id="selectByUserInfo" parameterType="u_id" resultType="usersVO">
+		
+>>>>>>> seongseok
 	</select>
 	
 	<!-- pt일정표 등록하기 -->

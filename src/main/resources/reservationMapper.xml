@@ -4,6 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="reservation">
 
+<<<<<<< HEAD
 	<!-- PT수업이 만들어지고 회원이 그 수업을 예약했을때 예약테이블이 생성된다.  -->
 	
 	<!-- 해당 수업을 예약하는 회원이 생겼을때 생성  -->
@@ -19,6 +20,10 @@
 	<!-- pt수업예약정보 -->
 	<select id="selectByptCode" parameterType="string">
 		select * from reservation where pt_Code=#{pt_Code}
+=======
+	<select id="selectToday" parameterType="">
+		select sysdate from dual
+>>>>>>> seongseok
 	</select>
 	
 	
