@@ -45,7 +45,7 @@ public class TrainerDAOImpl implements TrainerDAO {
 		
 	}
 	@Override
-	public void P_check(SqlSession sqlSession, PTClassVO ptclassVO) throws SQLException {
+	public void P_check(SqlSession sqlSession, String pt_Code) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
