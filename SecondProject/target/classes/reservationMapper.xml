@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reservation">
+
+	<!-- PT수업이 만들어지고 회원이 그 수업을 예약했을때 예약테이블이 생성된다.  -->
+	
+	<!-- 해당 수업을 예약하는 회원이 생겼을때 생성  -->
+	<insert id="R_insert" parameterType="ReservationVO">
+		insert into reservation (pt_Code, t_id, u_id) values(#{pt_Code}, #{t_id}, #{u_id}) 
+	</insert>
+	
+	<!-- 해당 pt수업을 예약을한 회원이 예약을 취소한경우 -->
+	<delete id="R_delete" parameterType="hashmap">
+		delete from reservation where u_id=#{u_id} and pt_code=#{pt_code}
+	</delete>
+	
+	<!-- 특정 트레이너의 pt수업예약정보 -->
+	<select id="selectByptCode" parameterType="string">
+		select * from reservation where pt_Code=#{pt_Code}
+	</select>
+	
+	
+	
+	
+	
+</mapper>
