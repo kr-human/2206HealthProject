@@ -21,18 +21,9 @@ public class AdminDAOImpl implements AdminDAO {
 		// TODO Auto-generated method stub
 		
 	}
-	@Override
-	public List<UsersVO> SelectByAllUserList(SqlSession sqlSession) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	@Override
 	public UsersVO SelectByUserInfo(SqlSession sqlSession, String u_id) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public List<TrainerVO> SelectByAllTraninerList(SqlSession sqlSession) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -45,5 +36,15 @@ public class AdminDAOImpl implements AdminDAO {
 	public void T_insert(SqlSession sqlSession, TrainerVO trainerVO) throws SQLException {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public List<UsersVO> SelectByAllUserList(SqlSession sqlSession, HashMap<String, String> map) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<TrainerVO> SelectByAllTraninerList(SqlSession sqlSession, HashMap<String, String> map)throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

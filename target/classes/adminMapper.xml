@@ -4,8 +4,38 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="admin">
 
-	<select id="selectToday" resultType="string">
-		select sysdate from dual
+	<update id="update" parameterType="UsersVO">
+		update users set
+			lev=#{lev},
+			pt = #{pt},
+			startday = #{startday},
+			endday= #{endday}			
+		where
+			u_id=#{u_id}
+	</update>
+	
+	<insert id="insert" parameterType="TrainerVO">
+		INSERT INTO Trainer VALUES 
+	(#{t_id},#{t_password},#{t_name},#{t_birth},#{t_addr}
+	,#{t_email},#{t_nicname},0,#{t_gender})
+	</insert>
+		
+	<!-- 회원목록 -->
+	<select id="SelectByAllUserList" parameterType="hashmap" resultType="UsersVO">
+			select * from users
 	</select>
-
+	
+	<!-- 강사목록 -->
+	<select id="SelectByAllTraninerList" parameterType="hashmap" resultType="TrainerVO">
+			select * from trainer
+	</select>
+	
+	<select id="SelectByUserInfo" parameterType="string" resultType="UsersVO">
+		select * from users where u_id=#{u_id}
+	</select>
+	
+	<select id="SelectByTraninerInfo" parameterType="string" resultType="TrainerVO">
+		select * from trainer where t_id=#{t_id}
+	</select>
+	
 </mapper>
