@@ -16,7 +16,7 @@
 		delete from reservation where u_id=#{u_id} and pt_code=#{pt_code}
 	</delete>
 	
-	<!-- 특정 트레이너의 pt수업예약정보 -->
+	<!-- pt수업예약정보 -->
 	<select id="selectByptCode" parameterType="string">
 		select * from reservation where pt_Code=#{pt_Code}
 	</select>

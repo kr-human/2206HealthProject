@@ -31,8 +31,8 @@ public interface UsersDAO {
 	List<UsersVO> FindUserId(SqlSession sqlSession, String name) throws SQLException; 
 	//pt예약하기 
 	void R_insert(SqlSession sqlSession, ReservationVO reservationVO) throws SQLException;
-	//pt예약 변경하기
-	void R_update(SqlSession sqlSession, ReservationVO reservationVO) throws SQLException;
+	//pt예약 확인하기
+	List<ReservationVO> selectByptCode(SqlSession sqlSession, String pt_Code) throws SQLException;
 	//pt예약 취소하기
 	void R_delete(SqlSession sqlSession, ReservationVO reservationVO) throws SQLException;
 	
