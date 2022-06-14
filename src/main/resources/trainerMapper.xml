@@ -3,9 +3,36 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="trainer">
-
-	<select id="selectToday" resultType="string">
-		select sysdate from dual
+	<!-- 탈퇴 -->
+	<delete id="delete" parameterType="String">
+		delete from trainer where t_id=#{t_id} 
+	</delete>
+	
+	<!-- 나의 회원 목록 보기 -->
+	<select id="SelectByAllUserList" parameterType="String" resultType="List">
+		select * from user WHERE t_id=#{t_id} order by u_id desc
 	</select>
-
+	
+	<!-- 나의 회원 정보 보기 -->
+	<select id="selectmember" parameterType="String" resultType="usersVO">
+		select * from user where userid=#{userid}
+	</select>
+	
+	<!-- pt일정표 등록하기 -->
+	<insert id="insertcalendar" parameterType="ptclassVO">
+		INSERT INTO 
+  			ptclass (pt_code,pttime,t_id) 
+  		VALUES
+  			(pt_code_idx_seq.nextval,#{pttime},#{t_id})
+	</insert>
+	
+	<!-- pt일정표 변경하기(변경을 어떤방식으로 할건지 매커니즘을 안정함..) --> 
+	<update id="updatecalendar" parameterType="ptclassVO">
+		update ptclass set t_id=#{t_id}, pttime = SYSDATE where pt_code=#{pt_code}
+	</update>
+	
+	<!-- pt일정표 삭제하기 -->
+	<delete id="deletecalendar" parameterType="int">
+		delete from ptclass where pt_code=#{pt_code} 
+	</delete>
 </mapper>
