@@ -3,59 +3,56 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="users">
-	<!-- 삽입 -->
-	<insert id = "insert" parameterType="UsersVO">
-		insert into users
-    		(u_id, u_password, u_nicname, u_name, u_birth, u_addr, u_email, lev) 
-    	values
-    		(#{u_id}, #{u_password}, #{u_nicname}, #{u_name}, #{u_birth}, #{u_addr}, #{u_email}, 1)
+	<!-- 회원가입 -->
+	<insert id="U_insert" parameterType="UsersVO">
+	INSERT INTO users VALUES 
+	(#{u_id},#{u_password},#{u_nicname},#{u_name},#{u_birth},#{u_addr}
+	,#{u_email},0,0,#{startday},#{endday},#{gender},#{t_id})
 	</insert>
 	
-	<!-- 삭제 -->
-	<delete id="delete" parameterType="string">
-		delete from users where u_id}
+	<!-- 회원 탈퇴 -->
+	<delete id="U_delete" parameterType="UsersVO">
+		delete from users where u_id=#{u_id}
 	</delete>
 	
-	<!-- 수정 -->
-	<update id="update" parameterType="UsersVO">
-		update users set u_password=#{u_password}, u_email=#{u_email}, u_addr=#{u_addr}
-    	where u_id=#{u_id}
+	<!-- 회원 정보 수정 -->
+	<update id="U_update" parameterType="UsersVO">
+		update users set
+			u_password=#{u_password},
+			u_nicname = #{u_nicname},
+			u_addr = #{u_addr},
+			u_email = #{u_email}
+		where
+			u_id=#{u_id}
 	</update>
 	
-	<!-- id유무 확인 -->
-	<select id="selectByUserId" parameterType="string" resultType="int">
+	<!-- 동일한 아이디 갯수 얻기 (중복확인) -->
+	<select id="SelectByUserId" parameterType="string" resultType="int">
 		select count(*) from users where u_id=#{u_id}
 	</select>
 	
-	<!-- 한 회원정보 얻기 -->
-	<select id="selectByUserInfo" parameterType="string" resultType="UsersVO">
+	<!-- 동일한 닉네임 갯수 얻기 (중복확인) -->
+	<select id="SelectByUserNickname" parameterType="string" resultType="int">
+		select count(*) from users where u_nicname=#{u_nicname}
+	</select>
+	
+	<!-- 1개 얻기 (user_id)로 얻기 -->
+	<select id="SelectByUserInfo" parameterType="string" resultType="UsersVO">
 		select * from users where u_id=#{u_id}
 	</select>
+	<!-- 자신의 강사 가져오기 -->
+	<select id="SelectByTrainer" parameterType="string" resultType="TrainerVO">
+		select * from trainer where t_id=#{t_id}
+	</select> 
 	
-	<!-- pt회원권, 등록일, 마감일 수정 -->
-	<update id="updatePt" parameterType="haspmap">
-		update users set pt=#{pt}, startDay=sysdate, endDay=sysdate+#{}, t_id=#{t_id}
-    	where u_id=#{u_id}
-	</update>
-	
-	<!-- 회원전체수 얻기 -->
-	<select id="selectByUserCount" resultType="int">
-		select count(*) from users
-	</select>
-	
-	<!-- 자신의 회원목록 가져오기 -->
-	<select id="selectByUserList" parameterType="string" resultType="list">
-		select * from users where t_id = #{t_id}
-	</select>
-	
-	<!-- 비밀번호 변경하기 -->
-	<update id="changePassword" parameterType="string">
+	<!-- 비밀번호 변경 -->
+	<update id="ChangePassword" parameterType="hashmap">
 		update users set u_password=#{u_password} where u_id=#{u_id}
 	</update>
 	
-	<!-- 아이디 찾기 -->
-	<select id="findUserId" parameterType="hashmap" resultType="string">
+	<!-- 아이디 찾기 (name으로 가져오기) -->
+	<select id="FindUserId" parameterType="string" resultType="string">
 		select u_id from users where u_email=#{u_email}
 	</select>
-	
+
 </mapper>

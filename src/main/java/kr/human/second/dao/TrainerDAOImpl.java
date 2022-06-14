@@ -16,38 +16,31 @@ public class TrainerDAOImpl implements TrainerDAO {
 	}
 	@Override
 	public void T_delete(SqlSession sqlSession, String u_id) throws SQLException {
-		// TODO Auto-generated method stub
-		
+		sqlSession.delete("trainer.T_delete", u_id);
 	}
 	@Override
 	public List<UsersVO> SelectByAllUserList(SqlSession sqlSession, String t_id) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectList("trainer.SelectByAllUserList", t_id);
 	}
 	@Override
-	public UsersVO selectByUserInfo(SqlSession sqlSession, String t_id, String u_id) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+	public UsersVO selectByUserInfo(SqlSession sqlSession, String t_id) throws SQLException {
+		return sqlSession.selectOne("trainer.selectByUserInfo", t_id);
 	}
 	@Override
 	public void P_insert(SqlSession sqlSession, PTClassVO ptclassVO) throws SQLException {
-		// TODO Auto-generated method stub
-		
+		sqlSession.insert("pt.P_insert", ptclassVO);
 	}
 	@Override
 	public void P_update(SqlSession sqlSession, PTClassVO ptclassVO) throws SQLException {
-		// TODO Auto-generated method stub
-		
+		sqlSession.update("pt.P_update", ptclassVO);
 	}
 	@Override
 	public void P_delete(SqlSession sqlSession, String pt_Code) throws SQLException {
-		// TODO Auto-generated method stub
-		
+		sqlSession.delete("pt.P_delete", pt_Code);
 	}
 	@Override
 	public void P_check(SqlSession sqlSession, String pt_Code) throws SQLException {
-		// TODO Auto-generated method stub
-		
+		sqlSession.selectOne("pt.P_check", pt_Code);
 	}
 	
 }

@@ -25,28 +25,34 @@
 		where
 			u_id=#{u_id}
 	</update>
+	
 	<!-- 동일한 아이디 갯수 얻기 (중복확인) -->
-	<select id="SelectByUserId" parameterType="string" resultType="UsersVO">
-		select * from users where u_id=#{u_id}
+	<select id="SelectByUserId" parameterType="string" resultType="int">
+		select count(*) from users where u_id=#{u_id}
 	</select>
+	
 	<!-- 동일한 닉네임 갯수 얻기 (중복확인) -->
-	<select id="SelectByUserNickname" parameterType="string" resultType="UsersVO">
-		select * from users where u_nicname=#{u_nicname}
+	<select id="SelectByUserNickname" parameterType="string" resultType="int">
+		select count(*) from users where u_nicname=#{u_nicname}
 	</select>
+	
 	<!-- 1개 얻기 (user_id)로 얻기 -->
 	<select id="SelectByUserInfo" parameterType="string" resultType="UsersVO">
 		select * from users where u_id=#{u_id}
 	</select>
-	<!-- 자신의 강사목록 가져오기 -->
+	<!-- 자신의 강사 가져오기 -->
+	<select id="SelectByTrainer" parameterType="string" resultType="TrainerVO">
+		select * from trainer where t_id=#{t_id}
+	</select> 
+	
 	<!-- 비밀번호 변경 -->
 	<update id="ChangePassword" parameterType="hashmap">
 		update users set u_password=#{u_password} where u_id=#{u_id}
 	</update>
+	
 	<!-- 아이디 찾기 (name으로 가져오기) -->
-	<select id="FindUserId" parameterType="string" resultType="UsersVO">
-		select * from users where u_name=#{u_name}
+	<select id="FindUserId" parameterType="string" resultType="string">
+		select u_id from users where u_email=#{u_email}
 	</select>
-	<!-- pt예약하기 -->
-	<!-- pt예약 변경하기 -->
-	<!-- pt예약 취소하기 -->
+
 </mapper>

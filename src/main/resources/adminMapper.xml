@@ -4,9 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="admin">
 
-	<update id="update" parameterType="UsersVO">
+	<update id="Pt_update" parameterType="UsersVO">
 		update users set
-			lev=#{lev},
+			lev=1,
 			pt = #{pt},
 			startday = #{startday},
 			endday= #{endday}			
@@ -14,20 +14,20 @@
 			u_id=#{u_id}
 	</update>
 	
-	<insert id="insert" parameterType="TrainerVO">
+	<insert id="T_insert" parameterType="TrainerVO">
 		INSERT INTO Trainer VALUES 
-	(#{t_id},#{t_password},#{t_name},#{t_birth},#{t_addr}
-	,#{t_email},#{t_nicname},0,#{t_gender})
+		(#{t_id}, #{t_password}, #{t_name}, #{t_birth}, #{t_addr}
+		, #{t_email}, #{t_nicname},5, #{t_gender})
 	</insert>
 		
 	<!-- 회원목록 -->
 	<select id="SelectByAllUserList" parameterType="hashmap" resultType="UsersVO">
-			select * from users
+		select * from users
 	</select>
 	
 	<!-- 강사목록 -->
 	<select id="SelectByAllTraninerList" parameterType="hashmap" resultType="TrainerVO">
-			select * from trainer
+		select * from trainer
 	</select>
 	
 	<select id="SelectByUserInfo" parameterType="string" resultType="UsersVO">

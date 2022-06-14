@@ -18,33 +18,27 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 	@Override
 	public void Pt_update(SqlSession sqlSession, HashMap<String, Integer> map) throws SQLException {
-		// TODO Auto-generated method stub
-		
+		sqlSession.update("admin.Pt_update", map);
 	}
 	
 	@Override
 	public UsersVO SelectByUserInfo(SqlSession sqlSession, String u_id) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne("admin.SelectByUserInfo", u_id);
 	}
 	@Override
 	public TrainerVO SelectByTraninerInfo(SqlSession sqlSession, String t_id) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne("admin.SelectByTraninerInfo", t_id);
 	}
 	@Override
 	public void T_insert(SqlSession sqlSession, TrainerVO trainerVO) throws SQLException {
-		// TODO Auto-generated method stub
-		
+		sqlSession.insert("admin.T_insert", trainerVO);	
 	}
 	@Override
 	public List<UsersVO> SelectByAllUserList(SqlSession sqlSession, HashMap<String, String> map) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectList("admin.SelectByAllUserList", map);
 	}
 	@Override
 	public List<TrainerVO> SelectByAllTraninerList(SqlSession sqlSession, HashMap<String, String> map)throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectList("admin.SelectByAllTraninerList", map);
 	}
 }
