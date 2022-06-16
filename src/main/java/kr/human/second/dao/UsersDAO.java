@@ -24,7 +24,7 @@ public interface UsersDAO {
 	//1개 얻기 (user_id)로 얻기
 	UsersVO SelectByUserInfo(SqlSession sqlSession, String u_id) throws SQLException; 	
 	// 자신의 강사 가져오기
-	List<TrainerVO> SelectByTrainer(SqlSession sqlSession, String t_id) throws SQLException; 
+	TrainerVO SelectByTrainer(SqlSession sqlSession, String t_id) throws SQLException; 
 	// 비밀번호 변경
 	void ChangePassword(SqlSession sqlSession, HashMap<String, String> map) throws SQLException; 
 	// 아이디 찾기 (name으로 가져오기)
@@ -34,6 +34,7 @@ public interface UsersDAO {
 	//pt예약 확인하기
 	List<ReservationVO> selectByptCode(SqlSession sqlSession, String pt_Code) throws SQLException;
 	//pt예약 취소하기
-	void R_delete(SqlSession sqlSession, ReservationVO reservationVO) throws SQLException;
-	
+	void R_delete(SqlSession sqlSession, HashMap<String, String> map) throws SQLException;
+	// 나의 전체 pt예약정보
+	List<ReservationVO> selectAllReservation(SqlSession sqlSession, String u_id);
 }
