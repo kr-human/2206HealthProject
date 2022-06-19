@@ -18,4 +18,13 @@
 		select * from users where t_id=#{t_id}
 	</select>
 	
+	<!-- 한개얻기(t_id) -->
+	<select id="selectBytrainerid" parameterType="string" resultType="MemberVO">
+		select * from trainer where t_id=#{t_id}
+	</select>
+	<!-- 하루 일정 목록 보기 -->
+	<!--  <select id="SelectByOneDaylist" parameterType="map" resultType="list">
+		select * from ptclass where ptTime=#{ptTime}
+	</select>
+	-->
 </mapper>

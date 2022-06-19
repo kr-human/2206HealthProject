@@ -23,4 +23,6 @@ public interface NoticeDAO {
 	int selectCount(SqlSession sqlSession) throws SQLException;
 	// 1개 얻기
 	NoticeVO selectByIdx(SqlSession sqlSession, int idx) throws SQLException;
+	// 최근 글 1개 얻기
+	int selectMaxIdx(SqlSession sqlSession) throws SQLException;
 }

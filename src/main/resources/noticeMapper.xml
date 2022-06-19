@@ -52,14 +52,14 @@
 		delete from notice where idx=#{idx}
 	</delete>
 	
-	<!-- 7. 조회수 -->
+	<!-- 7. 조회수( 모르겠음)
 	<update id="clickCount" parameterType= "int">	
 		update notice set clickCount = clickCount + 1 where idx=#{idx}"
-	</update>
-	<!-- 8. 가장 최근에 저방된 글번호 읽어오기 
+	</update>-->
+	<!-- 8. 가장 최근에 저장된 글번호 읽어오기 -->
 	<select id="selectMaxIdx" resultType="int">
-		select max(idx) from fileBoard
-	</select> -->
+		select max(idx) from notice
+	</select>
 	
 
 </mapper>

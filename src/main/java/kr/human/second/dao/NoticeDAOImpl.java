@@ -42,6 +42,8 @@ public class NoticeDAOImpl implements NoticeDAO {
 	   public NoticeVO selectByIdx(SqlSession sqlSession, int idx) throws SQLException {
 	      return sqlSession.selectOne("notice.selectByIdx", idx);
 	   }
-	   
-
+	   @Override
+	   public int selectMaxIdx(SqlSession sqlSession) throws SQLException {
+		   return sqlSession.selectOne("fileBoard.selectMaxIdx");
+	   }
 	}

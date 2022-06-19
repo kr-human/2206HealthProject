@@ -1,11 +1,13 @@
 package kr.human.second.dao;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
 import kr.human.second.vo.PTClassVO;
+import kr.human.second.vo.TrainerVO;
 import kr.human.second.vo.UsersVO;
 
 public class TrainerDAOImpl implements TrainerDAO {
@@ -42,5 +44,14 @@ public class TrainerDAOImpl implements TrainerDAO {
 	public void P_check(SqlSession sqlSession, String pt_Code) throws SQLException {
 		sqlSession.selectOne("pt.P_check", pt_Code);
 	}
+	@Override
+	public TrainerVO selectBytrainerid(SqlSession sqlSession, String t_id) throws SQLException {
+		return sqlSession.selectOne("trainer.selectBytrainerid", t_id);
+	}
+	// 파라미터 값 2개가 안됨
+//	@Override
+//	public List<UsersVO> SelectByOneDaylist(SqlSession sqlSession, String t_id, Date ptTime) throws SQLException {
+//		return sqlSession.selectList("trainer.SelectByOneDaylist",t_id, ptTime);
+//	}
 	
 }
