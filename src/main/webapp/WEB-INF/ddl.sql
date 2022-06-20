@@ -19,23 +19,18 @@ CREATE TABLE users(
 	t_id varchar2(30) NOT NULL,
 	CONSTRAINT fk_t_id FOREIGN key(t_id) REFERENCES trainer(t_id)
 );
-<<<<<<< HEAD
-=======
-SELECT * FROM users;
-INSERT INTO users(u_id, u_password, u_nicname, u_name, u_birth, u_addr, u_email, gender, t_id) 
-VALUES ('oss71401', 'dhtjd4861', 'dominic1', 'SeongSeok1', TO_date('19940905', 'YYYY/MM/DD'), '경기도평택1', 'oss7140@naver.com', 1, 'oss7140');
->>>>>>> seongseok2
 DROP TABLE users;
 SELECT * FROM users;
+
+INSERT INTO users(u_id, u_password, u_nicname, u_name, u_birth, u_addr, u_email, gender, t_id) 
+VALUES ('oss71401', 'dhtjd4861', 'dominic1', 'SeongSeok1', TO_date('19940905', 'YYYY/MM/DD'), '경기도평택1', 'oss7140@naver.com', 1, 'oss7140');
+
+INSERT INTO USERS(u_id, u_password, u_nicname, u_name, u_birth, u_addr, u_email, gender, t_id)
+	VALUES
+	('user01','1234','서울사람','나그네',TO_date('19940905', 'YYYY/MM/DD'), '경기도평택1', 'oss7140@naver.com', 1, 'oss7140');
 INSERT INTO USERS 
 	VALUES
-	('user01','1234','서울사람','나그네','1998-05-27',' ',' ',' ','korea@hanmail.com',null,null,null,null,'M','pt01');
-INSERT INTO USERS 
-	VALUES
-	('user02','1234','단단','바위','1988-01-29',' ',' ',' ','korea@hanmail.com',null,null,null,null,'F','pt02');
-INSERT INTO USERS 
-	VALUES
-	('user03','1234','굳은','나무','1999-08-15',' ',' ',' ','korea@hanmail.com',null,null,null,null,'M','pt03');
+	('user03','1234','굳은','나무','1999-08-15',' ','korea@hanmail.com',null,null,null,null,0,'oss7140');
 INSERT INTO USERS 
 	VALUES
 	('user04','1234','시원','바람','2001-06-05',' ',' ',' ','korea@hanmail.com',null,null,null,null,'F','pt04');
@@ -53,7 +48,7 @@ CREATE TABLE trainer(
    gender char(1) CHECK(gender IN('M','F')),
    lev number(2)  
 );
-<<<<<<< HEAD
+
 DROP TABLE TRAINER;
 SELECT * FROM TRAINER ;
 INSERT INTO trainer VALUES
@@ -64,11 +59,7 @@ INSERT INTO trainer VALUES
 	('pt03','1234','선생3','1988-06-29',' ',' ',' ','korea@hanmail.com','근육몬','M',null);
 INSERT INTO trainer VALUES
 	('pt04','1234','선생4','1988-06-29',' ',' ',' ','korea@hanmail.com','근육몬','F',null);
-=======
-SELECT * FROM trainer;
-INSERT INTO trainer VALUES ('oss7140', 'dhtjd486', 'SeongSeok', TO_date('19940905', 'YYYY/MM/DD'), '경기도평택', 'oss7140@naver.com', 'dominic', 3, 1);
-DROP TABLE trainer;
->>>>>>> seongseok2
+
 
 DROP TABLE PTCLASS;
 CREATE TABLE ptclass(
@@ -81,13 +72,9 @@ CREATE TABLE ptclass(
    CONSTRAINT fk_t_id_ptclass FOREIGN key(t_id) REFERENCES trainer(t_id),
    r_check char(1)
 );
-<<<<<<< HEAD
-
-=======
 SELECT * FROM ptclass;
 INSERT INTO ptclass VALUES ('2022061718', '18:00~19:00',to_date('2022/06/20 18:00','YYYY/MM/DD HH24:MI'), to_date('2022/06/20 19:00','YYYY/MM/DD HH24:MI'), to_date('2022/06/20 19:00','YYYY/MM/DD HH24:MI'),'oss7140', 0);
 DROP TABLE ptclass;
->>>>>>> seongseok2
 
 CREATE TABLE reservation(
    t_id varchar2(30) NOT NULL,

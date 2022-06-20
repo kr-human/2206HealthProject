@@ -1,8 +1,8 @@
-<<<<<<< HEAD
+
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%-- 공통코드 삽입 --%>
 <%@ include file="include.jsp" %>
-=======
+
 <%@page import="kr.human.second.vo.ReservationVO"%>
 <%@page import="kr.human.second.service.UsersServiceImpl"%>
 <%@page import="kr.human.second.service.UsersService"%>
@@ -32,12 +32,12 @@
 	
 
 %>
->>>>>>> hyunwoong(ver.2)
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<<<<<<< HEAD
+
 <title>자료실 새글쓰기</title>
 <%-- 부트스트랩을 사용하기 위한 준비 시작 --%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -165,17 +165,6 @@
 		</tr>
 	</table>
 	</form>
-=======
-<title>Insert title here</title>
-<script type="text/javascript">
 
-</script>
-<style type="text/css">
-
-</style>
-</head>
-<body>
-	
->>>>>>> hyunwoong(ver.2)
 </body>
 </html>

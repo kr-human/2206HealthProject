@@ -48,15 +48,4 @@ public class TrainerDAOImpl implements TrainerDAO {
 	public List<PTClassVO> PList_Check(SqlSession sqlSession) throws SQLException {
 		return sqlSession.selectList("pt.PList_check");
 	}
-	@Override
-	public TrainerVO selectBytrainerid(SqlSession sqlSession, String t_id) throws SQLException {
-		return sqlSession.selectOne("trainer.selectBytrainerid", t_id);
-	}
-	// 파라미터 값 2개가 안됨
-//	@Override
-//	public List<UsersVO> SelectByOneDaylist(SqlSession sqlSession, String t_id, Date ptTime) throws SQLException {
-//		return sqlSession.selectList("trainer.SelectByOneDaylist",t_id, ptTime);
-//	}
-	
-	
 }
