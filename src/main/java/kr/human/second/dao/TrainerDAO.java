@@ -1,6 +1,7 @@
 package kr.human.second.dao;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -23,5 +24,7 @@ public interface TrainerDAO {
 	// pt일정표 삭제하기
 	void P_delete(SqlSession sqlSession, String pt_Code) throws SQLException;
 	// pt일정표 확인하기
-	void P_check(SqlSession sqlSession, String pt_Code) throws SQLException;
+	PTClassVO P_check(SqlSession sqlSession, String pt_Code) throws SQLException;
+	// pt일정표 목록보기
+	List<PTClassVO> PList_Check(SqlSession sqlSession) throws SQLException;
 }

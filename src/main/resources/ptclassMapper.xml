@@ -26,11 +26,15 @@
 		delete from ptclass where pt_code=#{pt_code}
 	</delete>
 	
-	<!-- 트레이너 pt일정표 확인하기 -->
+	<!-- 트레이너 pt일정표 1명 확인하기 -->
 	<select id="P_check" parameterType="PTClassVO" resultType="PTClassVO">
 		select * from ptclass where pt_code=#{pt_code}
 	</select>
 
+	<!-- 트레이너 pt일정표 목록 확인하기 -->
+	<select id="PList_check" resultType="PTClassVO">
+		select * from ptclass where t_id=#{t_id}
+	</select>
 </mapper>
 
 

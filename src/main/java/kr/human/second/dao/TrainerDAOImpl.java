@@ -1,6 +1,7 @@
 package kr.human.second.dao;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -39,8 +40,12 @@ public class TrainerDAOImpl implements TrainerDAO {
 		sqlSession.delete("pt.P_delete", pt_Code);
 	}
 	@Override
-	public void P_check(SqlSession sqlSession, String pt_Code) throws SQLException {
-		sqlSession.selectOne("pt.P_check", pt_Code);
+	public PTClassVO P_check(SqlSession sqlSession, String pt_Code) throws SQLException {
+		return sqlSession.selectOne("pt.P_check", pt_Code);
+	}
+	@Override
+	public List<PTClassVO> PList_Check(SqlSession sqlSession) throws SQLException {
+		return sqlSession.selectList("pt.PList_check");
 	}
 	
 }
