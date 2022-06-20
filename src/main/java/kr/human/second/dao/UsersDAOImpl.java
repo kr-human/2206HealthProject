@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import kr.human.second.vo.PTClassVO;
 import kr.human.second.vo.ReservationVO;
 import kr.human.second.vo.TrainerVO;
 import kr.human.second.vo.UsersVO;
@@ -55,8 +56,8 @@ public class UsersDAOImpl implements UsersDAO{
 
    // 자신의 강사 가져오기
    @Override
-   public List<TrainerVO> SelectByTrainer(SqlSession sqlSession, String t_id) throws SQLException {
-      return sqlSession.selectList("users.SelectByTrainer", t_id);
+   public TrainerVO SelectByTrainer(SqlSession sqlSession, String t_id) throws SQLException {
+      return sqlSession.selectOne("users.SelectByTrainer", t_id);
    }
    
    // 비밀번호 변경
@@ -79,8 +80,8 @@ public class UsersDAOImpl implements UsersDAO{
    
    // 해당 pt수업을 예약을한 회원이 예약을 취소한경우
    @Override
-   public void R_delete(SqlSession sqlSession, ReservationVO reservationVO) throws SQLException {
-      sqlSession.delete("reservation.R_delete", reservationVO);
+   public void R_delete(SqlSession sqlSession, HashMap<String, String> map) throws SQLException {
+      sqlSession.delete("reservation.R_delete", map);
    }
    
    // pt수업예약정보
@@ -89,5 +90,20 @@ public class UsersDAOImpl implements UsersDAO{
       return sqlSession.selectList("reservation.selectByptCode", pt_Code);
    }
    
+   // 나의 전체 pt수업 예약 정보
+   @Override
+   public List<ReservationVO> selectAllReservation(SqlSession sqlSession, String u_id) {
+	   return sqlSession.selectList("reservation.selectAllReservation", u_id);
+   }
+   
+   @Override
+   public List<PTClassVO> selectPtOneMonth(SqlSession sqlSession, PTClassVO ptClassVO) {
+	   return sqlSession.selectList("users.selectPtOneMonth", ptClassVO);
+   }
+   
+   @Override
+   public List<PTClassVO> selectPtOneDay(SqlSession sqlSession, PTClassVO ptClassVO) {
+	   return sqlSession.selectList("users.selectPtOneDay", ptClassVO);
+   }
    
 }

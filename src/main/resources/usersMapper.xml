@@ -54,5 +54,15 @@
 	<select id="FindUserId" parameterType="string" resultType="string">
 		select u_id from users where u_email=#{u_email}
 	</select>
+	
+	<!-- USER담당 트레이너의 한달치 PT 수업일정을 가져와보자  -->
+	<select id="selectPtOneMonth" parameterType="hashmap" resultType="ptClassVO">
+		select * from ptClass where t_id=#{t_id} AND TO_CHAR(PTTIME,'YYYY-MM') = TO_CHAR(TO_DATE(#{ptTime},'YYYY-MM'),'YYYY-MM')
+	</select> 
+	
+	<!-- USER담당 트레이너의 한달치 PT 수업일정을 가져와보자  -->
+	<select id="selectPtOneDay" parameterType="hashmap" resultType="ptClassVO">
+		select * from ptClass where t_id=#{t_id} AND TO_CHAR(PTTIME,'YYYY-MM-dd') = TO_DATE(#{ptTime},'YYYY-MM-dd')
+	</select>
 
 </mapper>
