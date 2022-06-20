@@ -1,26 +1,27 @@
 package kr.human.second.vo;
 
 import java.util.Date;
+import java.util.List;
+
 
 import lombok.Data;
 
 /*
 CREATE TABLE notice(
-   idx number(10) PRIMARY KEY,
-   content varchar2(4000),
-   regDate DATE,
-   subject varchar2(500),
-   clickcount number(4),
-   a_id varchar2(10) NOT NULL,
-   CONSTRAINT fk_a_id_notice FOREIGN key(a_id) REFERENCES admin(a_id)
+	idx NUMBER PRIMARY KEY,
+	subject varchar2(100) NOT NULL,
+	content varchar2(3000) NOT NULL,
+	regDate timestamp DEFAULT SYSDATE
 );
 */
 @Data
 public class NoticeVO {
 	private int idx;
+	private String subject;
 	private String content;
 	private Date regDate;
-	private String subject;
-	private int clickCount;
-	private String a_id;
+	
+	private int mode;
+	private List<UpFileVO> fileList;
+
 }

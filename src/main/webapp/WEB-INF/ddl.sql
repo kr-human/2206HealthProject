@@ -97,13 +97,10 @@ INSERT INTO admin VALUES
 DROP table notice;
 SELECT * FROM notice;
 CREATE TABLE notice(
-   idx number(10) PRIMARY KEY,
-   content varchar2(4000),
-   regDate DATE,
-   subject varchar2(500),
-   clickcount number(4),
-   a_id varchar2(10) NOT NULL,
-   CONSTRAINT fk_a_id_notice FOREIGN key(a_id) REFERENCES admin(a_id)
+	idx NUMBER PRIMARY KEY,
+	subject varchar2(100) NOT NULL,
+	content varchar2(3000) NOT NULL,
+	regDate timestamp DEFAULT SYSDATE
 );
 
 INSERT INTO notice VALUES 
@@ -115,6 +112,12 @@ INSERT INTO notice VALUES
 INSERT INTO notice VALUES 
 (notice_idx_sqe.nextval,'냠냠냠냠','2022-06-07','식단',5,'root');
 
+CREATE TABLE upfile(
+	idx NUMBER PRIMARY KEY,
+	ref NUMBER NOT NULL, -- 원본글번호
+	ofile varchar2(100) NOT NULL, -- 원본 파일명
+	sfile varchar2(100) NOT NULL  -- 저장 파일명
+);
 SELECT * FROM tab;
 
 SELECT U_NAME ,U_BIRTH ,U_ADDR ,U_EMAIL,GENDER  FROM USERS ;

@@ -1,11 +1,17 @@
 package kr.human.second.dao;
 
 import java.sql.SQLException;
+<<<<<<< HEAD
+=======
+import java.util.Date;
+import java.util.HashMap;
+>>>>>>> origin/subMain
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
 import kr.human.second.vo.PTClassVO;
+import kr.human.second.vo.TrainerVO;
 import kr.human.second.vo.UsersVO;
 
 public interface TrainerDAO {
@@ -23,4 +29,11 @@ public interface TrainerDAO {
 	void P_delete(SqlSession sqlSession, String pt_Code) throws SQLException;
 	//pt
 	void P_check(SqlSession sqlSession, String pt_Code) throws SQLException;
+	// 한개 얻기(t_id)
+	TrainerVO selectBytrainerid(SqlSession sqlSession, String t_id) throws SQLException;
+	// 나의 하루 일정 보기
+	// List<UsersVO> SelectByOneDaylist(SqlSession sqlSession,String t_id, Date ptTime) throws SQLException;
+	
+
+	
 }

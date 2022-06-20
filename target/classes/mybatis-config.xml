@@ -32,6 +32,7 @@
 		<mapper resource="noticeMapper.xml" />
 		<mapper resource="ptclassMapper.xml" />
 		<mapper resource="reservationMapper.xml" />
+		<mapper resource="upFileMapper.xml" />
 
 	</mappers>
 </configuration>
