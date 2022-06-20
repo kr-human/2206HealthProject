@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import kr.human.second.vo.PTClassVO;
 import kr.human.second.vo.ReservationVO;
 import kr.human.second.vo.TrainerVO;
 import kr.human.second.vo.UsersVO;
@@ -37,4 +38,8 @@ public interface UsersDAO {
 	void R_delete(SqlSession sqlSession, HashMap<String, String> map) throws SQLException;
 	// 나의 전체 pt예약정보
 	List<ReservationVO> selectAllReservation(SqlSession sqlSession, String u_id);
+	
+	List<PTClassVO> selectPtOneMonth(SqlSession sqlSession, PTClassVO ptclassVO) throws SQLException;
+	
+	List<PTClassVO> selectPtOneDay(SqlSession sqlSession, PTClassVO ptclassVO) throws SQLException;
 }

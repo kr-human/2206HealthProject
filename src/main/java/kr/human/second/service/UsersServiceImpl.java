@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import kr.human.mybatis.MybatisApp;
 import kr.human.second.dao.UsersDAO;
 import kr.human.second.dao.UsersDAOImpl;
+import kr.human.second.vo.PTClassVO;
 import kr.human.second.vo.ReservationVO;
 import kr.human.second.vo.TrainerVO;
 import kr.human.second.vo.UsersVO;
@@ -115,6 +116,42 @@ public class UsersServiceImpl implements UsersService{
 			sqlSession.close();
 			return list;
 		}
+	}
+	
+	@Override
+	public List<PTClassVO> selectPtOneMonth(PTClassVO ptClassVO) {
+		ReservationVO reservationVO = new ReservationVO();
+		SqlSession sqlSession = null;
+		UsersDAO usersDAO = UsersDAOImpl.getInstance();
+		List<PTClassVO> list = new ArrayList<>();
+
+		try {
+			sqlSession = MybatisApp.getSqlSessionFactory().openSession();
+			list = usersDAO.selectPtOneMonth(sqlSession, ptClassVO);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlSession.close();
+		}
+		return list;
+	}
+	
+	@Override
+	public List<PTClassVO> selectPtOneDay(PTClassVO ptClassVO) {
+		ReservationVO reservationVO = new ReservationVO();
+		SqlSession sqlSession = null;
+		UsersDAO usersDAO = UsersDAOImpl.getInstance();
+		List<PTClassVO> list = new ArrayList<>();
+
+		try {
+			sqlSession = MybatisApp.getSqlSessionFactory().openSession();
+			list = usersDAO.selectPtOneDay(sqlSession, ptClassVO);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlSession.close();
+		}
+		return list;
 	}
 	
 }

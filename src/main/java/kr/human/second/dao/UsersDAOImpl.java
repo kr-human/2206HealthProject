@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import kr.human.second.vo.PTClassVO;
 import kr.human.second.vo.ReservationVO;
 import kr.human.second.vo.TrainerVO;
 import kr.human.second.vo.UsersVO;
@@ -93,6 +94,16 @@ public class UsersDAOImpl implements UsersDAO{
    @Override
    public List<ReservationVO> selectAllReservation(SqlSession sqlSession, String u_id) {
 	   return sqlSession.selectList("reservation.selectAllReservation", u_id);
+   }
+   
+   @Override
+   public List<PTClassVO> selectPtOneMonth(SqlSession sqlSession, PTClassVO ptClassVO) {
+	   return sqlSession.selectList("users.selectPtOneMonth", ptClassVO);
+   }
+   
+   @Override
+   public List<PTClassVO> selectPtOneDay(SqlSession sqlSession, PTClassVO ptClassVO) {
+	   return sqlSession.selectList("users.selectPtOneDay", ptClassVO);
    }
    
 }

@@ -4,6 +4,7 @@ package kr.human.second.service;
 
 import java.util.List;
 
+import kr.human.second.vo.PTClassVO;
 import kr.human.second.vo.ReservationVO;
 import kr.human.second.vo.TrainerVO;
 import kr.human.second.vo.UsersVO;
@@ -24,6 +25,10 @@ public interface UsersService {
 	
 	// 4. 지정된 pt수업 자동 예약
 	void AutoReservation(ReservationVO reservationVO);
+	
+	// 4. 예약 확인하기
+		List<PTClassVO> selectPtOneMonth(PTClassVO ptClassVO);
+		List<PTClassVO> selectPtOneDay(PTClassVO ptClassVO);
 	
 	
 }
