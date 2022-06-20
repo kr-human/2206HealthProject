@@ -11,7 +11,9 @@ CREATE TABLE users(
 	u_nicname varchar2(30) NOT NULL,
 	u_name varchar2(30) NOT NULL,
 	u_birth date NOT NULL,
-	u_addr varchar2(100) NOT NULL,
+	u_postcode varchar2(10) NOT NULL,
+	u_addr1 varchar2(100) NOT NULL,
+	u_addr2 varchar2(100) NOT NULL,
 	u_email varchar2(50) NOT NULL,
 	lev number(2),
 	pt number(3),
@@ -20,6 +22,7 @@ CREATE TABLE users(
 	gender char(1) NOT NULL,
 	t_id varchar2(30) NOT NULL,
 	CONSTRAINT fk_t_id FOREIGN key(t_id) REFERENCES trainer(t_id)
+
 );
  */
 @Data
@@ -29,13 +32,15 @@ public class UsersVO {
 	private String u_nicname;
 	private String u_name;
 	private Date u_birth;
-	private String u_addr;
+	private String u_postcode;
+	private String u_addr1;
+	private String u_addr2;
 	private String u_email;
 	private int lev;
 	private int pt;
 	private Date startDay;
 	private Date endDay;
-	private boolean gender;
+	private String gender;
 	private String t_id;
 	
 }

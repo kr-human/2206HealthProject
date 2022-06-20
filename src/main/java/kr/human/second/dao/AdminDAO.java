@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import kr.human.second.vo.AdminVO;
 import kr.human.second.vo.NoticeVO;
 import kr.human.second.vo.TrainerVO;
 import kr.human.second.vo.UsersVO;
@@ -23,4 +24,11 @@ public interface AdminDAO {
 	TrainerVO SelectByTraninerInfo(SqlSession sqlSession,String t_id) throws SQLException;
 	// 트레이너 등록
 	void T_insert(SqlSession sqlSession, TrainerVO trainerVO) throws SQLException;
+	
+	//동일한 아이디 갯수 얻기 (중복확인)
+	int SelectByTrainerId(SqlSession sqlSession, String t_id) throws SQLException;
+	//동일한 닉네임 갯수 얻기 (중복확인)
+	int SelectByTrainerNickname(SqlSession sqlSession, String t_nicname) throws SQLException;
+	//admin 로그인
+	AdminVO SelectByAdminInfo(SqlSession sqlSession, String t_id) throws SQLException;
 }

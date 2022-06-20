@@ -43,4 +43,5 @@ public class TrainerDAOImpl implements TrainerDAO {
 		sqlSession.selectOne("pt.P_check", pt_Code);
 	}
 	
+	
 }

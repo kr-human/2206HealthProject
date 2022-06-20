@@ -1,7 +1,6 @@
 package kr.human.second.dao;
 
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -14,7 +13,7 @@ public interface TrainerDAO {
 	void T_delete(SqlSession sqlSession, String t_id) throws SQLException;
 	// 나의 회원 전체 목록 보기
 	List<UsersVO> SelectByAllUserList(SqlSession sqlSession,String t_id) throws SQLException;
-	// 나의 회원 정보 보기(회원한명의 정보)
+	// 나의 회원 정보 보기(회원 한명의 정보)
 	UsersVO selectByUserInfo(SqlSession sqlSession, String t_id) throws SQLException;
 	// pt일정표 등록하기 
 	void P_insert(SqlSession sqlSession, PTClassVO ptclassVO) throws SQLException;
@@ -22,6 +21,6 @@ public interface TrainerDAO {
 	void P_update(SqlSession sqlSession, PTClassVO ptclassVO) throws SQLException;
 	// pt일정표 삭제하기
 	void P_delete(SqlSession sqlSession, String pt_Code) throws SQLException;
-	// pt일정표 확인하기
+	//pt
 	void P_check(SqlSession sqlSession, String pt_Code) throws SQLException;
 }

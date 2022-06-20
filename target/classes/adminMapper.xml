@@ -38,4 +38,19 @@
 		select * from trainer where t_id=#{t_id}
 	</select>
 	
+	<!-- 동일한 아이디 갯수 얻기 (중복확인) -->
+	<select id="SelectByTrainerId" parameterType="string" resultType="int">
+		select count(*) from trainer where t_id=#{t_id}
+	</select>
+	
+	<!-- 동일한 닉네임 갯수 얻기 (중복확인) -->
+	<select id="SelectByTrainerNickname" parameterType="string" resultType="int">
+		select count(*) from trainer where t_nicname=#{t_nicname}
+	</select>
+	
+	<!-- 1개 얻기 (admin_id)로 얻기 -->
+	<select id="SelectByAdminInfo" parameterType="string" resultType="AdminVO">
+		select * from admin where a_id=#{a_id}
+	</select>
+	
 </mapper>

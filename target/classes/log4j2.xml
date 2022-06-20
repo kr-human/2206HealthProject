@@ -30,7 +30,7 @@
 			<level value="ERROR" />
 			<appender-ref ref="console" />
 		</logger>
-		<Root level="INFO">
+		<Root level="DEBUG">
 			<AppenderRef ref="console" />
 		</Root>
 	</Loggers>
