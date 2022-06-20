@@ -2,7 +2,10 @@ package kr.human.second.dao;
 
 import java.sql.SQLException;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> seongseok2
 import java.util.Date;
 import java.util.HashMap;
 >>>>>>> origin/subMain
@@ -27,6 +30,7 @@ public interface TrainerDAO {
 	void P_update(SqlSession sqlSession, PTClassVO ptclassVO) throws SQLException;
 	// pt일정표 삭제하기
 	void P_delete(SqlSession sqlSession, String pt_Code) throws SQLException;
+<<<<<<< HEAD
 	//pt
 	void P_check(SqlSession sqlSession, String pt_Code) throws SQLException;
 	// 한개 얻기(t_id)
@@ -36,4 +40,10 @@ public interface TrainerDAO {
 	
 
 	
+=======
+	// pt일정표 확인하기
+	PTClassVO P_check(SqlSession sqlSession, String pt_Code) throws SQLException;
+	// pt일정표 목록보기
+	List<PTClassVO> PList_Check(SqlSession sqlSession) throws SQLException;
+>>>>>>> seongseok2
 }
