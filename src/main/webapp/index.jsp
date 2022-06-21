@@ -3,10 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@page import="kr.human.second.service.NoticeServiceImpl"%>
-<%@page import="kr.human.second.service.NoticeService"%>
-<%@page import="kr.human.second.vo.NoticeVO"%>
-<%@page import="kr.human.second.vo.PagingVO"%>
 <%-- JSTL 추가 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>

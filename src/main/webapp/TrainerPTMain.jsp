@@ -64,21 +64,37 @@
 			events: function(info, successCallBack, failureCallBack){
 					$.ajax({
 						type:"get",
-						url:"data.jsp",
+						url:"SelectPTClass.jsp",
 						datatype:"json",
-						success : function(data){
-							// alert(data);
-							successCallBack(data);
+// 						data : {"ptTime":"2022-06", "t_id":"t1"}, // 이건 뭘까 ? 현웅이파일에 있는거
+						success: function(data){
+							
+							//alert('성공\n' + data);
+							// 받은 데이터를 가공한다. 입맞에 맞게....
+							$.each(data, function(index, item){
+								//alert(item.allday);
+								if(item.allday){ // 하루 종일이면 시간이 필요 없으므로 시간을 지운다.
+									//alert(item.start + "\n" + item.end);
+									item.start = item.start.substr(0, 10);  
+									item.end = item.end.substr(0, 10);
+									//alert(item.start + "\n" + item.end);
+								}else{ // 하루 중 일부라면 종료날짜를 지운거 
+									//alert(item.start + "\n" + item.end);
+									item.end='';
+									//alert(item.start + "\n" + item.end);
+								}
+							});
+							successCallback(data);
 						},
 						error : function(){
 							alert('error!!!!');
 						}
 					});
 			},
-			// 이벤트 연결될때
-			eventDidMount: function(info) {
-				 // console.log(info.event.extendedProps);
-			}
+// 			// 이벤트 연결될때
+// 			eventDidMount: function(info) {
+// 				 // console.log(info.event.extendedProps);
+// 			}
 		});
 		calendar.setOption('height', 700); // 실시간 높이 변경
 		calendar.render();
