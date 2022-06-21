@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="trainer">
+
+	<!-- 나의 회원 목록 보기 -->
+	<select id="SelectByUserList" resultType="MemberVO">
+		select * from MEMBERS WHERE myTrainer=#{myTrainer} 
+	</select>
+	
+	<!-- 나의 회원 정보 보기 -->
+	<select id="SelectByUserInfo" parameterType="string" resultType="MemberVO">
+		select * from MEMBERS where myTrainer=#{myTrainer}
+	</select>
+
+	<!-- 회원 pt이용권 등록, 스타트, 엔드데이 등록 -->
+	<update id="MemberUpdate" parameterType="MemberVO">
+		update MEMBERS set
+			pt=#{pt},
+			startday = #{startday},
+			endday = #{endday}
+		where
+			myTrainer=#{myTrainer}
+	</update>
+	
+</mapper>
+
+

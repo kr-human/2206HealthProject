@@ -1,5 +1,6 @@
 CREATE SEQUENCE ptclass_idx_seq;
 CREATE SEQUENCE notice_idx_seq;
+drop sequence notice_idx_seq;
 
 DROP table notice;
 SELECT * FROM notice;

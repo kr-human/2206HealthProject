@@ -1,6 +1,5 @@
 package kr.human.second.service;
 
-import javax.servlet.http.HttpSession;
 import java.util.List;
 import kr.human.second.vo.PTClassVO;
 

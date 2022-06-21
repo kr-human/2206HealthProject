@@ -29,6 +29,7 @@
 		<mapper resource="ptclassMapper.xml" />
 		<mapper resource="commonMapper.xml" />
 		<mapper resource="reservationMapper.xml" />
+		<mapper resource="trainerMapper.xml" />
 
 	</mappers>
 </configuration>
