@@ -22,12 +22,12 @@
 <!-- 	</update> -->
 	
 	<!-- 트레이너 pt일정표 삭제하기 -->
-	<delete id="P_delete" parameterType="PTClassVO">
+	<delete id="P_delete" parameterType="int">
 		delete from ptclass where idx=#{idx}
 	</delete>
 	
 	<!-- 트레이너 pt일정표 1명 확인하기 -->
-	<select id="P_check" parameterType="PTClassVO" resultType="PTClassVO">
+	<select id="P_check" parameterType="PTClassVO" resultType="int">
 		select * from ptclass where idx=#{idx}
 	</select>
 
