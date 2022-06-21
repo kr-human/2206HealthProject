@@ -26,18 +26,10 @@
 	<mappers>
 		<mapper resource="testMapper.xml" />
 		<mapper resource="noticeMapper.xml" />
-<<<<<<< HEAD
 
-
-
-=======
->>>>>>> origin/subMain
 		<mapper resource="ptclassMapper.xml" />
-		<mapper resource="memberMapper.xml" />
-<<<<<<< HEAD
+		<mapper resource="commonMapper.xml" />
 
-=======
->>>>>>> origin/subMain
 
 	</mappers>
 </configuration>

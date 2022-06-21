@@ -27,11 +27,8 @@
 		<mapper resource="testMapper.xml" />
 		<mapper resource="noticeMapper.xml" />
 
-
-
 		<mapper resource="ptclassMapper.xml" />
-
-		<mapper resource="memberMapper.xml" />
+		<mapper resource="commonMapper.xml" />
 
 
 	</mappers>
