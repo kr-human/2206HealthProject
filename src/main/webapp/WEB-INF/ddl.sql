@@ -1,7 +1,5 @@
-<<<<<<< HEAD
-CREATE SEQUENCE ptclass_idx_sqe;
-
-<<<<<<< HEAD
+CREATE SEQUENCE ptclass_idx_seq;
+CREATE SEQUENCE notice_idx_seq;
 
 DROP table notice;
 SELECT * FROM notice;
@@ -13,19 +11,20 @@ CREATE TABLE notice(
 	clickCount number(20) DEFAULT 0
 );
 INSERT INTO notice
-VALUES(1,'안녕', '안녕하세요', SYSDATE, 0);
-=======
+VALUES(notice_idx_seq.nextval,'안녕', '안녕하세요', SYSDATE, 0);
+INSERT INTO notice
+VALUES(notice_idx_seq.nextval,'안녕', '안녕하세요', SYSDATE, 0);
+
 CREATE TABLE ptclass(
    idx number PRIMARY key,
    pttime DATE,
-   t_id varchar2(30) NOT NULL,
-   CONSTRAINT fk_t_id_ptclass FOREIGN key(t_id) REFERENCES trainer(t_id),
-   check char(1)
+   id varchar2(30) NOT NULL,
+   CONSTRAINT fk_id_MEMBERS FOREIGN key(id) REFERENCES MEMBERS(id),
+   r_check char(1)
 );
-
 SELECT * FROM ptclass;
 DROP TABLE PTCLASS;
-=======
+
 CREATE TABLE MEMBERS(
 	id varchar2(30) PRIMARY KEY,
 	password varchar2(30) NOT NULL,
@@ -48,10 +47,7 @@ INSERT INTO MEMBERS VALUES
 ('root','1234','최고관리자',' ',' ',' ','ithuman202204@gmail.com','M',0,'2022-05-30','2023-05-30',3,'sys');
 INSERT INTO MEMBERS VALUES 
 ('user01','1234','한사람',' ',' ',' ','ithuman202204@gmail.com','F',0,'2022-05-30','2023-05-30',1,'root');
->>>>>>> hwan91
 
-
->>>>>>> eeab012bbb04b82f45fb945bdc08eb8cfec8adc2
 
 
 

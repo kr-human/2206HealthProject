@@ -17,8 +17,7 @@
 	<c:if test="${not empty sessionScope.memberVO }">
 		${sessionScope.memberVO.userid }(${sessionScope.memberVO.name })님 반갑습니다 <br>
 		
-		<a href="updateForm.jsp">정보수정</a> 
-		<a href="deleteForm.jsp">회원탈퇴</a> 
+		<a href="updateForm.jsp">정보수정</a>
 		<a href="logout.jsp">로그아웃</a>
 	</c:if>
 	<hr />
