@@ -13,7 +13,7 @@ public interface MemberDAO {
 	MemberVO selectMyInfo(SqlSession sqlSession, String u_id) throws SQLException;
 	
 	// 나의 트레이너 정보 보기
-	MemberVO selectMyTrainerInfo(SqlSession sqlSession, HashMap<String, String> map) throws SQLException;
+	MemberVO selectMyTrainerInfo(SqlSession sqlSession, String t_id) throws SQLException;
 	
 	// 정보 수정하기
 	void updateMember(SqlSession sqlSession, HashMap<String, String> map) throws SQLException;

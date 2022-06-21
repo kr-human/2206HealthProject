@@ -10,8 +10,8 @@
 	</select>
 	
 	<!-- 나의 트레이너 정보 보기 -->
-	<select id="selectMyTrainerInfo" parameterType="hashmap" resultType="MemberVO">
-		select * from trainer where id=#{id} and myTrainer=#{myTrainer}
+	<select id="selectMyTrainerInfo" parameterType="string" resultType="MemberVO">
+		select * from members where id=#{id}
 	</select>
 	
 	<!-- 정보수정하기 -->

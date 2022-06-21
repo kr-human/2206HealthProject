@@ -7,19 +7,20 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import kr.human.second.vo.MemberVO;
+import kr.human.second.vo.PTClassVO;
 import kr.human.second.vo.ReservationVO;
 
 public class ReservationDAOImpl implements ReservationDAO{
 	//------------------------------------------------------
 	// 싱글톤을 만들자
-	private ReservationDAO instance = new ReservationDAOImpl();
+	private static ReservationDAO instance = new ReservationDAOImpl();
 	private ReservationDAOImpl() {};
-	public ReservationDAO getInstance() {
+	public static ReservationDAO getInstance() {
 		return instance;
 	}
 	//------------------------------------------------------
 	@Override
-	public List<MemberVO> selectPtOneDay(SqlSession sqlSession, HashMap<String, String> map) throws SQLException {
+	public List<PTClassVO> selectPtOneDay(SqlSession sqlSession, HashMap<String, String> map) throws SQLException {
 		return sqlSession.selectList("reservation.selectPtOneDay", map);
 	}
 	@Override

@@ -11,9 +11,9 @@ public class MemberDAOImpl implements MemberDAO{
 	
 	//---------------------------------------------------------------
 	//싱글톤으로 만들어보즈아!!!
-	private MemberDAO instance = new MemberDAOImpl();
+	private static MemberDAO instance = new MemberDAOImpl();
 	private MemberDAOImpl() {}
-	public MemberDAO getInstance() {
+	public static MemberDAO getInstance() {
 		return instance;
 	}
 	//---------------------------------------------------------------
@@ -23,8 +23,8 @@ public class MemberDAOImpl implements MemberDAO{
 		return sqlSession.selectOne("member.selectMyInfo", u_id);
 	}
 	@Override
-	public MemberVO selectMyTrainerInfo(SqlSession sqlSession, HashMap<String, String> map) throws SQLException {
-		return sqlSession.selectOne("member.selectMyTrainerInfo", map);
+	public MemberVO selectMyTrainerInfo(SqlSession sqlSession, String t_id) throws SQLException {
+		return sqlSession.selectOne("member.selectMyTrainerInfo", t_id);
 	}
 	@Override
 	public void updateMember(SqlSession sqlSession, HashMap<String, String> map) throws SQLException {
