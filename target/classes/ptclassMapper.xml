@@ -27,11 +27,7 @@
 	</delete>
 	
 	<!-- 트레이너 pt일정표 1명 확인하기 -->
-<<<<<<< HEAD
 	<select id="P_check" parameterType="int" resultType="PTClassVO">
-=======
-	<select id="P_check" parameterType="PTClassVO" resultType="int">
->>>>>>> chhg991
 		select * from ptclass where idx=#{idx}
 	</select>
 
