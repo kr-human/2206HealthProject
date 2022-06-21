@@ -7,7 +7,7 @@
 	<!-- 트레이너 pt일정표 등록하기 -->
 	<insert id="P_insert" parameterType="PTClassVO">
 		insert into ptclass values
-		(ptclass_idx_seq.nextval,#{pttime},#{t_id},#{check})
+		(ptclass_idx_seq.nextval,#{pttime},#{id},#{r_check})
 	</insert>
 	
 	 	<!-- 트레이너 pt일정표 변경하기 -->
@@ -27,13 +27,13 @@
 	</delete>
 	
 	<!-- 트레이너 pt일정표 1명 확인하기 -->
-	<select id="P_check" parameterType="PTClassVO" resultType="int">
+	<select id="P_check" parameterType="int" resultType="PTClassVO">
 		select * from ptclass where idx=#{idx}
 	</select>
 
 	<!-- 트레이너 pt일정표 목록 확인하기 -->
 	<select id="PList_check" resultType="PTClassVO">
-		select * from ptclass where t_id=#{t_id}
+		select * from ptclass where id=#{id}
 	</select>
 </mapper>
 
