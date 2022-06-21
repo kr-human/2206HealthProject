@@ -41,13 +41,13 @@
 </style>
 </head>
 <body>
-	<form action="N_updateOk.jsp" enctype="multipart/form-data"  method="post">
+	<form action="updateOk.jsp"  method="post">
 	<%-- 여기에서 몇개를 숨겨서 가지고 가자 --%>
 	<input type="hidden" name="p" value="${p }" />
 	<input type="hidden" name="s" value="${s }" />
 	<input type="hidden" name="b" value="${b }" />
 	<input type="hidden" name="idx" value="${idx }" />
-	<input type="hidden" name="m" value="3" />
+	<input type="hidden" name="mode" value="3" />
 	<table>
 		<tr>
 			<td colspan="4" class="title">공지사항 삭제하기</td>
@@ -74,9 +74,9 @@
 			<td colspan="4" style="border: none;text-align: right;">
 				<input type="submit" value="삭제하기" class="btn btn-outline-success btn-sm" />
 				<input type="button" class="btn btn-outline-success btn-sm" 
-				onclick='sendPost("N_view.jsp",{"p":${p},"s":${s },"b":${b },"idx":${vo.idx }})' value="내용보기">
+				onclick='sendPost("view.jsp",{"p":${p},"s":${s },"b":${b },"idx":${vo.idx }})' value="내용보기">
 				<input type="button" class="btn btn-outline-success btn-sm" 
-				onclick='sendPost("N_index.jsp",{"p":${p},"s":${s },"b":${b }})' value="목록으로">
+				onclick='sendPost("index.jsp",{"p":${p},"s":${s },"b":${b }})' value="목록으로">
 			</td>
 		</tr>
 	</table>

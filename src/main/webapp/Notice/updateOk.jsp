@@ -1,39 +1,35 @@
-<%@page import="kr.human.second.service.NoticeService"%>
-<%@page import="org.apache.catalina.filters.SetCharacterEncodingFilter"%>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%
-	// 한글 받기 위해서
-	request.setCharacterEncoding("UTF-8");
-	// POST전송이 아니라면 -- 누군가가 직접 이 파일을 실행 했다면
-	if(!request.getMethod().equals("POST")){
-		response.sendRedirect("index.jsp");
-		return;
-	}
-%>
-<%@ include file="include.jsp" %> <%-- 페이지번호/페이지사이즈/블록사이즈 받기 --%>
+<%@page import="kr.human.second.service.NoticeServiceImpl"%>
+<%@page import="kr.human.second.vo.NoticeVO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="include.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-
-</script>
-<style type="text/css">
-
-</style>
 </head>
 <body>
-<%
-// 넘어온 데이터를 받고
-%>
-<jsp:useBean id="vo" class="kr.human.second.vo.NoticeVO"></jsp:useBean>
-<jsp:setProperty property="*" name="vo"/>
-<%
-// 데이터가 올바르면 서비스 클래스를 호출하여 저장하고
-
-// 리스트로 돌아간다.
-response.sendRedirect("index.jsp?p=1&s=" + pageSize + "&b=" + blockSize);
-%>
+	<%-- 데이터 받기 --%>
+	<jsp:useBean id="vo" class="kr.human.second.vo.NoticeVO"/>
+	<jsp:setProperty property="*" name="vo"/>
+	<%
+		System.out.println("넘어온 값 : "+ vo);
+		switch(vo.getMode()){
+		case 1:
+			NoticeServiceImpl.getInstance().insert(vo);
+			response.sendRedirect("index.jsp?p="+currentPage+"&s="+pageSize+"&b=" + blockSize);
+			return;
+		case 2:
+			NoticeServiceImpl.getInstance().update(vo);
+			response.sendRedirect("view.jsp?p="+currentPage+"&s="+pageSize+"&b=" + blockSize 
+					               + "&idx=" + idx + "&click=false");
+			return;
+		case 3:
+			NoticeServiceImpl.getInstance().delete(vo);
+			response.sendRedirect("index.jsp?p="+currentPage+"&s="+pageSize+"&b=" + blockSize);
+			return;
+		}
+	
+	%>
 </body>
 </html>

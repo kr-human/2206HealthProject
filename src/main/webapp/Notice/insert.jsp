@@ -43,12 +43,12 @@
 </style>
 </head>
 <body>
-	<form action="N_updateOk.jsp" enctype="multipart/form-data"  method="post" onsubmit="return formCheck();">
+	<form action="updateOk.jsp"  method="post" onsubmit="return formCheck();">
 	<%-- 여기에서 몇개를 숨겨서 가지고 가자 --%>
 	<input type="hidden" name="p" value="${p }" />
 	<input type="hidden" name="s" value="${s }" />
 	<input type="hidden" name="b" value="${b }" />
-	<input type="hidden" name="m" value="1" />
+	<input type="hidden" name="mode" value="1" />
 	<table>
 		<tr>
 			<td colspan="4" class="title">공지사항 새글쓰기</td>

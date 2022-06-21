@@ -27,6 +27,7 @@
 		<mapper resource="testMapper.xml" />
 		<mapper resource="noticeMapper.xml" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		<mapper resource="ptclassMapper.xml" />
 		<mapper resource="commonMapper.xml" />
@@ -36,6 +37,10 @@
 		<mapper resource="reservationMapper.xml" />
 >>>>>>> Reservation(ver.1)
 
+=======
+		<mapper resource="ptclassMapper.xml" />
+		<mapper resource="memberMapper.xml" />
+>>>>>>> chhg991
 
 	</mappers>
 </configuration>
