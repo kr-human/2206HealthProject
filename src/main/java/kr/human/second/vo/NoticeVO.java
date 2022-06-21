@@ -1,7 +1,7 @@
 package kr.human.second.vo;
 
 import java.util.Date;
-import java.util.List;
+
 
 
 import lombok.Data;
@@ -11,7 +11,8 @@ CREATE TABLE notice(
 	idx NUMBER PRIMARY KEY,
 	subject varchar2(100) NOT NULL,
 	content varchar2(3000) NOT NULL,
-	regDate timestamp DEFAULT SYSDATE
+	regDate timestamp DEFAULT SYSDATE,
+	clickCount number(20) DEFAULT 0
 );
 */
 @Data
@@ -20,8 +21,7 @@ public class NoticeVO {
 	private String subject;
 	private String content;
 	private Date regDate;
+	private int clickCount;
 	
-	private int mode;
-	private List<UpFileVO> fileList;
-
+	private int mode; // 수정, 삭제 , 작성 구분하기 위해 사용함
 }
