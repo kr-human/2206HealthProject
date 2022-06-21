@@ -39,7 +39,7 @@
 		insert into fileBoard 
 			(idx, name, password, subject, content, regDate)
 		values
-			(fileBoard_idx_seq.nextval,#{name},#{password},#{subject},#{content},SYSDATE)	
+			(notice_idx_seq.nextval,#{name},#{password},#{subject},#{content},SYSDATE)	
 	</insert>
 	
 	<!-- 5. 글 수정 -->
