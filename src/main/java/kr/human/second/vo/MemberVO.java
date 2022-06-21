@@ -26,21 +26,19 @@ CREATE TABLE users(
 );
  */
 @Data
-public class UsersVO {
-	private String u_id;
-	private String u_password;
-	private String u_nicname;
-	private String u_name;
-	private Date u_birth;
-	private String u_postcode;
-	private String u_addr1;
-	private String u_addr2;
-	private String u_email;
-	private int lev;
+public class MemberVO {
+	private String id;
+	private String password;
+	private String name;
+	private String postcode;
+	private String addr1;
+	private String addr2;
+	private String email;
+	private String gender;
 	private int pt;
 	private Date startDay;
 	private Date endDay;
-	private String gender;
-	private String t_id;
+	private int lev;
+	private String myTrainer;
 	
 }

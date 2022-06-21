@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="members">
+	<!-- 회원가입 -->
+	<insert id="insert" parameterType="MemberVO">
+	INSERT INTO members VALUES 
+	(#{id},#{password},#{name},#{postcode},#{addr1},#{addr2}
+	,#{email},#{gender},0,#{startDay},#{endDay},0,#{myTrainer})
+	</insert>
+	
+	<!-- 회원 탈퇴 -->
+	<delete id="delete" parameterType="MemberVO">
+		delete from members where id=#{id}
+	</delete>
+	
+	<!-- 회원 정보 수정 -->
+	<update id="update" parameterType="MemberVO">
+		update users set
+			password=#{password},
+			email = #{email}
+		where
+			id=#{id}
+	</update>
+	
+	<!-- 동일한 아이디 갯수 얻기 (중복확인) -->
+	<select id="SelectByUserId" parameterType="string" resultType="int">
+		select count(*) from members where id=#{id}
+	</select>
+	
+	<!-- 1개 얻기 (user_id)로 얻기 -->
+	<select id="SelectByUserInfo" parameterType="string" resultType="MemberVO">
+		select * from members where id=#{id}
+	</select>
+	
+	<!-- 비밀번호 변경 -->
+	<update id="ChangePassword" parameterType="hashmap">
+		update members set password=#{password} where id=#{id}
+	</update>
+	
+	<!-- 아이디 찾기 (name으로 가져오기) -->
+	<select id="FindUserId" parameterType="string" resultType="string">
+		select id from members where email=#{email}
+	</select>
+	
+
+</mapper>

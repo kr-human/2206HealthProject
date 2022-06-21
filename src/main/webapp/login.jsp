@@ -24,7 +24,7 @@
 		<div class="login-container">
 			<div class="login-card">
 				<div class="login-form">
-					<form action="${pageContext.request.contextPath }/t_loginOk.jsp" method="post" class="form-horizontal">
+					<form action="${pageContext.request.contextPath }/loginOk.jsp" method="post" class="form-horizontal">
 						<%-- 로그인 실패시 에러메세지 출력 --%>
 						<c:if test="${not empty error }">
 							<div style="color: red;font-size: 15pt;">${error }</div>
@@ -34,24 +34,20 @@
 							<div style="color: green;font-size: 15pt;">${msg }</div>
 						</c:if>
 						
-						
 						<div class="input-group input-sm">
 							<label class="input-group-addon" for="username">
 							<i class="fa-solid fa-user" style="font-size: 20pt;margin-right: 5px;color:green;"></i>
-							</label> <input type="text" class="form-control"
-								id="username" name="userid" placeholder="Enter ID" required>
+							</label> <input type="text" class="form-control" id="id" name="id" placeholder="Enter UserID" required>
 						</div>
 						<div class="input-group input-sm">
-							<label class="input-group-addon" for="password"><i class="fa-solid fa-lock" style="font-size: 20pt;margin-right: 5px;color:red;"></i></label> 
-							<input type="password" class="form-control" id="password" name="password"
+							<label class="input-group-addon" for="password"><i class="fa-solid fa-lock" style="font-size: 20pt;margin-right: 5px;color:red;"></i></label>
+							 <input type="password" class="form-control" id="password" name="password"
 								placeholder="Enter Password" required>
 						</div>
 						<div class="form-actions">
 							<input type="submit"
 								class="btn btn-block btn-primary btn-default" value="Log in">
 						</div>
-						
-						
 						<div style="text-align: center;margin: 15px;">
 							[<a href="findUserid.jsp">아이디찾기</a>] 
 							&nbsp;&nbsp;&nbsp;
