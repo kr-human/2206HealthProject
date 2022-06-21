@@ -21,7 +21,7 @@ public class PTClassServiceImpl implements PTClassService{
 	// PT일정표 등록하기
 	@Override
 	public void insert(PTClassVO ptclassVO) {
-		log.info("TrainerServiceImpl의 insert호출 : {}", ptclassVO);
+		log.info("PTClassServiceImpl의 insert호출 : {}", ptclassVO);
 		
 		SqlSession sqlSession = null;
 		PTClassDAO ptcDAO = null;
@@ -44,7 +44,7 @@ public class PTClassServiceImpl implements PTClassService{
 	// PT일정표 삭제하기
 	@Override
 	public void delete(PTClassVO ptclassVO) {
-		log.info("TrainerServiceImpl의 delete호출 : {}", ptclassVO);
+		log.info("PTClassServiceImpl의 delete호출 : {}", ptclassVO);
 		
 		SqlSession sqlSession = null;
 		PTClassDAO ptcDAO = null;
@@ -73,7 +73,7 @@ public class PTClassServiceImpl implements PTClassService{
 	// PT일정표 확인하기 - 1일 얻기
 	@Override
 	public List<PTClassVO> selectByPTOneDayCheck() {
-		log.info("TrainerServiceImpl의 selectByPTOneDayCheck호출 ");
+		log.info("PTClassServiceImpl의 selectByPTOneDayCheck호출 ");
 		
 		SqlSession sqlSession = null;
 		List<PTClassVO> ptclVO = null;
@@ -91,13 +91,13 @@ public class PTClassServiceImpl implements PTClassService{
 		} finally {
 			if(sqlSession!=null) sqlSession.close();
 		}
-		log.info("TrainerServiceImpl의 selectByPTOneDayCheck 리턴 : " + ptclVO);
+		log.info("PTClassServiceImpl의 selectByPTOneDayCheck 리턴 : " + ptclVO);
 		return ptclVO;
 	}
 	// PT일정표 확인하기 - 1개 얻기
 	@Override
 	public PTClassVO selectByPTCheck(int idx) {
-		log.info("TrainerServiceImpl의 selectByPTCheck호출 : {}", idx);
+		log.info("PTClassServiceImpl의 selectByPTCheck호출 : {}", idx);
 		
 		SqlSession sqlSession = null;
 		PTClassDAO ptcDAO = null;
@@ -115,7 +115,7 @@ public class PTClassServiceImpl implements PTClassService{
 		} finally {
 			if(sqlSession!=null) sqlSession.close();
 		}
-		log.info("TrainerServiceImpl의 selectByPTCheck 리턴 : " + ptcVO);
+		log.info("PTClassServiceImpl의 selectByPTCheck 리턴 : " + ptcVO);
 		return ptcVO;
 	}
 

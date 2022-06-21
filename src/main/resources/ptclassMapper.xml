@@ -10,16 +10,16 @@
 		(ptclass_idx_seq.nextval,#{pttime},#{t_id},#{check})
 	</insert>
 	
-	<!-- 트레이너 pt일정표 변경하기 -->
-	<update id="P_update" parameterType="PTClassVO">
-		update ptclass set
-			pttime=#{pttime},
-			<!-- pttime 이렇게 안돼면 todate로 해보자 -->
-			t_id = #{t_id},
-			check = #{check}
-		where
-			idx=#{idx}
-	</update>
+	 	<!-- 트레이너 pt일정표 변경하기 -->
+<!-- 	<update id="P_update" parameterType="PTClassVO"> -->
+<!-- 		update ptclass set -->
+<!-- 			pttime=#{pttime}, -->
+	 			<!-- pttime 이렇게 안돼면 todate로 해보자 -->
+<!-- 			t_id = #{t_id}, -->
+<!-- 			check = #{check} -->
+<!-- 		where -->
+<!-- 			idx=#{idx} -->
+<!-- 	</update> -->
 	
 	<!-- 트레이너 pt일정표 삭제하기 -->
 	<delete id="P_delete" parameterType="PTClassVO">
