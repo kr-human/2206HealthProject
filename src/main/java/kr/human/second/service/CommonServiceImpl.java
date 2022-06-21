@@ -8,8 +8,8 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 
 import kr.human.mybatis.MybatisApp;
-import kr.human.second.dao.MemberDAO;
-import kr.human.second.dao.MemberDAOImpl;
+import kr.human.second.dao.CommonDAO;
+import kr.human.second.dao.CommonDAOImpl;
 
 import kr.human.second.vo.MemberVO;
 import lombok.extern.slf4j.Slf4j;
@@ -17,11 +17,11 @@ import lombok.extern.slf4j.Slf4j;
 
 
 @Slf4j
-public class MemberServiceImpl implements MemberService{
+public class CommonServiceImpl implements CommonService{
 	
-	private static MemberService instance = new MemberServiceImpl();
-	private MemberServiceImpl() {};
-	public static MemberService getInstance() {
+	private static CommonService instance = new CommonServiceImpl();
+	private CommonServiceImpl() {};
+	public static CommonService getInstance() {
 		return instance;
 	}
 	
@@ -33,12 +33,12 @@ public class MemberServiceImpl implements MemberService{
 		int count = 0;
 		
 		SqlSession sqlSession = null;
-		MemberDAO memberDAO = null;
+		CommonDAO commonDAO = null;
 		
 		try {
 			sqlSession = MybatisApp.getSqlSessionFactory().openSession(false);
-			memberDAO = MemberDAOImpl.getInstance();
-			count = memberDAO.SelectByUserId(sqlSession, id);
+			commonDAO = CommonDAOImpl.getInstance();
+			count = commonDAO.SelectByUserId(sqlSession, id);
 			sqlSession.commit();
 			
 		}catch (SQLException e){
@@ -60,13 +60,13 @@ public class MemberServiceImpl implements MemberService{
 		boolean isLogin = false;
 		
 		SqlSession sqlSession = null;
-		MemberDAO memberDAO = null;
+		CommonDAO commonDAO = null;
 		try {
 			sqlSession = MybatisApp.getSqlSessionFactory().openSession(false);
-			memberDAO = MemberDAOImpl.getInstance();
+			commonDAO = CommonDAOImpl.getInstance();
 			//------------------------------------------------------------------
 			// 해당 아이디의 회원 정보를 읽어온다
-			MemberVO memberVO = memberDAO.SelectByUserInfo(sqlSession, id);
+			MemberVO memberVO = commonDAO.SelectByUserInfo(sqlSession, id);
 			if(memberVO != null) {
 				if(memberVO.getPassword().equals(password) && memberVO.getLev()==1) { //회원 일때 1
 					//여기서 섹션 추가 (카테고리 보여주는거)
@@ -93,18 +93,18 @@ public class MemberServiceImpl implements MemberService{
 	}
 	//유저 회원가입
 	@Override
-	public void insert(MemberVO memberVO, String urlAddress) {
-		log.info("MemberServiceImpl의 insert호출 : {}, {}", memberVO, urlAddress);
+	public void insert(MemberVO memberVO) {
+		log.info("MemberServiceImpl의 insert호출 : {}, {}", memberVO);
 		
 		SqlSession sqlSession = null;
-		MemberDAO memberDVO = null;
+		CommonDAO commonDAO = null;
 		try {
 			sqlSession = MybatisApp.getSqlSessionFactory().openSession(false);
-			memberDVO = MemberDAOImpl.getInstance();
+			commonDAO = CommonDAOImpl.getInstance();
 			//------------------------------------------------------------------
 			// 해당 아이디의 회원 정보를 읽어온다
 			if(memberVO!=null) {
-				memberDVO.insert(sqlSession, memberVO); //DB에 저장
+				commonDAO.insert(sqlSession, memberVO); //DB에 저장
 				//환영 이메일 발송
 			}
 			//------------------------------------------------------------------

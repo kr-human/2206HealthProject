@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="members">
+<mapper namespace="common">
 	<!-- 회원가입 -->
 	<insert id="insert" parameterType="MemberVO">
 	INSERT INTO members VALUES 

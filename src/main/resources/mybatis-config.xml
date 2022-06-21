@@ -25,15 +25,14 @@
 	<!-- SQL명령이 들어있는 매퍼파일을 지정한다. 맵퍼파일을 여러개 지정이 가능하다.-->
 	<mappers>
 		<mapper resource="testMapper.xml" />
-<<<<<<< HEAD
 		<mapper resource="noticeMapper.xml" />
 
-=======
+
 
 		<mapper resource="ptclassMapper.xml" />
 
 		<mapper resource="memberMapper.xml" />
->>>>>>> eeab012bbb04b82f45fb945bdc08eb8cfec8adc2
+
 
 	</mappers>
 </configuration>

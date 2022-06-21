@@ -28,7 +28,7 @@
 	 --%>
 		
 		<c:if test="${not empty sessionScope.memberVO && sessionScope.memberVO.lev == 1}">
-			${sessionScope.memberVO.id }(${sessionScope.memberVO.name })님 반갑습니다 <br>
+			${sessionScope.memberVO.name }님 반갑습니다 <br>
 			<h1>유저</h1>
 			<a href="a.jsp">예약 하기</a> 
 			<a href="b.jsp">나의 강사보기</a> 
@@ -36,10 +36,11 @@
 			<a href="logout.jsp">로그아웃</a>
 		</c:if>
 		<c:if test="${not empty sessionScope.memberVO && sessionScope.memberVO.lev == 3}">
-	      ${sessionScope.memberVO.id }(${sessionScope.memberVO.name })님 반갑습니다 <br>
+	      ${sessionScope.memberVO.name }님 반갑습니다 <br>
 	      <h1>강사</h1>
 	      <a href="d.jsp">회원목록보기</a> 
 	      <a href="e.jsp">예약 등록</a> 
+	      <a href="f.jsp">게시판(공지사항)</a>
 	      <a href="logout.jsp">로그아웃</a>
 	   </c:if>
  		 

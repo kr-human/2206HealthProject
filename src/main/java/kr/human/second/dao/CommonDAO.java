@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import kr.human.second.vo.MemberVO;
 
-public interface MemberDAO {
+public interface CommonDAO {
 	//회원가입
 	void insert(SqlSession sqlSession, MemberVO memberVO) throws SQLException;  
 	//회원 탈퇴

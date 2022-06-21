@@ -5,14 +5,14 @@ import java.util.List;
 
 
 
-public interface MemberService {
+public interface CommonService {
 
 	//아이디 중복 확인
 		int idCheck(String id);	
 	//유저 로그인
 		boolean login(HttpSession httpSession, String id, String password);
 	//회원 가입 (저장)
-		void insert(MemberVO memberVO,String urlAddress);
+		void insert(MemberVO memberVO);
 		
     //회정정보 수정
 	//회원 탈퇴
