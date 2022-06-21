@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pt">
+
+	<!-- 트레이너 pt일정표 등록하기 -->
+	<insert id="P_insert" parameterType="PTClassVO">
+		insert into ptclass values
+		(ptclass_idx_seq.nextval,#{pttime},#{t_id},#{check})
+	</insert>
+	
+	 	<!-- 트레이너 pt일정표 변경하기 -->
+<!-- 	<update id="P_update" parameterType="PTClassVO"> -->
+<!-- 		update ptclass set -->
+<!-- 			pttime=#{pttime}, -->
+	 			<!-- pttime 이렇게 안돼면 todate로 해보자 -->
+<!-- 			t_id = #{t_id}, -->
+<!-- 			check = #{check} -->
+<!-- 		where -->
+<!-- 			idx=#{idx} -->
+<!-- 	</update> -->
+	
+	<!-- 트레이너 pt일정표 삭제하기 -->
+	<delete id="P_delete" parameterType="int">
+		delete from ptclass where idx=#{idx}
+	</delete>
+	
+	<!-- 트레이너 pt일정표 1명 확인하기 -->
+	<select id="P_check" parameterType="PTClassVO" resultType="int">
+		select * from ptclass where idx=#{idx}
+	</select>
+
+	<!-- 트레이너 pt일정표 목록 확인하기 -->
+	<select id="PList_check" resultType="PTClassVO">
+		select * from ptclass where t_id=#{t_id}
+	</select>
+</mapper>
+
+
