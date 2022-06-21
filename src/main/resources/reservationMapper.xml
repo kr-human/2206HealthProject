@@ -20,6 +20,9 @@
 	</delete>
 	
 	<!-- 나의 예약목록 확인하기 -->
+	<select id="selectMyReservation" parameterType="string" resultType="ReservationVO">
+		select * from reservation where id=#{id}
+	</select>
 </mapper>
 
 
