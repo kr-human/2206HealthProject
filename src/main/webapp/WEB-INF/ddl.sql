@@ -1,8 +1,9 @@
 <<<<<<< HEAD
 CREATE SEQUENCE ptclass_idx_sqe;
 
-<<<<<<< HEAD
 
+CREATE SEQUENCE notice_idx_sqe;
+drop sequence notice_idx_sqe;
 DROP table notice;
 SELECT * FROM notice;
 CREATE TABLE notice(
@@ -14,6 +15,7 @@ CREATE TABLE notice(
 );
 INSERT INTO notice
 VALUES(1,'안녕', '안녕하세요', SYSDATE, 0);
+
 =======
 CREATE TABLE ptclass(
    idx number PRIMARY key,

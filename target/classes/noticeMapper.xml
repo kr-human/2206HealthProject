@@ -35,7 +35,7 @@
 	</select>
 	
 	<!-- 4. 저장 -->
-	<insert id="N_insert" parameterType="NoticeVO">
+	<insert id="insert" parameterType="NoticeVO">
 		insert into fileBoard 
 			(idx, name, password, subject, content, regDate)
 		values
@@ -43,12 +43,12 @@
 	</insert>
 	
 	<!-- 5. 글 수정 -->
-	<update id="N_update" parameterType="NoticeVO">
+	<update id="update" parameterType="NoticeVO">
 		update notice set subject=#{subject}, content=#{content}, regDate=SYSDATE where idx=#{idx} 
 	</update>
 	
 	<!-- 6. 글 삭제 -->
-	<delete id="N_delete" parameterType="int">
+	<delete id="delete" parameterType="int">
 		delete from notice where idx=#{idx}
 	</delete>
 	
