@@ -73,7 +73,7 @@
 	<input type="hidden" name="b" value="${b }" />
 	<input type="hidden" name="idx" value="${idx }" />
 	<input type="hidden" name="mode" value="2" />
-	<input type="hidden" name="click" value="false"/>
+	<input type="hidden" name="isClick" value="false"/>
 	<table>
 		<tr>
 			<td colspan="4" class="title">공지사항 수정하기</td>

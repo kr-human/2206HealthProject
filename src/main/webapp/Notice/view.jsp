@@ -83,9 +83,9 @@
 		<tr>
 			<td colspan="4" style="border: none;text-align: right;">
 				<button class="btn btn-outline-success btn-sm" 
-				onclick='sendPost("update.jsp",{"p":${p},"s":${s },"b":${b },"idx":${idx },"click":${false})'>수정</button>
+				onclick='sendPost("update.jsp",{"p":${p},"s":${s },"b":${b },"idx":${idx },"isClick":true})'>수정</button>
 				<button class="btn btn-outline-success btn-sm" 
-				onclick='sendPost("delete.jsp",{"p":${p},"s":${s },"b":${b },"idx":${idx },"click":${false}})'>삭제</button>
+				onclick='sendPost("delete.jsp",{"p":${p},"s":${s },"b":${b },"idx":${idx },"isClick":true})'>삭제</button>
 				<button class="btn btn-outline-success btn-sm" 
 				onclick='sendPost("index.jsp",{"p":${p},"s":${s },"b":${b }})'>목록</button>
 			</td>

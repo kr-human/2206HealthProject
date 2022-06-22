@@ -49,7 +49,7 @@
 	<input type="hidden" name="s" value="${s }" />
 	<input type="hidden" name="b" value="${b }" />
 	<input type="hidden" name="mode" value="1" />
-	<input type="hidden" name="click" value="false"/>
+	<input type="hidden" name="isclick" value="false"/>
 	<table>
 		<tr>
 			<td colspan="4" class="title">공지사항 새글쓰기</td>

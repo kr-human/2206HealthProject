@@ -21,7 +21,7 @@
 			return;
 		case 2:
 			NoticeServiceImpl.getInstance().update(vo);
-			response.sendRedirect("view.jsp?p="+currentPage+"&s="+pageSize+"&b=" + blockSize + "&idx=" + idx + "&click=false");
+			response.sendRedirect("view.jsp?p="+currentPage+"&s="+pageSize+"&b=" + blockSize + "&idx=" + idx + "&isClick=false");
 			return;
 		case 3:
 			NoticeServiceImpl.getInstance().delete(vo);
