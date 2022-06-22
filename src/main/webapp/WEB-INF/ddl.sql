@@ -1,13 +1,8 @@
-<<<<<<< HEAD
+
 CREATE SEQUENCE ptclass_idx_seq;
 CREATE SEQUENCE notice_idx_seq;
-=======
-<<<<<<< HEAD
-CREATE SEQUENCE ptclass_idx_sqe;
 
->>>>>>> chhg991
 
-CREATE SEQUENCE notice_idx_sqe;
 drop sequence notice_idx_sqe;
 DROP table notice;
 SELECT * FROM notice;
@@ -19,16 +14,10 @@ CREATE TABLE notice(
 	clickCount number(20) DEFAULT 0
 );
 INSERT INTO notice
-<<<<<<< HEAD
 VALUES(notice_idx_seq.nextval,'안녕', '안녕하세요', SYSDATE, 0);
 INSERT INTO notice
 VALUES(notice_idx_seq.nextval,'안녕', '안녕하세요', SYSDATE, 0);
 
-=======
-VALUES(1,'안녕', '안녕하세요', SYSDATE, 0);
-
-=======
->>>>>>> chhg991
 CREATE TABLE ptclass(
    idx number PRIMARY key,
    pttime DATE,
@@ -61,6 +50,12 @@ INSERT INTO MEMBERS VALUES
 ('root','1234','최고관리자',' ',' ',' ','ithuman202204@gmail.com','M',0,'2022-05-30','2023-05-30',3,'sys');
 INSERT INTO MEMBERS VALUES 
 ('user01','1234','한사람',' ',' ',' ','ithuman202204@gmail.com','F',0,'2022-05-30','2023-05-30',1,'root');
+
+SELECT * FROM members;
+SELECT * FROM PTCLASS;
+
+INSERT INTO PTCLASS values(ptclass_idx_seq.nextval, 'hyun95',SYSDATE,  0);
+
 
 
 
