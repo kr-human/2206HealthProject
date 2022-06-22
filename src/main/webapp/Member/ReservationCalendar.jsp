@@ -1,7 +1,17 @@
+<%@page import="kr.human.second.vo.MemberVO"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%
+	String myTrainer = "init";
+	String id = "init";
+	if(session.getAttribute("memberVO")!=null){
+		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
+		myTrainer = memberVO.getMyTrainer();
+		id = memberVO.getId();
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,7 +75,7 @@
 					type : "get",
 					url : "selectEvent.jsp",
 					dataType : "json",
-					data : {"pttime":"2022-06", "mytrainer":"hyun95"},
+					data : {"pttime":info.dateStr, "mytrainer":'<%=myTrainer%>'},
 					success: function(data){
 						
 						//alert('성공\n' + data);
@@ -113,7 +123,7 @@
 				type : "get",
 				url : "selectEventDay.jsp",
 				dataType : "json",
-				data : {"pttime":info.dateStr, "myTrainer":"hyun95"},
+				data : {"pttime":info.dateStr, "myTrainer":'<%=myTrainer%>'},
 				success: function(data){
 					console.log('dataClick',data, data.length);
 					$("#reserveDiv").append("<thead><tr><th style='width:50%'>pt시간</th><th>트레이너</th><th style='width:25%'>예약</th></tr></thead>");
@@ -270,8 +280,8 @@
 				type : "get",
 				url : "insert.jsp",
 				data : { 
-					"id" : id, 
-					"idx" : idx, 
+					"id" : '<%=id%>', 
+					"idx" : item.idx				
 					},
 				success: function(data){
 					alert('저장 성공\n');
