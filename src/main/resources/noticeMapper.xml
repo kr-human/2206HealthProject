@@ -36,10 +36,10 @@
 	
 	<!-- 4. 저장 -->
 	<insert id="insert" parameterType="NoticeVO">
-		insert into fileBoard 
-			(idx, name, password, subject, content, regDate)
+		insert into notice 
+			(idx, subject, content, regDate, clickCount)
 		values
-			(notice_idx_seq.nextval,#{name},#{password},#{subject},#{content},SYSDATE)	
+			(notice_idx_seq.nextval,#{subject},#{content},SYSDATE,0)	
 	</insert>
 	
 	<!-- 5. 글 수정 -->
@@ -54,7 +54,7 @@
 	
 	<!-- 7. 조회수-->
 	<update id="clickCount" parameterType= "int">	
-		update notice set clickCount = clickCount + 1 where idx=#{idx}"
+		update notice set clickCount = clickCount + 1 where idx=#{idx}
 	</update>
 	
 	<!-- 8. 가장 최근에 저장된 글번호 읽어오기 -->

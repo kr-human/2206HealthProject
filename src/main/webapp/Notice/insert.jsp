@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>자료실 새글쓰기</title>
+<title>공지사항 새글쓰기</title>
 <%-- 부트스트랩을 사용하기 위한 준비 시작 --%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -49,6 +49,7 @@
 	<input type="hidden" name="s" value="${s }" />
 	<input type="hidden" name="b" value="${b }" />
 	<input type="hidden" name="mode" value="1" />
+	<input type="hidden" name="isclick" value="false"/>
 	<table>
 		<tr>
 			<td colspan="4" class="title">공지사항 새글쓰기</td>

@@ -5,8 +5,12 @@ CREATE SEQUENCE notice_idx_seq;
 <<<<<<< HEAD
 =======
 
+<<<<<<< HEAD
 >>>>>>> Member(ver.1)
 drop sequence notice_idx_sqe;
+=======
+CREATE SEQUENCE notice_idx_seq;
+>>>>>>> chhg99
 DROP table notice;
 SELECT * FROM notice;
 CREATE TABLE notice(

@@ -15,6 +15,6 @@ public interface NoticeDAO {
 	void N_insert(SqlSession sqlSession, NoticeVO fileBoardVO) throws SQLException;
 	void N_update(SqlSession sqlSession, NoticeVO fileBoardVO) throws SQLException;
 	void N_delete(SqlSession sqlSession, int idx) throws SQLException;
-	int clickCount(SqlSession sqlSession, int idx) throws SQLException;
+	int increment(SqlSession sqlSession, int idx) throws SQLException;
 	int selectMaxIdx(SqlSession sqlSession) throws SQLException;
 }

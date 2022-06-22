@@ -24,10 +24,15 @@
 	
 	<!-- SQL명령이 들어있는 매퍼파일을 지정한다. 맵퍼파일을 여러개 지정이 가능하다.-->
 	<mappers>
+<<<<<<< HEAD
 	<mapper resource="testMapper.xml" />
 	<mapper resource="noticeMapper.xml" /> 
 	 <mapper resource="ptclassMapper.xml" />
 	 <mapper resource="commonMapper.xml" /> 
 	<!-- <mapper resource="reservationMapper.xml" /> -->
+=======
+		<mapper resource="testMapper.xml" />
+		<mapper resource="noticeMapper.xml" />
+>>>>>>> chhg99
 	</mappers>
 </configuration>
