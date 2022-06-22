@@ -56,7 +56,7 @@ public class PTClassServiceImpl implements PTClassService{
 				// DB에서 해당 정보를 가져온다.
 				PTClassVO ptcVO = ptcDAO.P_check(sqlSession, ptclassVO.getIdx());
 				// 트레이너 아이디가 같으면
-				if(ptcVO!=null && ptcVO.getT_id().equals(ptclassVO.getT_id())) {
+				if(ptcVO!=null && ptcVO.getId().equals(ptclassVO.getId())) {
 					// 삭제를 수행한다.
 					ptcDAO.P_delete(sqlSession, ptclassVO.getIdx());
 				}
