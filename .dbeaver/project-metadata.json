@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"resources":{"src/main/webapp/WEB-INF/ddl.sql":{"default-schema":"JSPUSER","sql-editor-data-source-id":"oracle_thin-180f48adfa6-6217940ea99071f6","default-datasource":"oracle_thin-180f48adfa6-6217940ea99071f6"}}}
+=======
+{"resources":{"src/main/webapp/WEB-INF/ddl.sql":{"default-schema":"JSPUSER","sql-editor-data-source-id":"oracle_thin-180ef7c9236-772f93d376ec6c4c","default-datasource":"oracle_thin-180ef7c9236-772f93d376ec6c4c"}}}
+>>>>>>> Member(ver.1)

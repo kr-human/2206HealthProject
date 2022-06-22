@@ -8,6 +8,6 @@ import lombok.Data;
 public class PTClassVO {
 	private int idx;
 	private Date ptTime;
-	private String t_id;
+	private String id;
 	private boolean check;
 }
