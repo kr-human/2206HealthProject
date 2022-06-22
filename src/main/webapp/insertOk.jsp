@@ -25,7 +25,7 @@ request.setCharacterEncoding("UTF-8");
 	
 			System.out.println(memberVO + ":" + memberVO.getClass().getName());
 			System.out.println(urlAddress);
-			//CommonServiceImpl.getInstance().insert(memberVO, urlAddress); db에 저장
+			CommonServiceImpl.getInstance().insert(memberVO, urlAddress);
 			
 			
 			// 어디론가 간다.
