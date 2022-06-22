@@ -33,6 +33,14 @@
 =======
 		<mapper resource="testMapper.xml" />
 		<mapper resource="noticeMapper.xml" />
+<<<<<<< HEAD
 >>>>>>> chhg99
+=======
+		<mapper resource="ptclassMapper.xml" />
+		<mapper resource="commonMapper.xml" />
+		<mapper resource="reservationMapper.xml" />
+		<mapper resource="trainerMapper.xml" />
+
+>>>>>>> seongseok2
 	</mappers>
 </configuration>

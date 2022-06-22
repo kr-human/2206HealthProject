@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 CREATE SEQUENCE ptclass_idx_seq;
 CREATE SEQUENCE notice_idx_seq;
@@ -11,6 +12,12 @@ drop sequence notice_idx_sqe;
 =======
 CREATE SEQUENCE notice_idx_seq;
 >>>>>>> chhg99
+=======
+CREATE SEQUENCE ptclass_idx_seq;
+CREATE SEQUENCE notice_idx_seq;
+drop sequence notice_idx_seq;
+
+>>>>>>> seongseok2
 DROP table notice;
 SELECT * FROM notice;
 CREATE TABLE notice(
