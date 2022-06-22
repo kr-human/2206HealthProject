@@ -5,9 +5,10 @@
 <mapper namespace="common">
 	<!-- 회원가입 -->
 	<insert id="insert" parameterType="MemberVO">
-	INSERT INTO members VALUES 
-	(#{id},#{password},#{name},#{postcode},#{addr1},#{addr2}
-	,#{email},#{gender},0,#{startDay},#{endDay},0,#{myTrainer})
+	INSERT INTO members
+	(id, password, name, postcode, addr1, addr2, email, gender, lev, myTrainer) 
+	VALUES 
+	(#{id}, #{password}, #{name}, #{postcode}, #{addr1}, #{addr2} , #{email}, #{gender}, 0,'root')
 	</insert>
 	
 	<!-- 회원 탈퇴 -->
