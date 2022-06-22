@@ -8,8 +8,9 @@
 <meta charset="UTF-8">
 <title>Trainerlayout</title>
 </head>
+
 <body>
-	<h1>상단</h1>
+	<nav>
 	<c:if test="${empty sessionScope.memberVO }">
 		<a href="insertForm.jsp">회원가입</a>  
 		<a href="login.jsp">로그인</a>
@@ -20,12 +21,15 @@
 		<a href="updateForm.jsp">정보수정</a>
 		<a href="logout.jsp">로그아웃</a>
 	</c:if>
-	<hr />
+	</nav>
 	
+	<hr />
 	<%-- 이자리에 내가 쓴 본문의 내용이 나타나라 --%>
 	<sitemesh:write property='body'/>
 	
 	<hr />
+	
+	
 	<h1>회사명, 주소 등 기입할 하단</h1>
 </body>
 </html>

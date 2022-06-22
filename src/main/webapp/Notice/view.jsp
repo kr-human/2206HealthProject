@@ -82,10 +82,12 @@
 		</tr>
 		<tr>
 			<td colspan="4" style="border: none;text-align: right;">
-				<button class="btn btn-outline-success btn-sm" 
-				onclick='sendPost("update.jsp",{"p":${p},"s":${s },"b":${b },"idx":${idx },"isClick":true})'>수정</button>
-				<button class="btn btn-outline-success btn-sm" 
-				onclick='sendPost("delete.jsp",{"p":${p},"s":${s },"b":${b },"idx":${idx },"isClick":true})'>삭제</button>
+				<c:if test="${sessionScope.memberVO.lev == 3}">
+					<button class="btn btn-outline-success btn-sm" 
+					onclick='sendPost("update.jsp",{"p":${p},"s":${s },"b":${b },"idx":${idx },"isClick":true})'>수정</button>	
+					<button class="btn btn-outline-success btn-sm" 
+					onclick='sendPost("delete.jsp",{"p":${p},"s":${s },"b":${b },"idx":${idx },"isClick":true})'>삭제</button>
+				</c:if>
 				<button class="btn btn-outline-success btn-sm" 
 				onclick='sendPost("index.jsp",{"p":${p},"s":${s },"b":${b }})'>목록</button>
 			</td>

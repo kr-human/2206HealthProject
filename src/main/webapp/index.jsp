@@ -32,6 +32,7 @@
 			<a href="a.jsp">예약 하기</a> 
 			<a href="b.jsp">나의 강사보기</a> 
 			<a href="c.jsp">나의 정보 수정</a>
+			 <a href="Notice/index.jsp">게시판(공지사항)</a>
 			<a href="logout.jsp">로그아웃</a>
 		</c:if>
 		<c:if test="${not empty sessionScope.memberVO && sessionScope.memberVO.lev == 3}">

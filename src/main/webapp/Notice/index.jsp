@@ -105,8 +105,10 @@
 		</c:if>
 		<tr>
 			<td class="sub_title" colspan="6">
+				<c:if test="${sessionScope.memberVO.lev == 3}">
 				<button class="btn btn-outline-success btn-sm" 
 				 onclick='sendPost("insert.jsp",{"p":${p } , "s": ${s }, "b":${b }})'>새글쓰기</button>
+				 </c:if>
 			</td>
 		</tr>
 	</table>
