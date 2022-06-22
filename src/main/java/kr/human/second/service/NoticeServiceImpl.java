@@ -52,8 +52,8 @@ public class NoticeServiceImpl  implements NoticeService{
 		return pagingVO;
 	}
 	@Override
-	public NoticeVO selectByIdx(int idx) {
-		log.info("NoticeServiceImpl selectByIdx 호출 : " + idx);
+	public NoticeVO selectByIdx(int idx, boolean isClick) {
+		log.info("NoticeServiceImpl selectByIdx 호출 : " + idx + ", "+ isClick);
 		NoticeVO NoticeVO= null;
 		//------------------------------------------------------------
 		SqlSession sqlSession = null;
@@ -64,6 +64,11 @@ public class NoticeServiceImpl  implements NoticeService{
 			//--------------------------------------------------------------------
 			// 1. 해당 글번호의 글을 가져온다.
 			NoticeVO = NoticeDAO.selectByIdx(sqlSession, idx);
+
+			if(NoticeVO!=null && isClick) { // 글이 존재하면서 isClick이 참이면 조회수 증가
+				NoticeVO.setClickCount(NoticeVO.getClickCount()+1); // 나의 조회수 증가
+				NoticeDAO.increment(sqlSession, idx); // DB의 조회수 증가
+			}
 			//--------------------------------------------------------------------
 			sqlSession.commit();
 		}catch (Exception e) {

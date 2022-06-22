@@ -8,8 +8,10 @@
 <%-- 공통코드 삽입 --%>
 <%@ include file="include.jsp" %>
 <%
+
+	System.out.println(isClick);
 	// 1개 분량의 글을 얻어온다.
-	NoticeVO NoticeVO = NoticeServiceImpl.getInstance().selectByIdx(idx);
+	NoticeVO NoticeVO = NoticeServiceImpl.getInstance().selectByIdx(idx, isClick);
 	if(NoticeVO==null){ //해당글이 없다면
 		response.sendRedirect("index.jsp");
 		return;
@@ -20,7 +22,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>자료실 내용보기</title>
+<title>공지사항 내용보기</title>
 <%-- axicon 사용하기 --%>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/axicon/axicon.min.css" />
 <%-- 부트스트랩을 사용하기 위한 준비 시작 --%>
@@ -81,9 +83,9 @@
 		<tr>
 			<td colspan="4" style="border: none;text-align: right;">
 				<button class="btn btn-outline-success btn-sm" 
-				onclick='sendPost("update.jsp",{"p":${p},"s":${s },"b":${b },"idx":${idx },"hit":0})'>수정</button>
+				onclick='sendPost("update.jsp",{"p":${p},"s":${s },"b":${b },"idx":${idx },"click":${false})'>수정</button>
 				<button class="btn btn-outline-success btn-sm" 
-				onclick='sendPost("delete.jsp",{"p":${p},"s":${s },"b":${b },"idx":${idx },"hit":0})'>삭제</button>
+				onclick='sendPost("delete.jsp",{"p":${p},"s":${s },"b":${b },"idx":${idx },"click":${false}})'>삭제</button>
 				<button class="btn btn-outline-success btn-sm" 
 				onclick='sendPost("index.jsp",{"p":${p},"s":${s },"b":${b }})'>목록</button>
 			</td>

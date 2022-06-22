@@ -7,7 +7,7 @@ public interface NoticeService {
 	// 1. 목록보기
 		PagingVO<NoticeVO> selectList(int currentPage, int pageSize, int blockSize);
 		// 2. 내용보기
-		NoticeVO selectByIdx(int idx);
+		NoticeVO selectByIdx(int idx, boolean isClick); // isClick 조회수 때문에
 		// 3. 저장하기
 		void insert(NoticeVO NoticeVO);
 		// 4. 수정하기

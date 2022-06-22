@@ -7,6 +7,7 @@ import java.util.Date;
 import lombok.Data;
 
 /*
+ * CREATE SEQUENCE notice_idx_sqe;
 CREATE TABLE notice(
 	idx NUMBER PRIMARY KEY,
 	subject varchar2(100) NOT NULL,

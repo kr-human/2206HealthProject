@@ -5,10 +5,7 @@ CREATE SEQUENCE notice_idx_seq;
 <<<<<<< HEAD
 CREATE SEQUENCE ptclass_idx_sqe;
 
->>>>>>> chhg991
-
-CREATE SEQUENCE notice_idx_sqe;
-drop sequence notice_idx_sqe;
+CREATE SEQUENCE notice_idx_seq;
 DROP table notice;
 SELECT * FROM notice;
 CREATE TABLE notice(

@@ -8,7 +8,7 @@
 <%-- 공통코드 삽입 --%>
 <%@ include file="include.jsp" %>
 <%
-	NoticeVO NoticeVO = NoticeServiceImpl.getInstance().selectByIdx(idx);
+	NoticeVO NoticeVO = NoticeServiceImpl.getInstance().selectByIdx(idx, isClick);
 	if(NoticeVO==null){
 		response.sendRedirect("index.jsp");
 	return;
@@ -19,7 +19,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>자료실 수정하기</title>
+<title>공지사항 수정하기</title>
 <%-- axicon 사용하기 --%>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/axicon/axicon.min.css" />
 <%-- 부트스트랩을 사용하기 위한 준비 시작 --%>
@@ -73,6 +73,7 @@
 	<input type="hidden" name="b" value="${b }" />
 	<input type="hidden" name="idx" value="${idx }" />
 	<input type="hidden" name="mode" value="2" />
+	<input type="hidden" name="click" value="false"/>
 	<table>
 		<tr>
 			<td colspan="4" class="title">공지사항 수정하기</td>

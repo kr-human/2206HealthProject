@@ -26,9 +26,5 @@
 	<mappers>
 		<mapper resource="testMapper.xml" />
 		<mapper resource="noticeMapper.xml" />
-		<mapper resource="ptclassMapper.xml" />
-		<mapper resource="commonMapper.xml" />
-		<mapper resource="reservationMapper.xml" />
-
 	</mappers>
 </configuration>

@@ -18,7 +18,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>자료실 목록 보기</title>
+<title>공지사항 목록 보기</title>
 <%-- axicon 사용하기 --%>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/axicon/axicon.min.css" />
 <%-- 부트스트랩을 사용하기 위한 준비 시작 --%>
@@ -84,7 +84,7 @@
 							<c:set var="no" value="${no - 1 }"/>
 						</td>					
 						<td style="text-align: left;">
-							<a href="#" onclick='sendPost("view.jsp",{"p":${p } , "s": ${s }, "b":${b } , "idx":${vo.idx}})'>
+							<a href="#" onclick='sendPost("view.jsp",{"p":${p } , "s": ${s }, "b":${b } , "idx":${vo.idx},"isClick":true})'>
 								<c:out value="${vo.subject }"/>
 							</a>
 						</td>									

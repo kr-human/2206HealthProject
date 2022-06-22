@@ -40,7 +40,7 @@ public class NoticeDAOImpl implements NoticeDAO{
 		sqlSession.delete("notice.delete", idx);
 	}
 	@Override
-	public int clickCount(SqlSession sqlSession, int idx) throws SQLException {
+	public int increment(SqlSession sqlSession, int idx) throws SQLException {
 		return sqlSession.selectOne("notice.clickCount", idx);
 	}
 	@Override

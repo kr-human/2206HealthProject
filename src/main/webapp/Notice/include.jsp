@@ -37,18 +37,11 @@ try{
 	;
 }
 
-// 수정(2)/삭제(3)/저장(1)인지를 구분하는 값 받기
-int mode = 0;
-try{
-	mode = Integer.parseInt(request.getParameter("m"));
-}catch(Exception e){
-	;
-}
 
-// 조회수 증가여부를 판단하는 값 받기 (0 : 증가않함, 1: 증가)
-int clickCount = 0;
+// 조회수 증가여부를 판단
+boolean isClick = false;
 try{
-	clickCount = Integer.parseInt(request.getParameter("c"));
+	isClick = Boolean.parseBoolean(request.getParameter("isClick"));
 }catch(Exception e){
 	;
 }
@@ -57,8 +50,7 @@ request.setAttribute("idx", idx);
 request.setAttribute("p", currentPage);
 request.setAttribute("s", pageSize);
 request.setAttribute("b", blockSize);
-request.setAttribute("c", clickCount);
-request.setAttribute("m", mode);
+request.setAttribute("isClick", isClick);
 
 request.setAttribute("newLine", "\n");
 request.setAttribute("br", "<br>");
