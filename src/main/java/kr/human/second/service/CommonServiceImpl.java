@@ -2,7 +2,6 @@ package kr.human.second.service;
 
 import java.sql.SQLException;
 
-
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -10,113 +9,117 @@ import org.apache.ibatis.session.SqlSession;
 import kr.human.mybatis.MybatisApp;
 import kr.human.second.dao.CommonDAO;
 import kr.human.second.dao.CommonDAOImpl;
-
 import kr.human.second.vo.MemberVO;
 import lombok.extern.slf4j.Slf4j;
 
-
-
 @Slf4j
-public class CommonServiceImpl implements CommonService{
-	
+public class CommonServiceImpl implements CommonService {
+
 	private static CommonService instance = new CommonServiceImpl();
-	private CommonServiceImpl() {};
+
+	private CommonServiceImpl() {
+	};
+
 	public static CommonService getInstance() {
 		return instance;
 	}
-	
-	
+
 	@Override
-	//유저 아이디 중복확인
+	// 유저 아이디 중복확인
 	public int idCheck(String id) {
-		log.info("MemberServiceImpl의 idCheck호출 : {}", id);
+		log.info("CommonServiceImpl의 idCheck호출 : {}", id);
 		int count = 0;
-		
+
 		SqlSession sqlSession = null;
 		CommonDAO commonDAO = null;
-		
+
 		try {
 			sqlSession = MybatisApp.getSqlSessionFactory().openSession(false);
 			commonDAO = CommonDAOImpl.getInstance();
 			count = commonDAO.SelectByUserId(sqlSession, id);
 			sqlSession.commit();
-			
-		}catch (SQLException e){
+
+		} catch (SQLException e) {
 			sqlSession.rollback();
 			e.printStackTrace();
-		}finally {
-			if(sqlSession!=null) {
+		} finally {
+			if (sqlSession != null) {
 				sqlSession.close();
 			}
 		}
-		log.info("MemberServiceImpl의 idCheck리턴 : {}",count);
+		log.info("CommonServiceImpl의 idCheck리턴 : {}", count);
 		return count;
 	}
-	
+
 	@Override
-	//로그인
+	// 로그인
 	public boolean login(HttpSession httpSession, String id, String password) {
-		log.debug("MemberServiceImpl의 login호출 : {}, {}", id, password);
+		log.debug("CommonServiceImpl의 login호출 : {}, {}", id, password);
 		boolean isLogin = false;
-		
+
 		SqlSession sqlSession = null;
 		CommonDAO commonDAO = null;
 		try {
 			sqlSession = MybatisApp.getSqlSessionFactory().openSession(false);
 			commonDAO = CommonDAOImpl.getInstance();
-			//------------------------------------------------------------------
+			// ------------------------------------------------------------------
 			// 해당 아이디의 회원 정보를 읽어온다
 			MemberVO memberVO = commonDAO.SelectByUserInfo(sqlSession, id);
-			if(memberVO != null) {
-				if(memberVO.getPassword().equals(password) && memberVO.getLev()==1) { //회원 일때 1
-					//여기서 섹션 추가 (카테고리 보여주는거)
+			if (memberVO != null) {
+				if (memberVO.getPassword().equals(password) && memberVO.getLev() == 1) { // 회원 일때 1
+					// 여기서 섹션 추가 (카테고리 보여주는거)
 					httpSession.setAttribute("memberVO", memberVO);
 					isLogin = true;
 				}
-				if(memberVO.getPassword().equals(password) && memberVO.getLev()==3) {//관리자 일떄 3 
-					//여기서 섹션 추가 (카테고리 보여주는거)
+				if (memberVO.getPassword().equals(password) && memberVO.getLev() == 3) {// 관리자 일떄 3
+					// 여기서 섹션 추가 (카테고리 보여주는거)
 					httpSession.setAttribute("memberVO", memberVO);
 					isLogin = true;
 				}
 			}
-			//------------------------------------------------------------------
+			// ------------------------------------------------------------------
 			sqlSession.commit();
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			sqlSession.rollback();
 			e.printStackTrace();
 		} finally {
-			if(sqlSession!=null) sqlSession.close();
+			if (sqlSession != null)
+				sqlSession.close();
 		}
-		
-		log.debug("MemberServiceImpl의 login리턴 : {}", isLogin);
+
+		log.debug("CommonServiceImpl의 login리턴 : {}", isLogin);
 		return isLogin;
 	}
-	//유저 회원가입
+	// 유저 회원가입
+
 	@Override
-	public void insert(MemberVO memberVO) {
-		log.info("MemberServiceImpl의 insert호출 : {}, {}", memberVO);
-		
+	public void insert(MemberVO memberVO, String urlAddress) {
+		log.info("CommonServiceImpl의 insert호출 : {}, {}", memberVO, urlAddress);
+
 		SqlSession sqlSession = null;
 		CommonDAO commonDAO = null;
 		try {
 			sqlSession = MybatisApp.getSqlSessionFactory().openSession(false);
 			commonDAO = CommonDAOImpl.getInstance();
-			//------------------------------------------------------------------
+			// ------------------------------------------------------------------
 			// 해당 아이디의 회원 정보를 읽어온다
-			if(memberVO!=null) {
-				commonDAO.insert(sqlSession, memberVO); //DB에 저장
-				//환영 이메일 발송
+			if (memberVO != null) {
+				commonDAO.insert(sqlSession, memberVO); // DB에 저장
+				// 환영 이메일 발송
+				EmailService.sendMail(memberVO.getEmail(), memberVO.getName() + "님 회원가입을 환영합니다.",
+						"다음 링크를 클릭하여 인증을 하셔야만 회원 가입이 완료됩니다.<br>" + "<a href='" + urlAddress + "&id=" + memberVO.getId()
+								+ "'>인증하기</a>");
 			}
-			//------------------------------------------------------------------
+			// ------------------------------------------------------------------
 			sqlSession.commit();
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			sqlSession.rollback();
 			e.printStackTrace();
 		} finally {
-			if(sqlSession!=null) sqlSession.close();
+			if (sqlSession != null)
+				sqlSession.close();
 		}
 
 	}
-	
-	
+
 }

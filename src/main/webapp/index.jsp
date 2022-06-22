@@ -3,10 +3,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> seongseok
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,8 +42,6 @@
 	      <a href="f.jsp">게시판(공지사항)</a>
 	      <a href="logout.jsp">로그아웃</a>
 	   </c:if>
- 		 
-     
-	
+ 		 	
 </body>
 </html>

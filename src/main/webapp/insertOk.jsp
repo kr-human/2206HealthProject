@@ -22,7 +22,12 @@ request.setCharacterEncoding("UTF-8");
 	// 서비스를 호출하여 저장을 하고
 			String urlAddress = "http://"+request.getServerName()+":" +
 		            	request.getServerPort()+ request.getContextPath() + "/confirm.jsp?fdagd=" + UUID.randomUUID();
-			CommonServiceImpl.getInstance().insert(memberVO);
+	
+			System.out.println(memberVO + ":" + memberVO.getClass().getName());
+			System.out.println(urlAddress);
+			//CommonServiceImpl.getInstance().insert(memberVO, urlAddress); db에 저장
+			
+			
 			// 어디론가 간다.
 			out.println(memberVO.getEmail() + "로 인증메일이 발송되었습니다. 인증을 진행하시고 로그인하시기 바랍니다.<br>");
 			out.println("<a href='" + request.getContextPath() + "'>홈으로</a><br>" );
