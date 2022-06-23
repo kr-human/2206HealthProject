@@ -14,15 +14,25 @@ public class TrainerDAOImpl implements TrainerDAO{
 		return instance;
 	}
 	//-------------------------------------------------------------------------
+	// 전체 회원 목록 보기
+	@Override
+	public List<MemberVO> SelectByAllUserList(SqlSession sqlSession) throws SQLException {
+		return sqlSession.selectList("trainer.SelectByAllUserList");
+	}
+	// 전체 회원 중 한명 정보 보기
+	@Override
+	public MemberVO SelectByAllUserInfo(SqlSession sqlSession, String id) throws SQLException {
+		return sqlSession.selectOne("trainer.SelectByAllUserInfo", id);
+	}
 	// 나의 회원 목록 보기
 	@Override
-	public List<MemberVO> SelectByUserList(SqlSession sqlSession) throws SQLException {
-		return sqlSession.selectList("trainer.SelectByUserList");
+	public List<MemberVO> SelectByUserList(SqlSession sqlSession,String trainerid) throws SQLException {
+		return sqlSession.selectList("trainer.SelectByUserList", trainerid);
 	}
 	// 나의 회원 정보 보기
 	@Override
-	public MemberVO SelectByUserInfo(SqlSession sqlSession, String myTrainer) throws SQLException {
-		return sqlSession.selectOne("trainer.SelectByUserInfo", myTrainer);
+	public MemberVO SelectByUserInfo(SqlSession sqlSession, String trainerid) throws SQLException {
+		return sqlSession.selectOne("trainer.SelectByUserInfo", trainerid);
 	}
 	// 회원 pt이용권 등록, 스타트, 엔드데이 등록
 	@Override

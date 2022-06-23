@@ -4,14 +4,24 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="trainer">
 
+	<!-- 전체 회원 목록 보기(22.06.22 추가됨) -->
+	<select id="SelectByAllUserList" resultType="MemberVO">
+		select * from MEMBERS WHERE lev=1
+	</select>
+
+	<!-- 전체 회원 중 한명 정보 보기(22.06.22 추가됨) -->
+	<select id="SelectByAllUserInfo" parameterType="string" resultType="MemberVO">
+		select * from MEMBERS WHERE id=#{id} and lev=1
+	</select>
+
 	<!-- 나의 회원 목록 보기 -->
-	<select id="SelectByUserList" resultType="MemberVO">
-		select * from MEMBERS WHERE myTrainer=#{myTrainer} 
+	<select id="SelectByUserList" parameterType="string" resultType="MemberVO">
+		select * from MEMBERS WHERE myTrainer=#{trainerid}
 	</select>
 	
 	<!-- 나의 회원 정보 보기 -->
 	<select id="SelectByUserInfo" parameterType="string" resultType="MemberVO">
-		select * from MEMBERS where myTrainer=#{myTrainer}
+		select * from MEMBERS where myTrainer=#{trainerid}
 	</select>
 
 	<!-- 회원 pt이용권 등록, 스타트, 엔드데이 등록 -->
