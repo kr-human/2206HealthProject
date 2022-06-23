@@ -19,14 +19,17 @@
 	System.out.println("id : " + id);
 	System.out.println("idx : " + ptcode);
 	
-	// 내가 예약한 PTClass의 check값을 'F'로 변경하자
+	// 내가 예약취소한 PTClass의 check값을 'T'로 변경하자
 	PTClassVO ptClassVO = new PTClassVO();
-	ptClassVO.setR_check("F");
+	ptClassVO.setR_check("T");
 	ptClassVO.setId(id);
 	ptClassVO.setIdx(ptcode);
-	ptClassVO.setType("insert");
+	//구분자를 통해 예약 삭제 type
+	ptClassVO.setType("delete");
 	
-	MemberServiceImpl.getInstance().checkUpdate(ptClassVO);
+	MemberService memberService = MemberServiceImpl.getInstance();
+	System.out.println(ptClassVO);
+	memberService.checkUpdate(ptClassVO);
 	
 
 %>

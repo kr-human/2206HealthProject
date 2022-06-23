@@ -24,15 +24,23 @@ public class ReservationDAOImpl implements ReservationDAO{
 		return sqlSession.selectList("reservation.selectPtOneDay", map);
 	}
 	@Override
-	public void insertReservation(SqlSession sqlSession, ReservationVO reservationVO) throws SQLException {
-		sqlSession.selectOne("reservation.insertReservation", reservationVO);
+	public void insertReservation(SqlSession sqlSession, PTClassVO ptClassVO) throws SQLException {
+		sqlSession.selectOne("reservation.insertReservation", ptClassVO);
 	}
 	@Override
-	public void deleteReservation(SqlSession sqlSession, ReservationVO reservationVO) throws SQLException {
-		sqlSession.selectOne("reservation.deleteReservation", reservationVO);
+	public void deleteReservation(SqlSession sqlSession, PTClassVO ptClassVO) throws SQLException {
+		sqlSession.selectOne("reservation.deleteReservation", ptClassVO);
 	}
 	@Override
 	public List<ReservationVO> selectMyReservation(SqlSession sqlSession, String u_id) throws SQLException {
 		return sqlSession.selectList("reservation.selectMyReservation", u_id);
+	}
+	@Override
+	public void checkUpdate(SqlSession sqlSession, PTClassVO ptClassVO) throws SQLException {
+		sqlSession.update("reservation.checkUpdate", ptClassVO);
+	}
+	@Override
+	public int CheckMyReservation(SqlSession sqlSession, HashMap<String, Object> map) throws SQLException {
+		return sqlSession.selectOne("reservation.CheckMyReservation", map);
 	}
 }

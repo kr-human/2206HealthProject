@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class ReservationVO {
 	private String id;
-	private long idx;
+	private int idx;
 }

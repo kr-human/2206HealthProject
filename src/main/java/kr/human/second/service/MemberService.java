@@ -1,8 +1,12 @@
 package kr.human.second.service;
 
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+
 import kr.human.second.vo.MemberVO;
 import kr.human.second.vo.PTClassVO;
 import kr.human.second.vo.ReservationVO;
@@ -14,12 +18,12 @@ public interface MemberService {
 	MemberVO selectMyTrainerInfo(String myTrainer);
 	// 나의 정보를 수정하자
 	void updateMember(MemberVO memberVO);
-	// pt예약을 하자
-	void insertReservation(ReservationVO reservationVO);
-	// pt예약을 취소하자
-	void deleteReservation(ReservationVO reservationVO);
 	// 나의 예약목록을 보자
 	List<ReservationVO> selectMyReservation(String u_id);
 	// 일별 pt수강 목록을 가져오자
 	List<PTClassVO> selectPtOneDay(HashMap<String, String> map);
+	// 예약/예약취소시 ptClass의 check값 변경 및 예약 저장/삭제
+	void checkUpdate(PTClassVO ptClassVO);
+	// 나의 예약체크하기
+	int CheckMyReservation(HashMap<String, Object> map);
 }

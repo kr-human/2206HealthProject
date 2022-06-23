@@ -23,10 +23,12 @@ CREATE TABLE ptclass(
    pttime DATE,
    id varchar2(30) NOT NULL,
    CONSTRAINT fk_id_MEMBERS FOREIGN key(id) REFERENCES MEMBERS(id),
-   r_check char(1)
+   r_check char(1) check(r_check IN('T','F')) NOT null
 );
 SELECT * FROM ptclass;
-DROP TABLE PTCLASS;
+DROP TABLE ptclass;
+
+
 
 CREATE TABLE MEMBERS(
 	id varchar2(30) PRIMARY KEY,
@@ -56,7 +58,15 @@ SELECT * FROM PTCLASS;
 
 INSERT INTO PTCLASS values(ptclass_idx_seq.nextval, 'hyun95',SYSDATE,  0);
 
+DROP table RESERVATION;
 
+SELECT * FROM tab;
 
+CREATE TABLE reservation(
+	id varchar2(30),
+	idx number(30)
+);
 
+ALTER TABLE reservation ADD FOREIGN KEY(id) REFERENCES members(id);
+ALTER TABLE reservation ADD FOREIGN KEY(idx) REFERENCES ptclass(idx);
 

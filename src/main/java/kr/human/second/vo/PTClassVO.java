@@ -9,5 +9,10 @@ public class PTClassVO {
 	private int idx;
 	private Date ptTime;
 	private String id;
-	private boolean check;
+	private String r_check;
+	
+	private int count;
+	
+	//insert or delete type
+	private String type;
 }

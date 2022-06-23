@@ -1,16 +1,27 @@
+<%@page import="java.io.PrintWriter"%>
 <%@page import="kr.human.second.vo.MemberVO"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
+
 	String myTrainer = "init";
 	String id = "init";
 	if(session.getAttribute("memberVO")!=null){
 		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 		myTrainer = memberVO.getMyTrainer();
 		id = memberVO.getId();
+		System.out.println(memberVO);
+		System.out.println(myTrainer + " : " + id);
+	}else{
+		out.println("<script>alert('로그인후 이용해주세요'); location.href='../login.jsp';</script>");
 	}
+	
+	request.setAttribute("myTrainer", myTrainer);
+	request.setAttribute("id", id);
+	
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -75,7 +86,7 @@
 					type : "get",
 					url : "selectEvent.jsp",
 					dataType : "json",
-					data : {"pttime":info.dateStr, "mytrainer":'<%=myTrainer%>'},
+					data : {"pttime":info.dateStr, "mytrainer":'${myTrainer}'},
 					success: function(data){
 						
 						//alert('성공\n' + data);
@@ -123,7 +134,7 @@
 				type : "get",
 				url : "selectEventDay.jsp",
 				dataType : "json",
-				data : {"pttime":info.dateStr, "myTrainer":'<%=myTrainer%>'},
+				data : {"pttime":info.dateStr, "myTrainer":'<%=myTrainer%>', "id" : '${id}'},
 				success: function(data){
 					console.log('dataClick',data, data.length);
 					$("#reserveDiv").append("<thead><tr><th style='width:50%'>pt시간</th><th>트레이너</th><th style='width:25%'>예약</th></tr></thead>");
@@ -133,10 +144,16 @@
 						// 받은 데이터를 가공한다. 입맞에 맞게....
 						$("#reserveDiv").append("<tbody>");
 						$.each(data, function(index, item){
-							
 							console.log('index', index, item);
-							 $("#reserveDiv").append("<tr><td>"+item.ptTime+"</td><td>"+item.id+"</td><td><button class='btn btn-success insertBtn' value='"+item.idx+"'>예약하기</button></td></tr>");
-							//alert(item.allday);
+							if(item.r_check=="T"){ // oracle에서 boolean타입이 없는데 어떻게 하지? 근데 가져온값이 false야... 머징? 이건 내일 트레이너가 ptclass만들때 True로 바꿔주도록하자!
+								$("#reserveDiv").append("<tr><td>"+item.ptTime+"</td><td>"+item.id+"</td><td><button class='btn btn-success insertBtn' value='"+item.idx+"'>예약하기</button></td></tr>");
+							}else{
+								if(item.count){ // reservation테이블에서 현재 사용자 id로 예약이 되어있다면 예약취소 버튼을 출력하도록하자.
+									$("#reserveDiv").append("<tr><td>"+item.ptTime+"</td><td>"+item.id+"</td><td><button class='btn btn-success deleteBtn' value='"+item.idx+"'>예약취소</button></td></tr>");
+								}else{
+									$("#reserveDiv").append("<tr><td>"+item.ptTime+"</td><td>"+item.id+"</td><td>예약불가</td></tr>");
+								}
+							}
 						});
 						$("#reserveDiv").append("</tbody>");
 					}
@@ -224,35 +241,7 @@
 			
 			
 		});
-		// 이벤트를 드래그를 시작하면 일정위에 표시된 이벤트를 숨겨준다.
-		calendar.on('eventDragStart', function(info) {
-			// 일정을 숨겨줘야 한다.
-			$("#viewContent").css('display','none');
-		});
-		// 이벤트 크기를 볌경하면
-		calendar.on('eventResize', function(info) {
-			// 일정을 수정해줘야 한다.
-			// alert("크기변경!!!!\n" + JSON.stringify(info) ); // 이벤트 전체 출력
-			alert(info.event.start + "\n" + info.event.end ); // 시작과 종료만 변경하면 된다.
-			var id = info.event.id;
-			var start = info.event.start;
-			var end = info.event.end;
-			// DB에 날짜를 1일 줄여서 넣어야 한다.
-			end.setDate(end.getDate()-1);
-			// 여기에서 Ajax를 호출하여 서버의 update을 수행하여야 한다.
-			$.ajax({
-				type : "get",
-				url : "updateDrop.jsp",
-				data : {"id":id, "start1" : start, "end1":end},
-				success: function(data){
-					alert('변경 성공\n');
-				},
-				fail : function(){
-					alert('변경 실패\n');
-				}
-			});
-		});
-		
+
 		// 취소 버튼을 누르면 입력창이 사라져야 한다.  
 		$("#cancelBtn").click(function() {
 			$("#inputContent").css('display','none');
@@ -260,11 +249,8 @@
 		});
 		
 
-		// 저장 버튼을 누르면 입력창이 사라져야 한다.  
+		// 예약하기 버튼을 누르면 입력창이 사라져야 한다.  
 		$(document).on('click', '.insertBtn', function(){
-			 var trNum = $(this).closest('tr').prevAll().length;
-	            console.log('trNum : ' + trNum);
-	            
 	            var insertBtn = $(this);
 	            var tr = insertBtn.parent().parent();
 	            var td = tr.children();
@@ -272,7 +258,7 @@
 	            var pttime = td.eq(0).text();
 	            var id = td.eq(1).text();
 	            var idx = insertBtn.val();
-	            console.log('pttime', pttime, 'id', id,'idx', idx);
+	            console.log('pttime', pttime, 'id', '<%=id%>','idx', idx);
 			
 			
 			// 값이 모두 유효하면 Ajax를 호출하여 저장을 수행하면 된다.
@@ -281,14 +267,46 @@
 				url : "insert.jsp",
 				data : { 
 					"id" : '<%=id%>', 
-					"idx" : item.idx				
+					"idx" : idx				
 					},
 				success: function(data){
-					alert('저장 성공\n');
+					alert('예약 완료!\n');
 					location.reload(); // 화면 다시 읽어라
 				},
 				fail : function(){
-					alert('저장 실패\n');
+					alert('예약 실패\n');
+				}
+			});
+			
+			$("#inputContent").css('display','none');
+		});
+		
+		// 예약취소 버튼을 누르면 입력창이 사라져야 한다.  
+		$(document).on('click', '.deleteBtn', function(){
+	            var deleteBtn = $(this);
+	            var tr = deleteBtn.parent().parent();
+	            var td = tr.children();
+	            
+	            var pttime = td.eq(0).text();
+	            var id = td.eq(1).text();
+	            var idx = deleteBtn.val();
+	            console.log('pttime', pttime, 'id', '<%=id%>','idx', idx);
+			
+			
+			// 값이 모두 유효하면 Ajax를 호출하여 저장을 수행하면 된다.
+			$.ajax({
+				type : "get",
+				url : "delete.jsp",
+				data : { 
+					"id" : '<%=id%>', 
+					"idx" : idx				
+					},
+				success: function(data){
+					alert('예약 취소 완료!\n');
+					location.reload(); // 화면 다시 읽어라
+				},
+				fail : function(){
+					alert('예약 취소 실패\n');
 				}
 			});
 			

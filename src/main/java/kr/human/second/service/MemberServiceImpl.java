@@ -92,42 +92,6 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	@Override
-	public void insertReservation(ReservationVO reservationVO) {
-		SqlSession sqlSession = null;
-		ReservationDAO reservationDAO = ReservationDAOImpl.getInstance();
-		try {
-			sqlSession = MybatisApp.getSqlSessionFactory().openSession();
-			if(sqlSession!=null) {
-				reservationDAO.insertReservation(sqlSession, reservationVO);
-			}
-			sqlSession.commit();
-		} catch(Exception e) {
-			e.printStackTrace();
-			sqlSession.rollback();
-		} finally {
-			sqlSession.close();
-		}
-	}
-	
-	@Override
-	public void deleteReservation(ReservationVO reservationVO) {
-		SqlSession sqlSession = null;
-		ReservationDAO reservationDAO = ReservationDAOImpl.getInstance();
-		try {
-			sqlSession = MybatisApp.getSqlSessionFactory().openSession();
-			if(sqlSession!=null) {
-				reservationDAO.deleteReservation(sqlSession, reservationVO);
-			}
-			sqlSession.commit();
-		} catch(Exception e) {
-			e.printStackTrace();
-			sqlSession.rollback();
-		} finally {
-			sqlSession.close();
-		}
-	}
-	
-	@Override
 	public List<ReservationVO> selectMyReservation(String u_id) {
 		SqlSession sqlSession = null;
 		ReservationDAO reservationDAO = ReservationDAOImpl.getInstance();
@@ -161,6 +125,45 @@ public class MemberServiceImpl implements MemberService{
 			sqlSession.close();
 		}
 		return list;
+	}
+	@Override
+	public void checkUpdate(PTClassVO ptClassVO) {
+		SqlSession sqlSession = null;
+		ReservationDAO reservationDAO = ReservationDAOImpl.getInstance();
+		try {
+			sqlSession = MybatisApp.getSqlSessionFactory().openSession();
+			if(sqlSession!=null) {
+				reservationDAO.checkUpdate(sqlSession, ptClassVO);
+				
+				if("insert".equals(ptClassVO.getType())) reservationDAO.insertReservation(sqlSession, ptClassVO);
+				else if("delete".equals(ptClassVO.getType())) reservationDAO.deleteReservation(sqlSession, ptClassVO);
+			}
+			sqlSession.commit();
+		} catch(Exception e) {
+			e.printStackTrace();
+			sqlSession.rollback();
+		} finally {
+			sqlSession.close();
+		}
+		
+	}
+	
+	@Override
+	public int CheckMyReservation(HashMap<String, Object> map) {
+		SqlSession sqlSession = null;
+		ReservationDAO reservationDAO = ReservationDAOImpl.getInstance();
+		int check=0;
+		try {
+			sqlSession = MybatisApp.getSqlSessionFactory().openSession();
+			if(sqlSession!=null) {
+				check = reservationDAO.CheckMyReservation(sqlSession, map);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlSession.close();
+		}
+		return check;
 	}
 	
 	

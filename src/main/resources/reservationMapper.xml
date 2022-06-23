@@ -10,18 +10,28 @@
 	</select>
 	
 	<!-- 예약 하기 -->
-	<insert id="insertReservation" parameterType="ReservationVO">
+	<insert id="insertReservation" parameterType="ptClassVO">
 		insert into reservation values(#{id},#{idx})
 	</insert>
 	
 	<!-- 예약 취소하기 -->
-	<delete id="deleteReservation" parameterType="ReservationVO">
+	<delete id="deleteReservation" parameterType="ptClassVO">
 		delete from reservation where id=#{id} and idx=#{idx}
 	</delete>
 	
 	<!-- 나의 예약목록 확인하기 -->
 	<select id="selectMyReservation" parameterType="string" resultType="ReservationVO">
 		select * from reservation where id=#{id}
+	</select>
+	
+	<!-- 예약/예약취소시 PTClass check값 변경  -->
+	<update id="checkUpdate" parameterType="PTClassVO">
+		update ptclass set r_check=#{r_check} where idx=#{idx}
+	</update>
+	
+	<!-- 나의 예약체크하기 -->
+	<select id="CheckMyReservation" parameterType="hashmap" resultType="int">
+		select count(*) from reservation where id=#{id} and idx=#{idx}
 	</select>
 </mapper>
 
