@@ -6,12 +6,16 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 
-	String myTrainer = "init";
-	String id = "init";
+	String myTrainer = "";
+	String id = "";
+	int level = 0;
+	
 	if(session.getAttribute("memberVO")!=null){
 		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 		myTrainer = memberVO.getMyTrainer();
 		id = memberVO.getId();
+		level = memberVO.getLev();
+		
 		System.out.println(memberVO);
 		System.out.println(myTrainer + " : " + id);
 	}else{
@@ -130,6 +134,8 @@
 			//날짜에 맞춰서 조회
 			$("#reserveDiv").empty();
 			
+
+	<%if(level == 1) { %>
 			$.ajax({
 				type : "get",
 				url : "selectEventDay.jsp",
@@ -137,7 +143,7 @@
 				data : {"pttime":info.dateStr, "myTrainer":'<%=myTrainer%>', "id" : '${id}'},
 				success: function(data){
 					console.log('dataClick',data, data.length);
-					$("#reserveDiv").append("<thead><tr><th style='width:50%'>pt시간</th><th>트레이너</th><th style='width:25%'>예약</th></tr></thead>");
+					$("#reserveDiv").append("<thead><tr><th style='width:50%' scope='col'>PT시간</th><th>트레이너</th><th style='width:25%'>예약</th></tr></thead>");
 					if(data.length > 0){
 						
 						//alert('성공\n' + data);
@@ -149,7 +155,7 @@
 								$("#reserveDiv").append("<tr><td>"+item.ptTime+"</td><td>"+item.id+"</td><td><button class='btn btn-success insertBtn' value='"+item.idx+"'>예약하기</button></td></tr>");
 							}else{
 								if(item.count){ // reservation테이블에서 현재 사용자 id로 예약이 되어있다면 예약취소 버튼을 출력하도록하자.
-									$("#reserveDiv").append("<tr><td>"+item.ptTime+"</td><td>"+item.id+"</td><td><button class='btn btn-success deleteBtn' value='"+item.idx+"'>예약취소</button></td></tr>");
+									$("#reserveDiv").append("<tr><td>"+item.ptTime+"</td><td>"+item.id+"</td><td><button class='btn btn-danger deleteBtn' value='"+item.idx+"'>예약취소</button></td></tr>");
 								}else{
 									$("#reserveDiv").append("<tr><td>"+item.ptTime+"</td><td>"+item.id+"</td><td>예약불가</td></tr>");
 								}
@@ -165,8 +171,51 @@
 					//('실패!!')
 				}
 			});
+	<% } else{ %>
+//-----------------------------------------------------------------------------------------------------------------
+	//트레이너 계정일때
+		
+		// 트레이너 일때 보여진다.
+		$(".insertPT").css('display','none');
 
-			
+		
+		$.ajax({
+			type : "get",
+			url : "MyPTClass.jsp",
+			dataType : "json",
+			data : {"pttime":info.dateStr, "id" : '${id}'},
+			success: function(data){
+				console.log('dataClick',data, data.length);
+				$("#reserveDiv").append("<thead><tr><th style='width:50%' scope='col'>PT시간</th><th>예약된 회원</th><th style='width:25%'>예약현황</th></tr></thead>");
+				if(data.length > 0){
+					
+					//alert('성공\n' + data);
+					// 받은 데이터를 가공한다. 입맞에 맞게....
+					$("#reserveDiv").append("<tbody>");
+					$.each(data, function(index, item){
+						console.log('index', index, item);
+						if(item.r_check=="T"){ // oracle에서 boolean타입이 없는데 어떻게 하지? 근데 가져온값이 false야... 머징? 이건 내일 트레이너가 ptclass만들때 True로 바꿔주도록하자!
+							$("#reserveDiv").append("<tr><td>"+item.ptTime+"</td><td>"+item.name+"</td><td><button class='btn btn-success insertBtn' value='"+item.idx+"'>예약하기</button></td></tr>");
+						}else{
+							if(item.count){ // reservation테이블에서 현재 사용자 id로 예약이 되어있다면 예약취소 버튼을 출력하도록하자.
+								$("#reserveDiv").append("<tr><td>"+item.ptTime+"</td><td>"+item.name+"</td><td><button class='btn btn-danger deleteBtn' value='"+item.idx+"'>예약취소</button></td></tr>");
+							}else{
+								$("#reserveDiv").append("<tr><td>"+item.ptTime+"</td><td>"+item.id+"</td><td>예약불가</td></tr>");
+							}
+						}
+					});
+					$("#reserveDiv").append("</tbody>");
+				}
+				else {
+					$("#reserveDiv").append("<tr><td colspan='3'>수업이 없습니다.</td></tr>");
+				}
+			},
+			fail : function(){
+				//('실패!!')
+			}
+		});
+<% } %>
+
 			// 위의 항목을 입력받을 수 있는 입력폼을 띄워야 한다.
 			// alert(info.dateStr + "를 눌렀냐!!");
 			$("#inputContent").css('display','block');
@@ -258,7 +307,7 @@
 	            var pttime = td.eq(0).text();
 	            var id = td.eq(1).text();
 	            var idx = insertBtn.val();
-	            console.log('pttime', pttime, 'id', '<%=id%>','idx', idx);
+	            console.log('pttime', pttime, 'id', 'idx', idx);
 			
 			
 			// 값이 모두 유효하면 Ajax를 호출하여 저장을 수행하면 된다.
@@ -312,9 +361,8 @@
 			
 			$("#inputContent").css('display','none');
 		});
-		
 
-	});
+});
 </script>
 <style type="text/css">
 	#viewContent {
@@ -352,6 +400,7 @@
 		<table id="reserveDiv" class="table" ></table>
 				
 		<div style="float: right; padding: 10px">
+			<button class="btn btn-success insertPT">PT시간 등록하기</button>
 			<button id="cancelBtn"  class="btn btn-success">닫기</button>
 		</div>
 	</div>

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import kr.human.second.vo.PTClassVO;
+import kr.human.second.vo.ReservationInfoVO;
 import kr.human.second.vo.ReservationVO;
 
 public interface ReservationDAO {
@@ -20,4 +21,6 @@ public interface ReservationDAO {
 	void checkUpdate(SqlSession sqlSession, PTClassVO ptClassVO) throws SQLException;
 	// 나의 예약체크하기
 	int CheckMyReservation(SqlSession sqlSession, HashMap<String, Object> map) throws SQLException;
+	// 특정 트레이너 PT수업에 예약된 회원 이름가져오기
+	List<ReservationInfoVO> SelectByReservationInfo(SqlSession sqlSession, HashMap<String, String> map) throws SQLException;
 }

@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import kr.human.second.vo.MemberVO;
 import kr.human.second.vo.PTClassVO;
+import kr.human.second.vo.ReservationInfoVO;
 import kr.human.second.vo.ReservationVO;
 
 public class ReservationDAOImpl implements ReservationDAO{
@@ -42,5 +43,9 @@ public class ReservationDAOImpl implements ReservationDAO{
 	@Override
 	public int CheckMyReservation(SqlSession sqlSession, HashMap<String, Object> map) throws SQLException {
 		return sqlSession.selectOne("reservation.CheckMyReservation", map);
+	}
+	@Override
+	public List<ReservationInfoVO> SelectByReservationInfo(SqlSession sqlSession, HashMap<String, String> map) throws SQLException {
+		return sqlSession.selectList("reservation.SelectByReservationInfo", map);
 	}
 }

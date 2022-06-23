@@ -33,6 +33,17 @@
 	<select id="CheckMyReservation" parameterType="hashmap" resultType="int">
 		select count(*) from reservation where id=#{id} and idx=#{idx}
 	</select>
+	
+	<!-- PT수업시간과 예약된 회원 이름가져오기 -->
+	<select id="SelectByReservationInfo" parameterType="hashmap" resultType="ReservationInfoVO">
+		SELECT p.idx, p.PTTIME, m.id, m.name 
+		FROM PTCLASS p 
+		LEFT JOIN RESERVATION r 
+		ON p.IDX = r.IDX 
+		LEFT JOIN MEMBERS m 
+		ON r.ID = m.ID 
+		where p.id=#{id} and TO_CHAR(pttime,'YYYY-MM-dd') = TO_DATE(#{pttime},'YYYY-MM-dd')
+	</select>
 </mapper>
 
 

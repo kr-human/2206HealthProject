@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import kr.human.second.vo.MemberVO;
 import kr.human.second.vo.PTClassVO;
+import kr.human.second.vo.ReservationInfoVO;
 import kr.human.second.vo.ReservationVO;
 
 public interface MemberService {
@@ -26,4 +27,7 @@ public interface MemberService {
 	void checkUpdate(PTClassVO ptClassVO);
 	// 나의 예약체크하기
 	int CheckMyReservation(HashMap<String, Object> map);
+	
+	// 트레이너의 pt수업에 예약된 회원의 이름과 수업시간을 가져오자
+	List<ReservationInfoVO> SelectByReservationInfo(HashMap<String, String> map);
 }

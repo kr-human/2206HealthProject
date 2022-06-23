@@ -13,6 +13,7 @@ import kr.human.second.dao.ReservationDAO;
 import kr.human.second.dao.ReservationDAOImpl;
 import kr.human.second.vo.MemberVO;
 import kr.human.second.vo.PTClassVO;
+import kr.human.second.vo.ReservationInfoVO;
 import kr.human.second.vo.ReservationVO;
 
 public class MemberServiceImpl implements MemberService{
@@ -164,6 +165,24 @@ public class MemberServiceImpl implements MemberService{
 			sqlSession.close();
 		}
 		return check;
+	}
+	
+	@Override
+	public List<ReservationInfoVO> SelectByReservationInfo(HashMap<String, String> map) {
+		SqlSession sqlSession = null;
+		ReservationDAO reservationDAO = ReservationDAOImpl.getInstance();
+		List<ReservationInfoVO> list = new ArrayList<>(); 
+		try {
+			sqlSession = MybatisApp.getSqlSessionFactory().openSession();
+			if(sqlSession!=null) {
+				list = MemberServiceImpl.getInstance().SelectByReservationInfo(map);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlSession.close();
+		}
+		return list;
 	}
 	
 	

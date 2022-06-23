@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class PTClassVO {
 	private int idx;
-	private Date ptTime;
+	private String ptTime;
 	private String id;
 	private String r_check;
 	
