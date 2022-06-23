@@ -23,7 +23,6 @@
 	
 	
 	List<ReservationInfoVO> list = MemberServiceImpl.getInstance().SelectByReservationInfo(map);
-	ReservationVO reservationVO = new ReservationVO();
 	System.out.println("list : " + list);
 	
 

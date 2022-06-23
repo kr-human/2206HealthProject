@@ -175,7 +175,7 @@ public class MemberServiceImpl implements MemberService{
 		try {
 			sqlSession = MybatisApp.getSqlSessionFactory().openSession();
 			if(sqlSession!=null) {
-				list = MemberServiceImpl.getInstance().SelectByReservationInfo(map);
+				list = reservationDAO.SelectByReservationInfo(sqlSession, map);
 			}
 		} catch(Exception e) {
 			e.printStackTrace();

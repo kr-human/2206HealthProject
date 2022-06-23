@@ -175,8 +175,9 @@
 //-----------------------------------------------------------------------------------------------------------------
 	//트레이너 계정일때
 		
-		// 트레이너 일때 보여진다.
+		// 트레이너 일때 보여진다. 이부분은 내일 하자... 후.
 		$(".insertPT").css('display','none');
+		$(".cancelPT")
 
 		
 		$.ajax({
@@ -186,6 +187,9 @@
 			data : {"pttime":info.dateStr, "id" : '${id}'},
 			success: function(data){
 				console.log('dataClick',data, data.length);
+				var date = new Date(+new Date() + 3240 * 10000).toISOString().replace("T", " ").replace(/\..*/, '');
+				console.log('date', date);
+				
 				$("#reserveDiv").append("<thead><tr><th style='width:50%' scope='col'>PT시간</th><th>예약된 회원</th><th style='width:25%'>예약현황</th></tr></thead>");
 				if(data.length > 0){
 					
@@ -194,14 +198,10 @@
 					$("#reserveDiv").append("<tbody>");
 					$.each(data, function(index, item){
 						console.log('index', index, item);
-						if(item.r_check=="T"){ // oracle에서 boolean타입이 없는데 어떻게 하지? 근데 가져온값이 false야... 머징? 이건 내일 트레이너가 ptclass만들때 True로 바꿔주도록하자!
-							$("#reserveDiv").append("<tr><td>"+item.ptTime+"</td><td>"+item.name+"</td><td><button class='btn btn-success insertBtn' value='"+item.idx+"'>예약하기</button></td></tr>");
+						if(item.pttime > date){ // pt수업시간이 지났다면 pt취소를 할수없도록한다.
+							$("#reserveDiv").append("<tr><td>"+item.pttime+"</td><td>"+(item.name!=null?item.name:'예약인원없음')+"</td><td><button class='btn btn-success cancelPT' value='"+item.idx+"'>PT취소</button></td></tr>");
 						}else{
-							if(item.count){ // reservation테이블에서 현재 사용자 id로 예약이 되어있다면 예약취소 버튼을 출력하도록하자.
-								$("#reserveDiv").append("<tr><td>"+item.ptTime+"</td><td>"+item.name+"</td><td><button class='btn btn-danger deleteBtn' value='"+item.idx+"'>예약취소</button></td></tr>");
-							}else{
-								$("#reserveDiv").append("<tr><td>"+item.ptTime+"</td><td>"+item.id+"</td><td>예약불가</td></tr>");
-							}
+								$("#reserveDiv").append("<tr><td>"+item.pttime+"</td><td>"+(item.name!=null?item.name:'예약인원없음')+"</td><td>시간초과</td></tr>");
 						}
 					});
 					$("#reserveDiv").append("</tbody>");
