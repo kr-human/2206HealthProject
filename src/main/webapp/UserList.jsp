@@ -55,18 +55,18 @@
 			</tr>		
 		</c:if>
 		<c:if test="${not empty Alllist }">
-			<c:forEach var="Alllist" items="${Alllist }">
+			<c:forEach var="vo" items="${Alllist }">
 				<tr>
-					<td>${Alllist.name }</td>
-					<td>${Alllist.email }</td>
-					<td>${Alllist.gender }</td>
-					<td>${Alllist.pt }</td>
-					<td>${Alllist.startDay }</td>
-					<td>${Alllist.endDay }</td>
-					<td>${Alllist.myTrainer }</td>
+					<td>${vo.name }</td>
+					<td>${vo.email }</td>
+					<td>${vo.gender }</td>
+					<td>${vo.pt }</td>
+					<td><fmt:formatDate value="${vo.startDay }" pattern="yyyy-MM-dd"/></td>
+					<td><fmt:formatDate value="${vo.endDay }" pattern="yyyy-MM-dd"/></td>
+					<td>${vo.myTrainer }</td>
 					<td>
 					<c:url var="url" value="PTupdateForm.jsp">
-						<c:param name="id" value="${Alllist.id }"/>
+						<c:param name="id" value="${vo.id }"/>
 					</c:url>
 					<button onclick="location.href='${url}'">등록 및 수정</button>
 					</td>
@@ -101,8 +101,8 @@
 					<td>${myUserList.email }</td>
 					<td>${myUserList.gender }</td>
 					<td>${myUserList.pt }</td>
-					<td>${myUserList.startDay }</td>
-					<td>${myUserList.endDay }</td>
+					<td><fmt:formatDate value="${myUserList.startDay }" pattern="yyyy-MM-dd"/></td>
+					<td><fmt:formatDate value="${myUserList.endDay }" pattern="yyyy-MM-dd"/></td>
 					<td>${myUserList.myTrainer }</td>
 					<td>
 					<c:url var="url" value="PTupdateForm2.jsp">
