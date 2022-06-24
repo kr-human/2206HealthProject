@@ -45,11 +45,7 @@
 	.title {border: none; font-size: 20pt; text-align: center;}
 	.item { width: 100px; background-color: silver; text-align: right;}
 	/* 링크의 모양을 변경한다. */
-	a:link 		{ color: black; text-decoration: none;} /* 링크가 걸린모양 */
-	a:visited 	{ color: black; text-decoration: none;} /* 방문했던 링크 */
-	a:hover 	{ color: black; text-decoration: none; font-weight: bold;} /* 마우스오버시 모양 */
-	a:active 	{ color: orange; text-decoration: none;} /* 마우스 클릭시 모양 */
-	
+	a:hover 	{ color: blue; text-decoration: none; font-weight: bold;} /* 마우스오버시 모양 */
 </style>
 </head>
 <body>
@@ -82,10 +78,12 @@
 		</tr>
 		<tr>
 			<td colspan="4" style="border: none;text-align: right;">
-				<button class="btn btn-outline-success btn-sm" 
-				onclick='sendPost("update.jsp",{"p":${p},"s":${s },"b":${b },"idx":${idx },"isClick":true})'>수정</button>
-				<button class="btn btn-outline-success btn-sm" 
-				onclick='sendPost("delete.jsp",{"p":${p},"s":${s },"b":${b },"idx":${idx },"isClick":true})'>삭제</button>
+				<c:if test="${sessionScope.memberVO.lev == 3}">
+					<button class="btn btn-outline-success btn-sm" 
+					onclick='sendPost("update.jsp",{"p":${p},"s":${s },"b":${b },"idx":${idx },"isClick":true})'>수정</button>	
+					<button class="btn btn-outline-success btn-sm" 
+					onclick='sendPost("delete.jsp",{"p":${p},"s":${s },"b":${b },"idx":${idx },"isClick":true})'>삭제</button>
+				</c:if>
 				<button class="btn btn-outline-success btn-sm" 
 				onclick='sendPost("index.jsp",{"p":${p},"s":${s },"b":${b }})'>목록</button>
 			</td>

@@ -26,7 +26,7 @@ CREATE TABLE ptclass(
    r_check char(1)
 );
 SELECT * FROM ptclass;
-DROP TABLE PTCLASS;
+DROP TABLE ptclass;
 
 CREATE TABLE MEMBERS(
 	id varchar2(30) PRIMARY KEY,

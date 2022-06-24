@@ -56,7 +56,12 @@
 			
 			<a href="a.jsp">예약 하기</a> 
 			<a href="b.jsp">나의 강사보기</a> 
+<<<<<<< HEAD
 			<a href="updateForm.jsp">나의 정보 수정</a>
+=======
+			<a href="c.jsp">나의 정보 수정</a>
+			 <a href="Notice/index.jsp">게시판(공지사항)</a>
+>>>>>>> chhg99(ver.2)
 			<a href="logout.jsp">로그아웃</a>
 			<a href="deleteForm.jsp">회원탈퇴</a>
 		</c:if>
