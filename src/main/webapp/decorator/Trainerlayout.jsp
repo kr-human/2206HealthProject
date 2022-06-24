@@ -125,14 +125,22 @@ footer {
 				<ul id="menu">
 					<c:if test="${not empty sessionScope.memberVO }">
 						<c:if test="${sessionScope.memberVO.lev == 3}">
-							<li><a href="TrainerPTMain.jsp">PT일정등록</a></li>
+							<li><a href="${pageContext.request.contextPath }/Member/ReservationCalendar.jsp">PT 등록</a> </li>
+							<li><a href="${pageContext.request.contextPath }/UserList.jsp">회원관리</a></li>
+							
+							<li><a href="${pageContext.request.contextPath }/Notice/index.jsp">공지사항</a></li>
+							<li><a href="${pageContext.request.contextPath }/updateForm.jsp">정보수정</a></li>
+							<li><a href="${pageContext.request.contextPath }/logout.jsp">로그아웃</a></li>
 						</c:if>
 						<c:if test="${sessionScope.memberVO.lev == 1}">
-							<li><a href="a.jsp">PT수업예약</a></li>
+							<li><a href="${pageContext.request.contextPath }/b.jsp">나의 강사보기</a> </li>
+							<li><a href="${pageContext.request.contextPath }/Member/ReservationCalendar.jsp">예약 하기</a>  </li>
+													
+							<li><a href="${pageContext.request.contextPath }/Notice/index.jsp">공지사항</a></li>
+							<li><a href="${pageContext.request.contextPath }/updateForm.jsp">정보수정</a></li>
+							<li><a href="${pageContext.request.contextPath }/logout.jsp">로그아웃</a></li>
+							<li><a href="${pageContext.request.contextPath }/deleteForm.jsp">회원탈퇴</a></li>	
 						</c:if>
-						<li><a href="Notice/index.jsp">공지사항</a></li>
-						<li><a href="updateForm.jsp">정보수정</a></li>
-						<li><a href="logout.jsp">로그아웃</a></li>
 					</c:if>
 
 				</ul>

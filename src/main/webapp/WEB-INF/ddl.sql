@@ -27,11 +27,6 @@ CREATE TABLE ptclass(
 );
 SELECT * FROM ptclass;
 DROP TABLE ptclass;
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 39650219ce2b663d651bbbf339e83aae2c2960eb
 
 CREATE TABLE MEMBERS(
 	id varchar2(30) PRIMARY KEY,
@@ -65,13 +60,10 @@ SELECT * FROM PTCLASS;
 
 INSERT INTO PTCLASS values(ptclass_idx_seq.nextval, 'hyun95',SYSDATE,  0);
 
-<<<<<<< HEAD
 DROP table RESERVATION;
 
 SELECT * FROM tab;
-=======
 COMMIT;
->>>>>>> 39650219ce2b663d651bbbf339e83aae2c2960eb
 
 CREATE TABLE reservation(
 	id varchar2(30),
