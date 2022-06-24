@@ -32,8 +32,8 @@
 	</select>
 
 	<!-- 트레이너 pt일정표 목록 확인하기 -->
-	<select id="PList_check" resultType="PTClassVO">
-		select * from ptclass where id=#{id}
+	<select id="PList_check" parameterType="hashmap" resultType="PTClassVO">
+		select * from ptclass where id=#{id} AND TO_CHAR(pttime,'YYYY-MM-dd') = TO_DATE(#{pttime},'YYYY-MM-dd')
 	</select>
 </mapper>
 

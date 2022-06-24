@@ -57,6 +57,12 @@ public class CommonDAOImpl implements CommonDAO{
    public List<MemberVO> FindUserId(SqlSession sqlSession, String email) throws SQLException {
       return sqlSession.selectList("common.FindUserId", email);
    }
+   //레벨 변경
+	@Override
+	public void updateLevel(SqlSession sqlSession, HashMap<String, String> map) throws SQLException {
+		sqlSession.update("common.updateLevel",map);
+		
+	}
    
    
    

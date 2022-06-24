@@ -22,7 +22,9 @@ public interface CommonDAO {
 	// 비밀번호 변경
 	void ChangePassword(SqlSession sqlSession, HashMap<String, String> map) throws SQLException; 
 	// 아이디 찾기 (name으로 가져오기)
-	List<MemberVO> FindUserId(SqlSession sqlSession, String email) throws SQLException; 
+	List<MemberVO> FindUserId(SqlSession sqlSession, String email) throws SQLException;
+	//레벨변경
+	void updateLevel(SqlSession sqlSession, HashMap<String, String> map) throws SQLException;
 	
 	
 }

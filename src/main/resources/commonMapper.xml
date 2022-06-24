@@ -18,7 +18,7 @@
 	
 	<!-- 회원 정보 수정 -->
 	<update id="update" parameterType="MemberVO">
-		update users set
+		update members set
 			password=#{password},
 			email = #{email}
 		where
@@ -44,6 +44,11 @@
 	<select id="FindUserId" parameterType="string" resultType="string">
 		select id from members where email=#{email}
 	</select>
+	
+	<!-- 레벨 변경 -->
+	<update id ="updateLevel" parameterType="hashmap">
+		update members set lev=#{lev} where id=#{id}
+	</update>
 	
 
 </mapper>
