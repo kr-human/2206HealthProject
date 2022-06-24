@@ -36,7 +36,7 @@ li {
 	color: white;
 }
 
-.title {
+.mashtitle {
 	font-size: 2em;
 	display: flex;
 	justify-content: space-between;
@@ -119,7 +119,7 @@ footer {
 	<header>
 		<section class="hbody">
 			<article class="nav">
-				<div class="title">
+				<div class="mashtitle">
 					<a href="./index.html">로고</a>
 				</div>
 				<ul id="menu">
@@ -145,7 +145,7 @@ footer {
 
 				</ul>
 				<c:if test="${empty sessionScope.memberVO }">
-					<div class="title">
+					<div class="mashtitle">
 						<a class="is" href="login.jsp">로그인</a> <a class="is"
 							href="insertForm.jsp">회원가입</a>
 					</div>

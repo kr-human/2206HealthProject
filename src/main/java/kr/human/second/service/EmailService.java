@@ -32,7 +32,7 @@ public class EmailService {
 		
 		mailSession = Session.getInstance(p, new Authenticator(){
 			protected PasswordAuthentication getPasswordAuthentication(){
-				return new PasswordAuthentication("lth0314@naver.com", "xoghks170805!");
+				return new PasswordAuthentication("choione99@naver.com", "1170712");
 			}
 		});
 	}
@@ -40,7 +40,7 @@ public class EmailService {
 	public static void sendMail(String to, String subject, String content) {
 		try {
 			MimeMessage message = new MimeMessage(mailSession); // 메일의 내용을 담을 객체
-			Address fromAddress = new InternetAddress("lth0314@naver.com");
+			Address fromAddress = new InternetAddress("choione99@naver.com");
 			message.setFrom(fromAddress);
 			Address toAddress = new InternetAddress(to);     // 받는 사람
 			message.addRecipient(Message.RecipientType.TO, toAddress);

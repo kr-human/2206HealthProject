@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-{"resources":{"src/main/webapp/WEB-INF/ddl.sql":{"sql-editor-data-source-id":"oracle_thin-180ef7c9236-772f93d376ec6c4c","default-datasource":"oracle_thin-180ef7c9236-772f93d376ec6c4c","default-schema":"JSPUSER"}}}
-=======
-{"resources":{"src/main/webapp/WEB-INF/ddl.sql":{"sql-editor-data-source-id":"oracle_thin-180f48adfa6-6217940ea99071f6","default-datasource":"oracle_thin-180f48adfa6-6217940ea99071f6","default-schema":"JSPUSER"}}}
->>>>>>> 39650219ce2b663d651bbbf339e83aae2c2960eb
+{"resources":{"src/main/webapp/WEB-INF/ddl.sql":{"sql-editor-data-source-id":"oracle_thin-180f9ef3a24-403fdb8b17cd380d","default-datasource":"oracle_thin-180f9ef3a24-403fdb8b17cd380d","default-schema":"JSPUSER"}}}
