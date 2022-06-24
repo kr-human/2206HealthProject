@@ -139,6 +139,7 @@
 			
 
 	<%if(level == 1) { %>
+			$(".insertPT").css('display','none');
 			$.ajax({
 				type : "get",
 				url : "selectEventDay.jsp",
