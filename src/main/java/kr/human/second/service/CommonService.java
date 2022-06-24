@@ -16,11 +16,11 @@ public interface CommonService {
 		void insert(MemberVO memberVO, String urlAddress);
 		
     //회정정보 수정
-		
+		void update(MemberVO memberVO, String newPassword, HttpSession httpSession);
 	//회원 탈퇴
-		
-	//인증하기
-	
+		void delete(MemberVO memberVO, HttpSession httpSession);
+	//인증하기(lev 향상)
+		boolean emailConfirm(String id);
 		
 	//아이디 찾기
 	//비번 찾기 

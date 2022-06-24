@@ -11,6 +11,10 @@
 
 </head>
 <body>
+	<%--session에 들어오는 memberVO 확인하는 것 --%>
+	<%-- ${sessionScope.memberVO }--%>
+	
+	
 	<c:if test="${empty sessionScope.memberVO }">
 		<a href="insertForm.jsp">회원가입</a>
 		<a href="login.jsp">로그인</a>
@@ -27,16 +31,17 @@
 	 --%>
 		
 		<c:if test="${not empty sessionScope.memberVO && sessionScope.memberVO.lev == 1}">
-			${sessionScope.memberVO.name }님 반갑습니다 <br>
-			<h1>유저</h1>
+			회원 ${sessionScope.memberVO.name }님 반갑습니다 <br>
+			
 			<a href="a.jsp">예약 하기</a> 
 			<a href="b.jsp">나의 강사보기</a> 
-			<a href="c.jsp">나의 정보 수정</a>
+			<a href="updateForm.jsp">나의 정보 수정</a>
 			<a href="logout.jsp">로그아웃</a>
+			<a href="deleteForm.jsp">회원탈퇴</a>
 		</c:if>
 		<c:if test="${not empty sessionScope.memberVO && sessionScope.memberVO.lev == 3}">
-	      ${sessionScope.memberVO.name }님 반갑습니다 <br>
-	      <h1>강사</h1>
+	      강사 ${sessionScope.memberVO.name }님 반갑습니다 <br>
+	      
 	      <a href="d.jsp">회원목록보기</a> 
 	      <a href="e.jsp">예약 등록</a> 
 	      <a href="f.jsp">게시판(공지사항)</a>

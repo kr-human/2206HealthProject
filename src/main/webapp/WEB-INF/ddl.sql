@@ -56,7 +56,7 @@ SELECT * FROM PTCLASS;
 
 INSERT INTO PTCLASS values(ptclass_idx_seq.nextval, 'hyun95',SYSDATE,  0);
 
-
+COMMIT;
 
 
 
