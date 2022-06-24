@@ -45,11 +45,7 @@
 	.title {border: none; font-size: 20pt; text-align: center;}
 	.item { width: 100px; background-color: silver; text-align: right;}
 	/* 링크의 모양을 변경한다. */
-	a:link 		{ color: black; text-decoration: none;} /* 링크가 걸린모양 */
-	a:visited 	{ color: black; text-decoration: none;} /* 방문했던 링크 */
-	a:hover 	{ color: black; text-decoration: none; font-weight: bold;} /* 마우스오버시 모양 */
-	a:active 	{ color: orange; text-decoration: none;} /* 마우스 클릭시 모양 */
-	
+	a:hover 	{ color: blue; text-decoration: none; font-weight: bold;} /* 마우스오버시 모양 */
 </style>
 </head>
 <body>

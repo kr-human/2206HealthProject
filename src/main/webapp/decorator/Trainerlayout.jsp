@@ -47,6 +47,7 @@ li {
 
 .title>a {
 	color: white;
+	text-decoration: none;
 }
 /*웹 브라우저 가로의 최소 너비가 625px일 때(625px 이상일 때)*/
 @media screen and (min-width: 625px) {
@@ -59,6 +60,7 @@ li {
 	}
 	li>a {
 		color: white;
+		text-decoration: none;
 	}
 }
 /*웹 브라우저 가로의 최대 너비가 625px일 때(625px 이하일 때)*/
@@ -111,6 +113,7 @@ footer {
 }
 /* footer 하단 고정 */
 </style>
+<sitemesh:write property='head'/>
 </head>
 <body>
 	<header>
