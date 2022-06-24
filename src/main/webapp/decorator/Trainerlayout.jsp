@@ -45,7 +45,7 @@ li {
 	color: white;
 }
 
-.title>a {
+.mashtitle>a {
 	color: white;
 	text-decoration: none;
 }

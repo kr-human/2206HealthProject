@@ -37,23 +37,36 @@
 </script>
 <style type="text/css">
 	table { width: 1000px; margin: auto; padding: 5px;}
-	th {padding: 5px; border: 1px solid gray; background-color: silver;text-align: center;}
+	th {padding: 5px; border: 1px solid gray; background-color: black; color: white; text-align: center;}
 	td {padding: 5px; border: 1px solid gray; text-align: center;}
-	.title2 {border: none; font-size: 20pt; text-align: center;}
-	.sub_title2 {border: none; text-align: right;}
+	.title {border: none; font-size: 20pt; text-align: center;}
+	.sub_title {border: none; text-align: right;}
 	/* 링크의 모양을 변경한다. */
-	a:hover 	{ color: blue; text-decoration: none; font-weight: bold;} /* 마우스오버시 모양 */
+	a:hover 	{ color: black; text-decoration: none; font-weight: bold;} /* 마우스오버시 모양 */
+	a{
+	color: black; text-decoration: none;
+	}
+	.my.pagination > .active > a, 
+	.my.pagination > .active > span, 
+	.my.pagination > .active > a:hover, 
+	.my.pagination > .active > span:hover, 
+	.my.pagination > .active > a:focus, 
+	.my.pagination > .active > span:focus {
+	  background: black;
+	  border-color: black;
+	  color: white;
+}
 </style>
 </head>
 <body>
 	<table>
 		<tr>
-			<td colspan="4" class="title2">
-				공 지 사 항
+			<td colspan="4" class="title">
+				<b>공 지 사 항</b>
 			</td>
 		</tr>
 		<tr>
-			<td colspan="4" class="sub_title2">
+			<td colspan="4" class="sub_title">
 				${pv.pageInfo }
 			</td>
 		</tr>
@@ -94,16 +107,16 @@
 					</tr>
 				</c:forEach>
 				<tr>
-					<td colspan="4" class="sub_title2" style="text-align: center;">
+					<td colspan="4" class="sub_title" style="text-align: center;">
 						${pv.pageList }
 					</td>
 				</tr>
 			</c:if>
 		</c:if>
 		<tr>
-			<td class="sub_title2" colspan="6">
+			<td class="sub_title" colspan="6">
 				<c:if test="${sessionScope.memberVO.lev == 3}">
-				<button class="btn btn-outline-success btn-sm" 
+				<button class="btn btn-dark" 
 				 onclick='sendPost("insert.jsp",{"p":${p } , "s": ${s }, "b":${b }})'>새글쓰기</button>
 				 </c:if>
 			</td>

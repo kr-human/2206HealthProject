@@ -103,7 +103,7 @@ public class PagingVO<T> {
 	// 하단의 페이지 리스트
 	public String getPageList() {
 		StringBuffer sb = new StringBuffer();
-		sb.append("<ul class='pagination pagination-sm justify-content-center'>");
+		sb.append("<ul class='pagination pagination-sm justify-content-center my'>");
 		// 이전
 		if(startPage>1) {
 			sb.append("<li class='page-item'>");
