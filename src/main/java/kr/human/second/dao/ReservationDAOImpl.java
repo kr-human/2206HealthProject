@@ -48,4 +48,13 @@ public class ReservationDAOImpl implements ReservationDAO{
 	public List<ReservationInfoVO> SelectByReservationInfo(SqlSession sqlSession, HashMap<String, String> map) throws SQLException {
 		return sqlSession.selectList("reservation.SelectByReservationInfo", map);
 	}
+	@Override
+	public void deletePT(SqlSession sqlSession, int idx) throws SQLException {
+		sqlSession.delete("pt.P_delete",idx);
+	}
+	@Override
+	public void deleteRe(SqlSession sqlSession, int idx) throws SQLException {
+		sqlSession.delete("reservation.deletePT",idx);
+		
+	}
 }

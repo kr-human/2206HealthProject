@@ -118,6 +118,7 @@
 		});
 		calendar.render(); // 그려줘!!!
 		
+		
 		// 날짜를 클릭했을때
 		calendar.on('dateClick', function(info) {
 			// 일정을 입력할 수 있는 창을 띄워 일정을 입력받아야 한다.
@@ -132,7 +133,9 @@
 				backgroundColor varchar2(50), 
 			*/
 			//날짜에 맞춰서 조회
+			
 			$("#reserveDiv").empty();
+			$("#inputPTInfo").css('display','none');
 			
 
 	<%if(level == 1) { %>
@@ -173,13 +176,9 @@
 			});
 	<% } else{ %>
 //-----------------------------------------------------------------------------------------------------------------
-	//트레이너 계정일때
+//트레이너 계정일때
 		
-		// 트레이너 일때 보여진다. 이부분은 내일 하자... 후.
-		$(".insertPT").css('display','none');
-		$(".cancelPT")
 
-		
 		$.ajax({
 			type : "get",
 			url : "MyPTClass.jsp",
@@ -214,13 +213,77 @@
 				//('실패!!')
 			}
 		});
+		
+		
+		
+		// pt수업 취소하기
+		$(document).on('click', '.cancelPT', function(){
+	            var cancelPT = $(this);
+	            var tr = cancelPT.parent().parent();
+	            var td = tr.children();
+	 
+	            var idx = cancelPT.val();
+	            console.log('idx', idx);
+			
+			// 값이 모두 유효하면 Ajax를 호출하여 저장을 수행하면 된다.
+			$.ajax({
+				type : "get",
+				url : "CancelPT.jsp",
+				data : { 
+					"idx" : idx				
+					},
+				success: function(data){
+					alert('PT수업 취소 완료!\n');
+					location.reload(); // 화면 다시 읽어라
+				},
+				fail : function(){
+					alert('실패\n');
+				}
+			});
+			
+			$("#inputContent").css('display','none');
+		});
+		
+		
+		
+		
+		// pt수업 등록 처리
+		$(document).on('click','.insertPT', function(){
+			// pt등록하기 버튼을 누르면 현재 팝업창이 없어지고
+			// 새로운 pt등록하는 팝업을 띄우자
+			$("#reserveDiv").css('display','none');
+			$(".second").css('display','none');
+			$("#inputPTInfo").css('display','block');
+			
+			// 값이 모두 유효하면 Ajax를 호출하여 저장을 수행하면 된다.
+			/*
+			$.ajax({
+				type : "get",
+				url : "insertPT.jsp",
+				data : { 
+					"id" : '<%=id%>', 
+					"idx" : idx				
+					},
+				success: function(data){
+					alert('예약 완료!\n');
+					location.reload(); // 화면 다시 읽어라
+				},
+				fail : function(){
+					alert('예약 실패\n');
+				}
+			});
+			*/
+			
+		});
+		
+		
 <% } %>
 
 			// 위의 항목을 입력받을 수 있는 입력폼을 띄워야 한다.
 			// alert(info.dateStr + "를 눌렀냐!!");
 			$("#inputContent").css('display','block');
-			$("#start1").val(info.dateStr);
-			$("#end1").val(info.dateStr);
+			//$("#start1").val(info.dateStr);
+			//$("#end1").val(info.dateStr);
 			
 		});
 		
@@ -292,7 +355,7 @@
 		});
 
 		// 취소 버튼을 누르면 입력창이 사라져야 한다.  
-		$("#cancelBtn").click(function() {
+		$(".cancelBtn").click(function() {
 			$("#inputContent").css('display','none');
 			$("#reserveDiv").empty();
 		});
@@ -396,12 +459,21 @@
 	<div id="viewContent"></div>
 	<%-- 내용 입력하기 --%>
 	<div id="inputContent" style="padding:10px">
-		<h2>PT 예약하기</h2>
+		<h2 class="second">PT 예약하기</h2>
 		<table id="reserveDiv" class="table" ></table>
 				
-		<div style="float: right; padding: 10px">
-			<button class="btn btn-success insertPT">PT시간 등록하기</button>
-			<button id="cancelBtn"  class="btn btn-success">닫기</button>
+		<div style="float: right; padding: 10px" class="second">
+			<button class="btn btn-success insertPT" >PT시간 등록하기</button>
+			<button class="btn btn-success cancelBtn" >닫기</button>
+		</div>
+		<div id="inputPTInfo" style="padding:10px">
+			<h2>PT수업 등록</h2>
+			<table id="resultPtTime" class="table"></table>
+			<div style="float: right; padding: 10px">
+				<input type="time" id="pttime"/>
+				<button class="btn btn-success insertPTClass">등록하기</button>
+				<button class="btn btn-success cancelBtn">닫기</button>
+			</div>
 		</div>
 	</div>
 	

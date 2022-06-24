@@ -30,4 +30,7 @@ public interface MemberService {
 	
 	// 트레이너의 pt수업에 예약된 회원의 이름과 수업시간을 가져오자
 	List<ReservationInfoVO> SelectByReservationInfo(HashMap<String, String> map);
+	
+	// pt수업을 폐강하자
+	void deletePT(int idx);
 }

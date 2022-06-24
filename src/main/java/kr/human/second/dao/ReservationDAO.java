@@ -23,4 +23,9 @@ public interface ReservationDAO {
 	int CheckMyReservation(SqlSession sqlSession, HashMap<String, Object> map) throws SQLException;
 	// 특정 트레이너 PT수업에 예약된 회원 이름가져오기
 	List<ReservationInfoVO> SelectByReservationInfo(SqlSession sqlSession, HashMap<String, String> map) throws SQLException;
+	// ptclass를 삭제하자
+	void deletePT(SqlSession sqlSession, int idx) throws SQLException;
+	// ptclass를 삭제하기 위해서 reservation에 있는 놈을 삭제하자
+	void deleteRe(SqlSession sqlSession, int idx) throws SQLException;
+	
 }

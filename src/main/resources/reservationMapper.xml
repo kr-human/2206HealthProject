@@ -44,6 +44,11 @@
 		ON r.ID = m.ID 
 		where p.id=#{id} and TO_CHAR(pttime,'YYYY-MM-dd') = TO_DATE(#{pttime},'YYYY-MM-dd')
 	</select>
+	
+	<!-- ptclass삭제하기위한놈 -->
+	<delete id="deletePT" parameterType="int">
+		delete from reservation where idx=#{idx}
+	</delete>
 </mapper>
 
 

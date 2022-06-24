@@ -33,7 +33,7 @@ public class MemberServiceImpl implements MemberService{
 		MemberVO memberVO = new MemberVO();
 		try {
 			
-			sqlSession = MybatisApp.getSqlSessionFactory().openSession();
+			sqlSession = MybatisApp.getSqlSessionFactory().openSession(false);
 			
 			if(sqlSession!=null) {
 			memberVO = memberDAO.selectMyInfo(sqlSession, u_id);
@@ -54,7 +54,7 @@ public class MemberServiceImpl implements MemberService{
 		MemberDAO memberDAO = MemberDAOImpl.getInstance();
 		MemberVO memberVO = new MemberVO();
 		try {
-			sqlSession = MybatisApp.getSqlSessionFactory().openSession();
+			sqlSession = MybatisApp.getSqlSessionFactory().openSession(false);
 			
 			if(sqlSession!=null) {
 			memberVO = memberDAO.selectMyTrainerInfo(sqlSession, myTrainer);
@@ -74,7 +74,7 @@ public class MemberServiceImpl implements MemberService{
 		MemberDAO memberDAO = MemberDAOImpl.getInstance();
 		HashMap<String, String> map = new HashMap<>();
 		try {
-			sqlSession = MybatisApp.getSqlSessionFactory().openSession();
+			sqlSession = MybatisApp.getSqlSessionFactory().openSession(false);
 			if(sqlSession!=null) {
 				map.put("name", memberVO.getName());
 				map.put("password", memberVO.getPassword());
@@ -98,7 +98,7 @@ public class MemberServiceImpl implements MemberService{
 		ReservationDAO reservationDAO = ReservationDAOImpl.getInstance();
 		List<ReservationVO> list = new ArrayList<>();
 		try {
-			sqlSession = MybatisApp.getSqlSessionFactory().openSession();
+			sqlSession = MybatisApp.getSqlSessionFactory().openSession(false);
 			if(sqlSession!=null) {
 				list = reservationDAO.selectMyReservation(sqlSession, u_id);
 			}
@@ -116,7 +116,7 @@ public class MemberServiceImpl implements MemberService{
 		ReservationDAO reservationDAO = ReservationDAOImpl.getInstance();
 		List<PTClassVO> list = new ArrayList<>();
 		try {
-			sqlSession = MybatisApp.getSqlSessionFactory().openSession();
+			sqlSession = MybatisApp.getSqlSessionFactory().openSession(false);
 			if(sqlSession!=null) {
 				list = reservationDAO.selectPtOneDay(sqlSession, map);
 			}
@@ -132,7 +132,7 @@ public class MemberServiceImpl implements MemberService{
 		SqlSession sqlSession = null;
 		ReservationDAO reservationDAO = ReservationDAOImpl.getInstance();
 		try {
-			sqlSession = MybatisApp.getSqlSessionFactory().openSession();
+			sqlSession = MybatisApp.getSqlSessionFactory().openSession(false);
 			if(sqlSession!=null) {
 				reservationDAO.checkUpdate(sqlSession, ptClassVO);
 				
@@ -155,7 +155,7 @@ public class MemberServiceImpl implements MemberService{
 		ReservationDAO reservationDAO = ReservationDAOImpl.getInstance();
 		int check=0;
 		try {
-			sqlSession = MybatisApp.getSqlSessionFactory().openSession();
+			sqlSession = MybatisApp.getSqlSessionFactory().openSession(false);
 			if(sqlSession!=null) {
 				check = reservationDAO.CheckMyReservation(sqlSession, map);
 			}
@@ -173,7 +173,7 @@ public class MemberServiceImpl implements MemberService{
 		ReservationDAO reservationDAO = ReservationDAOImpl.getInstance();
 		List<ReservationInfoVO> list = new ArrayList<>(); 
 		try {
-			sqlSession = MybatisApp.getSqlSessionFactory().openSession();
+			sqlSession = MybatisApp.getSqlSessionFactory().openSession(false);
 			if(sqlSession!=null) {
 				list = reservationDAO.SelectByReservationInfo(sqlSession, map);
 			}
@@ -184,6 +184,27 @@ public class MemberServiceImpl implements MemberService{
 		}
 		return list;
 	}
+	@Override
+	public void deletePT(int idx) {
+		SqlSession sqlSession = null;
+		ReservationDAO reservationDAO = ReservationDAOImpl.getInstance();
+		try {
+			sqlSession = MybatisApp.getSqlSessionFactory().openSession(false);
+			if(sqlSession!=null) {
+				// 먼저 reservation의 예약 부터 삭제 해야 ptclass의 수업을 삭제할수있다.
+				reservationDAO.deleteRe(sqlSession, idx);
+				reservationDAO.deletePT(sqlSession, idx);
+			}
+			sqlSession.commit();
+		} catch(Exception e) {
+			e.printStackTrace();
+			sqlSession.rollback();
+		} finally {
+			sqlSession.close();
+		}
+	}
+	
+	
 	
 	
 }
