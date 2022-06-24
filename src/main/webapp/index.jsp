@@ -11,7 +11,14 @@
 
 </head>
 <body>
+<<<<<<< HEAD
 <%-- 	${sessionScope.memberVO } --%>
+=======
+	<%--session에 들어오는 memberVO 확인하는 것 --%>
+	<%-- ${sessionScope.memberVO }--%>
+	
+	
+>>>>>>> hwan91
 	<c:if test="${empty sessionScope.memberVO }">
 		<a href="insertForm.jsp">회원가입</a>
 		<a href="login.jsp">로그인</a>
@@ -28,6 +35,7 @@
 		<a href="a.jsp">예약 하기</a> 
 		<a href="b.jsp">나의 강사보기</a> 
 	</c:if>
+<<<<<<< HEAD
 	
 	<c:if test="${not empty sessionScope.memberVO && sessionScope.memberVO.lev == 3}">
       ${sessionScope.memberVO.id }(${sessionScope.memberVO.name })님 반갑습니다 <br>
@@ -40,5 +48,27 @@
 	  <a href="Notice.jsp">공지사항</a>
    </c:if>
 
+=======
+	 --%>
+		
+		<c:if test="${not empty sessionScope.memberVO && sessionScope.memberVO.lev == 1}">
+			회원 ${sessionScope.memberVO.name }님 반갑습니다 <br>
+			
+			<a href="a.jsp">예약 하기</a> 
+			<a href="b.jsp">나의 강사보기</a> 
+			<a href="updateForm.jsp">나의 정보 수정</a>
+			<a href="logout.jsp">로그아웃</a>
+			<a href="deleteForm.jsp">회원탈퇴</a>
+		</c:if>
+		<c:if test="${not empty sessionScope.memberVO && sessionScope.memberVO.lev == 3}">
+	      강사 ${sessionScope.memberVO.name }님 반갑습니다 <br>
+	      
+	      <a href="d.jsp">회원목록보기</a> 
+	      <a href="e.jsp">예약 등록</a> 
+	      <a href="f.jsp">게시판(공지사항)</a>
+	      <a href="logout.jsp">로그아웃</a>
+	   </c:if>
+ 		 	
+>>>>>>> hwan91
 </body>
 </html>
