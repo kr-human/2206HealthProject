@@ -11,6 +11,7 @@
 
 </head>
 <body>
+<%-- 	${sessionScope.memberVO } --%>
 	<c:if test="${empty sessionScope.memberVO }">
 		<a href="insertForm.jsp">회원가입</a>
 		<a href="login.jsp">로그인</a>

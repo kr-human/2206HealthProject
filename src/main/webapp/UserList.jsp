@@ -65,8 +65,10 @@
 					<td>${Alllist.endDay }</td>
 					<td>${Alllist.myTrainer }</td>
 					<td>
-					<c:url var="url" value="PTupdateForm.jsp"></c:url>
-					<button onclick="location.href='${url}'">등록</button>
+					<c:url var="url" value="PTupdateForm.jsp">
+						<c:param name="id" value="${Alllist.id }"/>
+					</c:url>
+					<button onclick="location.href='${url}'">등록 및 수정</button>
 					</td>
 				</tr>
 			</c:forEach>
@@ -103,8 +105,10 @@
 					<td>${myUserList.endDay }</td>
 					<td>${myUserList.myTrainer }</td>
 					<td>
-					<c:url var="url" value="PTupdateForm2.jsp"></c:url>
-					<button onclick="location.href='${url}'">수정</button>
+					<c:url var="url" value="PTupdateForm2.jsp">
+						<c:param name="id" value="${myUserList.id }"/>
+					</c:url>
+					<button onclick="location.href='${url}'">등록 및 수정</button>
 					</td>
 				</tr>			
 			</c:forEach>

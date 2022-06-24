@@ -49,7 +49,11 @@ SELECT * FROM MEMBERS;
 INSERT INTO MEMBERS VALUES 
 ('root','1234','최고관리자',' ',' ',' ','ithuman202204@gmail.com','M',0,'2022-05-30','2023-05-30',3,'sys');
 INSERT INTO MEMBERS VALUES 
+('admin','1234','최고관리자',' ',' ',' ','ithuman202204@gmail.com','M',0,'2022-05-30','2023-05-30',3,'sys');
+INSERT INTO MEMBERS VALUES 
 ('user01','1234','한사람',' ',' ',' ','ithuman202204@gmail.com','F',0,'2022-05-30','2023-05-30',1,'root');
+INSERT INTO MEMBERS VALUES 
+('user09','1234','두번째사람',' ',' ',' ','ithuman202204@gmail.com','F',0,'2022-05-30','2023-05-30',1,'admin');
 
 SELECT * FROM members;
 SELECT * FROM PTCLASS;

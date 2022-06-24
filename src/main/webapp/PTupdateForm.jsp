@@ -8,13 +8,13 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
 	// 수정할 글을 가져온다.
-	String id = ((MemberVO)session.getAttribute("memberVO")).getId();
-	MemberVO AVO = TrainerServiceImpl.getInstance().SelectByAllUserInfo(id);
-	if(AVO==null){ // 글이 없다.
+	String id = request.getParameter("id");
+	MemberVO VO = TrainerServiceImpl.getInstance().SelectByAllUserInfo(id);
+	if(VO==null){ // 글이 없다.
 		response.sendRedirect("UserList.jsp");
 		return;
 	}
-	session.setAttribute("Avo", AVO);
+	session.setAttribute("VO", VO);
 %>
 <!DOCTYPE html>
 <html>
@@ -42,35 +42,36 @@
 		<tr>
 			<td>이름</td>
 			<td style="text-align: left;"> 
-				<input type="text" name="name" value="${Avo.name }" readonly="readonly"/>
+				<input type="hidden" name="id" value="${VO.id }" />
+				<input type="text" name="name" value="${VO.name }" readonly="readonly"/>
 			</td>
 			<td>이메일</td>
 			<td style="text-align: left;">
-				<input type="email" name="email" value="${Avo.email }" readonly="readonly"/>
+				<input type="email" name="email" value="${VO.email }" readonly="readonly"/>
 			</td>
 		</tr>
 		<tr>
 			<td>pt이용권</td>
 			<td style="text-align: left;"> 
-				<input type="number" name="pt" id="pt" value="${Avo.pt }" required="required"/>
+				<input type="number" name="pt" id="pt" value="${VO.pt }" required="required"/>
 			</td>
 			<td>트레이너아이디</td>
 			<td style="text-align: left;">
-				<input type="text" name="myTrainer" id="myTrainer" value="${Avo.myTrainer }" required="required"/>
+				<input type="text" name="myTrainer" id="myTrainer" value="${VO.myTrainer }" required="required"/>
 			</td>
 		</tr>
 		<tr>
 			<td>등록일</td>
 			<td style="text-align: left;"> 
-				<input type="date" name="startDay" value="${Avo.startDay }" required="required"/>
+				<input type="date" name="startDay1" value="${VO.startDay }" required="required"/>
 			</td>
 			<td>만기일</td>
 			<td style="text-align: left;">
-				<input type="date" name="endDay" value="${Avo.endDay }" required="required"/>
+				<input type="date" name="endDay1" value="${VO.endDay }" required="required"/>
 			</td>
 		<tr>
 			<td colspan="4" style="text-align: right;border: none;">
-				<input type="submit" value=" 수정하기 " />
+				<input type="submit" value=" 등록 및 수정 " />
 				<c:url var="url" value="UserList.jsp"></c:url>
 				<input type="button" onclick="location.href='${url}'" value=" 돌아가기 "/>
 			</td>

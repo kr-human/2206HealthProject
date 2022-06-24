@@ -99,8 +99,8 @@ public class TrainerServiceImpl implements TrainerService{
 	
 	// 나의 회원 정보 보기
 	@Override
-	public MemberVO SelectByUserInfo(String trainerid) {
-		log.info("TrainerServiceImpl의 SelectByUserInfo호출 : {}", trainerid);
+	public MemberVO SelectByUserInfo(String id) {
+		log.info("TrainerServiceImpl의 SelectByUserInfo호출 : {}", id);
 		
 		SqlSession sqlSession = null;
 		TrainerDAO trainerDAO = null;
@@ -109,7 +109,7 @@ public class TrainerServiceImpl implements TrainerService{
 			sqlSession = MybatisApp.getSqlSessionFactory().openSession(false);
 			trainerDAO = TrainerDAOImpl.getInstance();
 			//------------------------------------------------------------------
-			memberVO = trainerDAO.SelectByUserInfo(sqlSession, trainerid);
+			memberVO = trainerDAO.SelectByUserInfo(sqlSession, id);
 			//------------------------------------------------------------------
 			sqlSession.commit();
 		}catch (Exception e) {
@@ -121,10 +121,9 @@ public class TrainerServiceImpl implements TrainerService{
 		log.info("TrainerServiceImpl의 SelectByUserInfo 리턴 : " + memberVO);
 		return memberVO;
 	}
-	
 	// 회원 pt이용권 등록, 스타트, 엔드데이 등록
 	@Override
-	public void MemberUpdate(MemberVO memberVO, HttpSession httpSession) {
+	public void MemberUpdate(MemberVO memberVO, int newPT, String myTrainer) {
 		log.info("TrainerServiceImpl의 MemberUpdate호출 : {}", memberVO);
 		
 		SqlSession sqlSession = null;
@@ -135,14 +134,15 @@ public class TrainerServiceImpl implements TrainerService{
 			//------------------------------------------------------------------
 			if(memberVO!=null) {
 				// DB에서 해당 회원 정보를 가져온다.
-				MemberVO dbVO = trainerDAO.SelectByUserInfo(sqlSession, memberVO.getMyTrainer());
-
-				// 변경을 수행한다.
+				MemberVO dbVO = trainerDAO.SelectByAllUserInfo(sqlSession, memberVO.getId());
+				memberVO.setPt(newPT);
+				memberVO.setMyTrainer(myTrainer);
+//				memberVO.setStartDay(newStartDay);
+//				memberVO.setEndDay(newEndDay);
 				trainerDAO.MemberUpdate(sqlSession, memberVO);
-					
+//				sqlSession.commit();
 				// 세션의 값을 변경된 값으로 바꿔준다.
-				httpSession.setAttribute("memberVO", memberVO);
-					
+				// httpSession.setAttribute("memberVO", memberVO);
 			}
 			//------------------------------------------------------------------
 			sqlSession.commit();
@@ -152,6 +152,8 @@ public class TrainerServiceImpl implements TrainerService{
 		} finally {
 			if(sqlSession!=null) sqlSession.close();
 		}	
+		// TODO Auto-generated method stub
+		
 	}
 
 }

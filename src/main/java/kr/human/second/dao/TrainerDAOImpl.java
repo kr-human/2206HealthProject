@@ -31,13 +31,14 @@ public class TrainerDAOImpl implements TrainerDAO{
 	}
 	// 나의 회원 정보 보기
 	@Override
-	public MemberVO SelectByUserInfo(SqlSession sqlSession, String trainerid) throws SQLException {
-		return sqlSession.selectOne("trainer.SelectByUserInfo", trainerid);
+	public MemberVO SelectByUserInfo(SqlSession sqlSession, String id) throws SQLException {
+		return sqlSession.selectOne("trainer.SelectByUserInfo", id);
 	}
 	// 회원 pt이용권 등록, 스타트, 엔드데이 등록
 	@Override
 	public void MemberUpdate(SqlSession sqlSession, MemberVO memberVO) throws SQLException {
-		sqlSession.delete("trainer.MemberUpdate", memberVO);
+		sqlSession.update("trainer.MemberUpdate", memberVO);
 	}
+
 
 }

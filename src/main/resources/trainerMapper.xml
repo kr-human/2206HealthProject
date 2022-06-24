@@ -21,17 +21,18 @@
 	
 	<!-- 나의 회원 정보 보기 -->
 	<select id="SelectByUserInfo" parameterType="string" resultType="MemberVO">
-		select * from MEMBERS where myTrainer=#{trainerid}
+		select * from MEMBERS where id=#{id}
 	</select>
 
 	<!-- 회원 pt이용권 등록, 스타트, 엔드데이 등록 -->
 	<update id="MemberUpdate" parameterType="MemberVO">
 		update MEMBERS set
 			pt=#{pt},
-			startday = #{startday},
-			endday = #{endday}
+			startday = #{startDay},
+			endday = #{endDay},
+			myTrainer = #{myTrainer}
 		where
-			myTrainer=#{myTrainer}
+			id=#{id}
 	</update>
 	
 </mapper>
