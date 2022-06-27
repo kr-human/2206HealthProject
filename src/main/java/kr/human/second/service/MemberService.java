@@ -16,7 +16,7 @@ public interface MemberService {
 	// 마이페이지의 정보를 출력해주자
 	MemberVO selectMyInfo(String u_id);
 	// 나의 트레이너 정보를 보여주자
-	MemberVO selectMyTrainerInfo(String myTrainer);
+	MemberVO selectMyTrainerInfo(HashMap<String, String> map);
 	// 나의 정보를 수정하자
 	void updateMember(MemberVO memberVO);
 	// 나의 예약목록을 보자

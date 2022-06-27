@@ -92,10 +92,15 @@ html, body {
 
 #body-content {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	padding-bottom: 200px;
 =======
 	padding-bottom: 200px; /* body-content의 높이 */
 >>>>>>> hwan91
+=======
+	margin-top: 100px;
+	padding-bottom: 100%; /* body-content의 높이 */
+>>>>>>> Member(ver.3)
 }
 
 footer {
@@ -136,7 +141,7 @@ footer {
 							<li><a href="${pageContext.request.contextPath }/logout.jsp">로그아웃</a></li>
 						</c:if>
 						<c:if test="${sessionScope.memberVO.lev == 1}">
-							<li><a href="${pageContext.request.contextPath }/b.jsp">나의 강사보기</a> </li>
+							<li><a href="${pageContext.request.contextPath }/Member/MytrainerInFo.jsp">나의 강사보기</a> </li>
 							<li><a href="${pageContext.request.contextPath }/Member/ReservationCalendar.jsp">예약 하기</a>  </li>
 													
 							<li><a href="${pageContext.request.contextPath }/Notice/index.jsp">공지사항</a></li>

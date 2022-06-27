@@ -49,7 +49,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	@Override
-	public MemberVO selectMyTrainerInfo(String myTrainer) {
+	public MemberVO selectMyTrainerInfo(HashMap<String, String> map) {
 		SqlSession sqlSession = null;
 		MemberDAO memberDAO = MemberDAOImpl.getInstance();
 		MemberVO memberVO = new MemberVO();
@@ -57,7 +57,7 @@ public class MemberServiceImpl implements MemberService{
 			sqlSession = MybatisApp.getSqlSessionFactory().openSession(false);
 			
 			if(sqlSession!=null) {
-			memberVO = memberDAO.selectMyTrainerInfo(sqlSession, myTrainer);
+			memberVO = memberDAO.selectMyTrainerInfo(sqlSession, map);
 			}
 		} catch(Exception e) {
 			e.printStackTrace();

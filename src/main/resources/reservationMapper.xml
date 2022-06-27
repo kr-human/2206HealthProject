@@ -6,7 +6,7 @@
 
 	<!-- 일별 pt수강 목록 가져오기 -->
 	<select id="selectPtOneDay" parameterType="hashmap" resultType="ptClassVO">
-		select * from ptclass where id=#{id} AND TO_CHAR(pttime,'YYYY-MM-dd') = TO_DATE(#{pttime},'YYYY-MM-dd')
+		select * from ptclass where id=#{id} AND TO_CHAR(pttime,'YYYY-MM-dd') = TO_DATE(#{pttime},'YYYY-MM-dd') ORDER BY TO_CHAR(pttime,'YYYY-MM-dd HH24:MI') asc
 	</select>
 	
 	<!-- 예약 하기 -->
@@ -43,6 +43,7 @@
 		LEFT JOIN MEMBERS m 
 		ON r.ID = m.ID 
 		where p.id=#{id} and TO_CHAR(pttime,'YYYY-MM-dd') = TO_DATE(#{pttime},'YYYY-MM-dd')
+		ORDER BY pttime
 	</select>
 	
 	<!-- ptclass삭제하기위한놈 -->
