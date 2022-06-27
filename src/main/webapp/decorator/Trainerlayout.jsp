@@ -91,23 +91,14 @@ html, body {
 }
 
 #body-content {
-<<<<<<< HEAD
-<<<<<<< HEAD
 	padding-bottom: 200px;
-=======
-	padding-bottom: 200px; /* body-content의 높이 */
->>>>>>> hwan91
-=======
-	margin-top: 100px;
-	padding-bottom: 100%; /* body-content의 높이 */
->>>>>>> Member(ver.3)
 }
 
 footer {
 	width: 100%;
 	height: 200px; /* footer의 높이 */
 	position: absolute;
-	bottom: 0px;
+	bottom: 0;
 	left: 0;
 	background-color: black;
 	align-content: center;
@@ -141,7 +132,7 @@ footer {
 							<li><a href="${pageContext.request.contextPath }/logout.jsp">로그아웃</a></li>
 						</c:if>
 						<c:if test="${sessionScope.memberVO.lev == 1}">
-							<li><a href="${pageContext.request.contextPath }/Member/MytrainerInFo.jsp">나의 강사보기</a> </li>
+							<li><a href="${pageContext.request.contextPath }/b.jsp">나의 강사보기</a> </li>
 							<li><a href="${pageContext.request.contextPath }/Member/ReservationCalendar.jsp">예약 하기</a>  </li>
 													
 							<li><a href="${pageContext.request.contextPath }/Notice/index.jsp">공지사항</a></li>
@@ -170,13 +161,8 @@ footer {
 			<sitemesh:write property='body' />
 		</div>
 		<footer class="footer">
-<<<<<<< HEAD
 				<br/><br/><b>humanfitness Inc.&nbsp;&nbsp;경기 수원시 팔달구</b>
 				<br><br><p>대표 : 휴먼&nbsp;&nbsp;&nbsp;&nbsp;사업자등록번호:001-01-00002</p>
-=======
-				<br><b>humanfitness Inc.&nbsp;경기 수원시 팔달구</b><br>
-				<p>대표 : 휴먼&nbsp;&nbsp;&nbsp;&nbsp;사업자등록번호:001-01-00002</p><br>
->>>>>>> hwan91
 				<p>대표번호: +82)123-4567&nbsp;&nbsp;&nbsp;팩스번호 : +82)323-8567&nbsp;&nbsp;&nbsp;홈페이지 : humanfitness.com </p>
 		</footer>
 	</div>
