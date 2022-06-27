@@ -137,7 +137,7 @@
 			$("#reserveDiv").empty();
 			$("#inputPTInfo").css('display','none');
 			
-
+	// 회원계정일때 
 	<%if(level == 1) { %>
 			$(".insertPT").css('display','none');
 			$.ajax({
@@ -147,6 +147,7 @@
 				data : {"pttime":info.dateStr, "myTrainer":'<%=myTrainer%>', "id" : '${id}'},
 				success: function(data){
 					console.log('dataClick',data, data.length);
+					var date = new Date(+new Date() + 3240 * 10000).toISOString().replace("T", " ").replace(/\..*/, '');
 					$("#reserveDiv").append("<thead><tr><th style='width:50%' scope='col'>PT시간</th><th>트레이너</th><th style='width:25%'>예약</th></tr></thead>");
 					if(data.length > 0){
 						
@@ -155,13 +156,15 @@
 						$("#reserveDiv").append("<tbody>");
 						$.each(data, function(index, item){
 							console.log('index', index, item);
-							if(item.r_check=="T"){ // oracle에서 boolean타입이 없는데 어떻게 하지? 근데 가져온값이 false야... 머징? 이건 내일 트레이너가 ptclass만들때 True로 바꿔주도록하자!
-								$("#reserveDiv").append("<tr><td>"+item.ptTime+"</td><td>"+item.id+"</td><td><button class='btn btn-success insertBtn' value='"+item.idx+"'>예약하기</button></td></tr>");
+						if(item.r_check=="T"){ // oracle에서 boolean타입이 없는데 어떻게 하지? 근데 가져온값이 false야... 머징? 이건 내일 트레이너가 ptclass만들때 True로 바꿔주도록하자!
+									
+							$("#reserveDiv").append("<tr><td>"+item.ptTime+"</td><td>"+item.id+"</td><td><button class='btn btn-success insertBtn' value='"+item.idx+"'>예약하기</button></td></tr>");
+								
+						}else{
+							if(item.count){ // reservation테이블에서 현재 사용자 id로 예약이 되어있다면 예약취소 버튼을 출력하도록하자.
+								$("#reserveDiv").append("<tr><td>"+item.ptTime+"</td><td>"+item.id+"</td><td><button class='btn btn-danger deleteBtn' value='"+item.idx+"'>예약취소</button></td></tr>");
 							}else{
-								if(item.count){ // reservation테이블에서 현재 사용자 id로 예약이 되어있다면 예약취소 버튼을 출력하도록하자.
-									$("#reserveDiv").append("<tr><td>"+item.ptTime+"</td><td>"+item.id+"</td><td><button class='btn btn-danger deleteBtn' value='"+item.idx+"'>예약취소</button></td></tr>");
-								}else{
-									$("#reserveDiv").append("<tr><td>"+item.ptTime+"</td><td>"+item.id+"</td><td>예약불가</td></tr>");
+								$("#reserveDiv").append("<tr><td>"+item.ptTime+"</td><td>"+item.id+"</td><td>예약불가</td></tr>");
 								}
 							}
 						});
@@ -248,32 +251,37 @@
 		
 		
 		
-		// pt수업 등록 처리
+		// pt수업 등록 팝업 띄우기
 		$(document).on('click','.insertPT', function(){
 			// pt등록하기 버튼을 누르면 현재 팝업창이 없어지고
 			// 새로운 pt등록하는 팝업을 띄우자
 			$("#reserveDiv").css('display','none');
 			$(".second").css('display','none');
 			$("#inputPTInfo").css('display','block');
-			
-			// 값이 모두 유효하면 Ajax를 호출하여 저장을 수행하면 된다.
-			/*
+	
+		});
+		
+		// pt등록하기
+		$(document).on('click','.insertPTClass', function(){
+			var pttime = $('.selectPTtime').val();
+			console.log(pttime);
+
 			$.ajax({
-				type : "get",
+				type : "post",
 				url : "insertPT.jsp",
-				data : { 
-					"id" : '<%=id%>', 
-					"idx" : idx				
-					},
-				success: function(data){
-					alert('예약 완료!\n');
-					location.reload(); // 화면 다시 읽어라
+				dataType : "json", 
+				data : {
+					"pttime" : pttime,
+					"info" : info.dateStr,
+					"id" : '${id}'
 				},
-				fail : function(){
-					alert('예약 실패\n');
+				success: function(){
+					alert('pt등록이 되었습니다.');
+				},
+				fail: function(){
+					alert('pt등록 실패하였습니다.');
 				}
-			});
-			*/
+			})
 			
 		});
 		
@@ -471,9 +479,26 @@
 			<h2>PT수업 등록</h2>
 			<table id="resultPtTime" class="table"></table>
 			<div style="float: right; padding: 10px">
-				<input type="time" id="pttime"/>
-				<button class="btn btn-success insertPTClass">등록하기</button>
-				<button class="btn btn-success cancelBtn">닫기</button>
+				<div style="float: left;">
+					<select class="form-select selectPTtime" aria-label="Default select example" style="float: right;">
+	  					<option selected>Select PT Time</option>
+	 					<option value="8:00">8:00</option>
+	  					<option value="9:00">9:00</option>
+	  					<option value="10:00">10:00</option>
+	  					<option value="11:00">11:00</option>
+	  					<option value="13:00">13:00</option>
+	  					<option value="14:00">14:00</option>
+	  					<option value="15:00">15:00</option>
+	  					<option value="16:00">16:00</option>
+	  					<option value="17:00">17:00</option>
+	  					<option value="18:00">18:00</option>
+	  					<option value="19:00">19:00</option>
+					</select>
+				</div>
+				<div style="float: right;">	
+					<button class="btn btn-success insertPTClass">등록하기</button>
+					<button class="btn btn-success cancelBtn">닫기</button>
+				</div>
 			</div>
 		</div>
 	</div>

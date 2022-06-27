@@ -7,7 +7,7 @@
 	<!-- 트레이너 pt일정표 등록하기 -->
 	<insert id="P_insert" parameterType="PTClassVO">
 		insert into ptclass values
-		(ptclass_idx_seq.nextval,#{pttime},#{id},#{r_check})
+		(ptclass_idx_seq.nextval,#{id}, TO_DATE(#{ptTime}, 'yyyy-mm-dd hh24:mi'), #{r_check})
 	</insert>
 	
 	 	<!-- 트레이너 pt일정표 변경하기 -->

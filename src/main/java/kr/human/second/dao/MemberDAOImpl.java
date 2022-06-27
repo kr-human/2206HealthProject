@@ -19,12 +19,13 @@ public class MemberDAOImpl implements MemberDAO{
 	//---------------------------------------------------------------
 	
 	@Override
-	public MemberVO selectMyInfo(SqlSession sqlSession, String u_id) throws SQLException {
-		return sqlSession.selectOne("member.selectMyInfo", u_id);
+	public MemberVO selectMyInfo(SqlSession sqlSession, String id) throws SQLException {
+		return sqlSession.selectOne("member.selectMyInfo", id);
 	}
 	@Override
-	public MemberVO selectMyTrainerInfo(SqlSession sqlSession, String t_id) throws SQLException {
-		return sqlSession.selectOne("member.selectMyTrainerInfo", t_id);
+	public MemberVO selectMyTrainerInfo(SqlSession sqlSession, HashMap<String, String> map) throws SQLException {
+		System.out.println("id : "+map.get("id"));
+		return sqlSession.selectOne("member.selectMyTrainerInfo", map);
 	}
 	@Override
 	public void updateMember(SqlSession sqlSession, HashMap<String, String> map) throws SQLException {
