@@ -9,7 +9,6 @@
 	String myTrainer = "";
 	String id = "";
 	int level = 0;
-	System.out.println(session.getAttribute("memberVO"));
 	if(session.getAttribute("memberVO")!=null){
 		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 		myTrainer = memberVO.getMyTrainer();
@@ -148,17 +147,17 @@
 				success: function(data){
 					console.log('dataClick',data, data.length);
 					var date = new Date(+new Date() + 3240 * 10000).toISOString().replace("T", " ").replace(/\..*/, '');
+					console.log(date);
 					$("#reserveDiv").append("<thead><tr><th style='width:50%' scope='col'>PT시간</th><th>트레이너</th><th style='width:25%'>예약</th></tr></thead>");
 					if(data.length > 0){
-						
 						//alert('성공\n' + data);
 						// 받은 데이터를 가공한다. 입맞에 맞게....
 					$("#reserveDiv").append("<tbody>");
 					$.each(data, function(index, item){
 							console.log('index', index, item);
-						if(item.pttime > date){
+						if(item.ptTime > date){
 							if(item.r_check=="T"){ // oracle에서 boolean타입이 없는데 어떻게 하지? 근데 가져온값이 false야... 머징? 이건 내일 트레이너가 ptclass만들때 True로 바꿔주도록하자!
-										
+								
 								$("#reserveDiv").append("<tr><td>"+item.ptTime+"</td><td>"+item.id+"</td><td><button class='btn btn-success insertBtn' value='"+item.idx+"'>예약하기</button></td></tr>");
 									
 							}else{
