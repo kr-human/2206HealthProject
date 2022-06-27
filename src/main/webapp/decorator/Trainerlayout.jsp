@@ -91,8 +91,7 @@ html, body {
 }
 
 #body-content {
-	margin-top: 100px;
-	padding-bottom: 165px; /* body-content의 높이 */
+	padding-bottom: 200px;
 }
 
 footer {
@@ -162,10 +161,9 @@ footer {
 			<sitemesh:write property='body' />
 		</div>
 		<footer class="footer">
-				<br><br><b>humanfitness Inc.&nbsp;&nbsp;경기 수원시 팔달구</b><br><br>
-				<p>대표 : 휴먼&nbsp;&nbsp;&nbsp;&nbsp;사업자등록번호:001-01-00002</p><br>
+				<br/><br/><b>humanfitness Inc.&nbsp;&nbsp;경기 수원시 팔달구</b>
+				<br><br><p>대표 : 휴먼&nbsp;&nbsp;&nbsp;&nbsp;사업자등록번호:001-01-00002</p>
 				<p>대표번호: +82)123-4567&nbsp;&nbsp;&nbsp;팩스번호 : +82)323-8567&nbsp;&nbsp;&nbsp;홈페이지 : humanfitness.com </p>
-			
 		</footer>
 	</div>
 </body>
