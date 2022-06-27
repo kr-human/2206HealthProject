@@ -136,81 +136,100 @@ function formCheck(){
 </script>
 
 <style type="text/css">
-	.title { font-size: 18pt;text-align: center; padding: 10px; font-weight: bold;}
+	.title { 
+	color:white;
+	font-size: 18pt;
+	text-align: center; 
+	padding: 10px; 
+	font-weight: bold;
+}
+#body-wrapper{
+padding: 8px 16px;
+background: linear-gradient(to bottom, rgba(26, 111, 118, 1) 50%, rgba(40, 30, 101, 1) 100%, rgba(125, 185,232,1) 100%)
+}
+.container{
+background-color: black;
+margin-top:70%;
+}
+.col-sm-2{
+	color: white;
+}
 </style>
 </head>
 <body>
-	<div class="container" style="border: 1px solid gray;padding: 15px;margin-top: 30px;border-radius: 30px;">
-		<form action="insertOk.jsp" method="post" onsubmit="return formCheck();">
-			<div class="title" >회원가입하기</div>
-			<div class="mb-3 row">
-			  	<label for="userid" class="col-sm-2 col-form-label">아이디</label>
-			  	<div class="col-sm-2">
-				<input type="text" class="form-control" id="id" name="id" placeholder="아이디입력" required>
+	<div class="clo-bg">
+		<div class="container" style="border: 5px solid gray;padding: 15px;margin-top: 30px;border-radius: 30px;">
+			<form action="insertOk.jsp" method="post" onsubmit="return formCheck();">
+				<div class="title" >회원가입하기</div>
+				<div class="mb-3 row">
+				  	<label for="userid" class="col-sm-2 col-form-label">아이디</label>
+				  	<div class="col-sm-2">
+					<input type="text" class="form-control" id="id" name="id" placeholder="아이디입력" required>
+					</div>
+					<div class="col-sm-1 col-form-label" id="msg"></div>
+					<div class="col-sm-2"></div>
+				  	<label for="password" class="col-sm-2 col-form-label">비밀번호</label>
+				  	<div class="col-sm-3">
+					<input type="password" class="form-control" id="password" name="password" placeholder="비밀번호입력"  required>
+					</div>
 				</div>
-				<div class="col-sm-1 col-form-label" id="msg"></div>
-				<div class="col-sm-2"></div>
-			  	<label for="password" class="col-sm-2 col-form-label">비밀번호</label>
-			  	<div class="col-sm-3">
-				<input type="password" class="form-control" id="password" name="password" placeholder="비밀번호입력"  required>
+				<div class="mb-3 row">
+				  	<label for="name" class="col-sm-2 col-form-label">이름</label>
+				  	<div class="col-sm-3">
+					<input type="text" class="form-control" id="name" name="name" placeholder="사용자 이름 입력" required>
+					</div>
+					<div class="col-sm-2"></div>
+				  	<label for="email" class="col-sm-2 col-form-label">사용자 이메일</label>
+				  	<div class="col-sm-3">
+					<input type="email" class="form-control" id="email" name="email" placeholder="사용자 이메일 입력" required>
+					</div>
 				</div>
-			</div>
-			<div class="mb-3 row">
-			  	<label for="name" class="col-sm-2 col-form-label">이름</label>
-			  	<div class="col-sm-3">
-				<input type="text" class="form-control" id="name" name="name" placeholder="사용자 이름 입력" required>
+				<div class="mb-3 row">
+					<label class="col-sm-2 col-form-label">성별</label>
+					<div class="col-sm-2">
+				  	  <label for="gender1" class="col-sm-2 col-form-label">남자</label>
+					  <input class="form-check-input" type="radio" name="gender" id="gender1" value="M" checked>
+					</div>
+					<div class="col-sm-2">
+				  	  <label for="gender2" class="col-sm-2 col-form-label">여자</label>
+					  <input class="form-check-input" type="radio" name="gender" id="gender2" value="F">
+					 </div> 
 				</div>
-				<div class="col-sm-2"></div>
-			  	<label for="email" class="col-sm-2 col-form-label">사용자 이메일</label>
-			  	<div class="col-sm-3">
-				<input type="email" class="form-control" id="email" name="email" placeholder="사용자 이메일 입력" required>
+				<div class="mb-3 row">
+					<label class="col-sm-2 col-form-label" for="postcode">우편번호</label>
+					<div class="col-sm-2">
+					  <input class="form-control" type="text" name="postcode" id="postcode" readonly  required onclick="daumPostcode();">
+					</div>
+					<div class="col-sm-1"></div>
+					<div class="col-sm-2">
+					  <input type="button" class="btn-check" id="zipCodebtn" onclick="daumPostcode();">
+					  <label class="btn btn-outline-primary" for="zipCodebtn">우편번호찾기</label>
+					</div>
 				</div>
-			</div>
-			<div class="mb-3 row">
-				<label class="col-sm-2 col-form-label">성별</label>
-				<div class="col-sm-2">
-			  	  <label for="gender1" class="col-sm-2 col-form-label">남자</label>
-				  <input class="form-check-input" type="radio" name="gender" id="gender1" value="M" checked>
+				<div class="mb-3 row">
+					<label class="col-sm-2 col-form-label" for="addr1">주소</label>
+					<div class="col-sm-10">
+					  <input class="form-control" type="text" name="addr1" id="addr1" readonly  required onclick="daumPostcode();">
+					</div>
 				</div>
-				<div class="col-sm-2">
-			  	  <label for="gender2" class="col-sm-2 col-form-label">여자</label>
-				  <input class="form-check-input" type="radio" name="gender" id="gender2" value="F">
-				 </div> 
-			</div>
-			<div class="mb-3 row">
-				<label class="col-sm-2 col-form-label" for="postcode">우편번호</label>
-				<div class="col-sm-2">
-				  <input class="form-control" type="text" name="postcode" id="postcode" readonly  required onclick="daumPostcode();">
+				<div class="mb-3 row">
+					<label class="col-sm-2 col-form-label" for="addr2">상세주소</label>
+					<div class="col-sm-10">
+					  <input class="form-control" type="text" name="addr2" id="addr2"  required>
+					</div>
 				</div>
-				<div class="col-sm-1"></div>
-				<div class="col-sm-2">
-				  <input type="button" class="btn-check" id="zipCodebtn" onclick="daumPostcode();">
-				  <label class="btn btn-outline-primary" for="zipCodebtn">우편번호찾기</label>
+				<div class="mb-3 row">
+					<div class="col-sm-12" style="text-align: right;">
+						  <input type="submit" class="btn-check" id="submitBtn" >
+						  <label class="btn btn-outline-success" for="submitBtn">회원가입</label>
+						  <input type="reset" class="btn-check" id="resetBtn" >
+						  <label class="btn btn-outline-success" for="resetBtn">다시쓰기</label>
+						  <input type="button" class="btn-check" id="cancelBtn" onclick="location.href='${pageContext.request.contextPath}'">
+						  <label class="btn btn-outline-success" for="cancelBtn">돌아가기</label>
+					</div>
 				</div>
-			</div>
-			<div class="mb-3 row">
-				<label class="col-sm-2 col-form-label" for="addr1">주소</label>
-				<div class="col-sm-10">
-				  <input class="form-control" type="text" name="addr1" id="addr1" readonly  required onclick="daumPostcode();">
-				</div>
-			</div>
-			<div class="mb-3 row">
-				<label class="col-sm-2 col-form-label" for="addr2">상세주소</label>
-				<div class="col-sm-10">
-				  <input class="form-control" type="text" name="addr2" id="addr2"  required>
-				</div>
-			</div>
-			<div class="mb-3 row">
-				<div class="col-sm-12" style="text-align: right;">
-					  <input type="submit" class="btn-check" id="submitBtn" >
-					  <label class="btn btn-outline-success" for="submitBtn">회원가입</label>
-					  <input type="reset" class="btn-check" id="resetBtn" >
-					  <label class="btn btn-outline-success" for="resetBtn">다시쓰기</label>
-					  <input type="button" class="btn-check" id="cancelBtn" onclick="location.href='${pageContext.request.contextPath}'">
-					  <label class="btn btn-outline-success" for="cancelBtn">돌아가기</label>
-				</div>
-			</div>
-		</form>
+			</form>
+		</div>
 	</div>
 </body>
 </html>
