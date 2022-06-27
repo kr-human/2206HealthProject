@@ -478,9 +478,9 @@
 		<div id="inputPTInfo" style="padding:10px">
 			<h2>PT수업 등록</h2>
 			<table id="resultPtTime" class="table"></table>
-			<div style="float: right; padding: 10px">
+			<div style=" padding: 10px;">
 				<div style="float: left;">
-					<select class="form-select selectPTtime" aria-label="Default select example" style="float: right;">
+					<select class="form-select selectPTtime" aria-label="Default select example" style="float: left;">
 	  					<option selected>Select PT Time</option>
 	 					<option value="8:00">8:00</option>
 	  					<option value="9:00">9:00</option>
