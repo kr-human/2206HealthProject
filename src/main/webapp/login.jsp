@@ -26,11 +26,9 @@ text-align: center;
 .box {
     width: 500px;
     padding: 80px;
-<<<<<<< HEAD
+
     left: 37%;
-=======
-    left: 40%;
->>>>>>> hwan91
+
     position: absolute;
     background: #191919;
     text-align: center;

@@ -30,6 +30,7 @@
 		
 	}else{
 		out.println("<script>alert('로그인후 이용해주세요'); location.href='../login.jsp';</script>");
+		return;
 	}
 	
 	request.setAttribute("myTrainer", myTrainer);

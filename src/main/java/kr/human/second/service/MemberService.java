@@ -33,4 +33,6 @@ public interface MemberService {
 	
 	// pt수업을 폐강하자
 	void deletePT(int idx);
+	
+	public int CheckPT(String id);
 }

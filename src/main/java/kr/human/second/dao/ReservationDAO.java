@@ -4,6 +4,9 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import org.apache.ibatis.session.SqlSession;
+
+import com.ibatis.sqlmap.client.SqlMapException;
+
 import kr.human.second.vo.PTClassVO;
 import kr.human.second.vo.ReservationInfoVO;
 import kr.human.second.vo.ReservationVO;
@@ -27,5 +30,12 @@ public interface ReservationDAO {
 	void deletePT(SqlSession sqlSession, int idx) throws SQLException;
 	// ptclass를 삭제하기 위해서 reservation에 있는 놈을 삭제하자
 	void deleteRe(SqlSession sqlSession, int idx) throws SQLException;
+	
+	// 예약을 하면 pt권 하나를 감소
+	void MinusPT(SqlSession sqlSession, String id) throws SQLException;
+	// 예약을 취소 하면 pt권 하나를 증가
+	void PlusPT(SqlSession sqlSession, String id) throws SQLException;
+	// 예약하기전에 pt권이 있는지 확인을하자
+	int CheckPT(SqlSession sqlSession, String id) throws SQLException;
 	
 }

@@ -397,7 +397,7 @@
 					location.reload(); // 화면 다시 읽어라
 				},
 				fail : function(){
-					alert('예약 실패\n');
+					alert('예약 실패 PT권이 모두 소진되었습니다.\n');
 				}
 			});
 			
