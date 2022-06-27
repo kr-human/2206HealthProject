@@ -92,7 +92,7 @@ html, body {
 
 #body-content {
 	margin-top: 100px;
-	padding-bottom: 165px; /* body-content의 높이 */
+	padding-bottom: 100%; /* body-content의 높이 */
 }
 
 footer {

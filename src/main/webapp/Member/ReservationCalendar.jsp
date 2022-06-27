@@ -204,7 +204,7 @@
 					$.each(data, function(index, item){
 						console.log('index', index, item);
 						if(item.pttime > date){ // pt수업시간이 지났다면 pt취소를 할수없도록한다.
-							$("#reserveDiv").append("<tr><td>"+item.pttime+"</td><td>"+(item.name!=null?item.name:'예약인원없음')+"</td><td><button class='btn btn-success cancelPT' value='"+item.idx+"'>PT취소</button></td></tr>");
+							$("#reserveDiv").append("<tr><td>"+item.pttime+"</td><td>"+(item.name!=null?item.name:'예약인원없음')+"</td><td><button class='btn btn-danger cancelPT' value='"+item.idx+"'>PT취소</button></td></tr>");
 						}else{
 								$("#reserveDiv").append("<tr><td>"+item.pttime+"</td><td>"+(item.name!=null?item.name:'예약인원없음')+"</td><td>시간초과</td></tr>");
 						}
@@ -459,7 +459,13 @@
 	    padding: 10px;
 	  }
 	  
-	  
+	 #calendar{
+	 	position:relative;
+	 	left: 8%;
+	 	width: 85%;
+	 	height: 60%;
+	 	
+	 }
 	  
 </style>
 </head>
