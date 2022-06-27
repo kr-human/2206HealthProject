@@ -9,17 +9,17 @@
 	String myTrainer = "";
 	String id = "";
 	int level = 0;
-	
+	System.out.println(session.getAttribute("memberVO"));
 	if(session.getAttribute("memberVO")!=null){
 		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 		myTrainer = memberVO.getMyTrainer();
 		id = memberVO.getId();
 		level = memberVO.getLev();
-		
-		System.out.println(memberVO);
+		System.out.println("memberVO : " + memberVO);
 		System.out.println(myTrainer + " : " + id);
 	}else{
 		out.println("<script>alert('로그인후 이용해주세요'); location.href='../login.jsp';</script>");
+		return;
 	}
 	
 	request.setAttribute("myTrainer", myTrainer);
@@ -153,24 +153,27 @@
 						
 						//alert('성공\n' + data);
 						// 받은 데이터를 가공한다. 입맞에 맞게....
-						$("#reserveDiv").append("<tbody>");
-						$.each(data, function(index, item){
+					$("#reserveDiv").append("<tbody>");
+					$.each(data, function(index, item){
 							console.log('index', index, item);
-						if(item.r_check=="T"){ // oracle에서 boolean타입이 없는데 어떻게 하지? 근데 가져온값이 false야... 머징? 이건 내일 트레이너가 ptclass만들때 True로 바꿔주도록하자!
+						if(item.pttime > date){
+							if(item.r_check=="T"){ // oracle에서 boolean타입이 없는데 어떻게 하지? 근데 가져온값이 false야... 머징? 이건 내일 트레이너가 ptclass만들때 True로 바꿔주도록하자!
+										
+								$("#reserveDiv").append("<tr><td>"+item.ptTime+"</td><td>"+item.id+"</td><td><button class='btn btn-success insertBtn' value='"+item.idx+"'>예약하기</button></td></tr>");
 									
-							$("#reserveDiv").append("<tr><td>"+item.ptTime+"</td><td>"+item.id+"</td><td><button class='btn btn-success insertBtn' value='"+item.idx+"'>예약하기</button></td></tr>");
-								
-						}else{
-							if(item.count){ // reservation테이블에서 현재 사용자 id로 예약이 되어있다면 예약취소 버튼을 출력하도록하자.
-								$("#reserveDiv").append("<tr><td>"+item.ptTime+"</td><td>"+item.id+"</td><td><button class='btn btn-danger deleteBtn' value='"+item.idx+"'>예약취소</button></td></tr>");
 							}else{
-								$("#reserveDiv").append("<tr><td>"+item.ptTime+"</td><td>"+item.id+"</td><td>예약불가</td></tr>");
+								if(item.count){ // reservation테이블에서 현재 사용자 id로 예약이 되어있다면 예약취소 버튼을 출력하도록하자.
+									$("#reserveDiv").append("<tr><td>"+item.ptTime+"</td><td>"+item.id+"</td><td><button class='btn btn-danger deleteBtn' value='"+item.idx+"'>예약취소</button></td></tr>");
+								}else{
+									$("#reserveDiv").append("<tr><td>"+item.ptTime+"</td><td>"+item.id+"</td><td>예약불가</td></tr>");
+									}
 								}
-							}
-						});
+						} else {
+								$("#reserveDiv").append("<tr><td>"+item.ptTime+"</td><td>"+item.id+"</td><td>시간초과</td></tr>");
+						}
+					});
 						$("#reserveDiv").append("</tbody>");
-					}
-					else {
+					} else {
 						$("#reserveDiv").append("<tr><td colspan='3'>수업이 없습니다.</td></tr>");
 					}
 				},
