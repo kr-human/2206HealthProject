@@ -26,10 +26,14 @@ li {
 	background-color: black;
 	width: 100%;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	height: 130px;
 =======
 	height: 110px;
 >>>>>>> 21fdf3d4615d1552a059b06f84c3bfe69508156b
+=======
+	height: 110px;
+>>>>>>> seongseok2
 }
 
 .nav {
@@ -124,10 +128,13 @@ footer {
 			<article class="nav">
 				<div class="mashtitle">
 <<<<<<< HEAD
+<<<<<<< HEAD
 					<a href="/webapp./index.jsp">
 						<img alt="로고" src="logo.png">
 					</a>
 =======
+=======
+>>>>>>> seongseok2
 					<c:if test="${empty sessionScope.memberVO }">
 						<a href="${pageContext.request.contextPath }/index.jsp"><img src="${pageContext.request.contextPath }/img/logo.png"/></a>
 					</c:if>
@@ -139,7 +146,10 @@ footer {
 							<a href="${pageContext.request.contextPath }/index.jsp"><img src="${pageContext.request.contextPath }/img/logo.png"/></a>
 						</c:if>
 					</c:if>
+<<<<<<< HEAD
 >>>>>>> 21fdf3d4615d1552a059b06f84c3bfe69508156b
+=======
+>>>>>>> seongseok2
 				</div>
 				<ul id="menu">
 					<c:if test="${not empty sessionScope.memberVO }">
@@ -192,9 +202,15 @@ footer {
 			<sitemesh:write property='body' />
 		</div>
 		<footer class="footer">
+<<<<<<< HEAD
 				<br /><br /><b>humanfitness Inc.&nbsp;&nbsp;경기 수원시 팔달구</b>
 				<br /><br /><p>대표 : 휴먼&nbsp;&nbsp;&nbsp;&nbsp;사업자등록번호:001-01-00002</p>
 				<br /><p>대표번호: +82)123-4567&nbsp;&nbsp;&nbsp;팩스번호 : +82)323-8567&nbsp;&nbsp;&nbsp;홈페이지 : humanfitness.com </p>
+=======
+				<br/><br/><b>humanfitness Inc.&nbsp;&nbsp;경기 수원시 팔달구</b>
+				<br><br><p>대표 : 휴먼&nbsp;&nbsp;&nbsp;&nbsp;사업자등록번호:001-01-00002</p>
+				<p>대표번호: +82)123-4567&nbsp;&nbsp;&nbsp;팩스번호 : +82)323-8567&nbsp;&nbsp;&nbsp;홈페이지 : humanfitness.com </p>
+>>>>>>> seongseok2
 		</footer>
 	</div>
 </body>
