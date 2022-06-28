@@ -200,7 +200,7 @@
 					
 					//alert('성공\n' + data);
 					// 받은 데이터를 가공한다. 입맞에 맞게....
-					$("#reserveDiv").append("<tbody><div style='overflow: auto;'>");
+					$("#reserveDiv").append("<tbody>");
 					$.each(data, function(index, item){
 						console.log('index', index, item);
 						if(item.pttime > date){ // pt수업시간이 지났다면 pt취소를 할수없도록한다.
@@ -209,7 +209,7 @@
 								$("#reserveDiv").append("<tr><td>"+item.pttime+"</td><td>"+(item.name!=null?item.name:'예약인원없음')+"</td><td>시간초과</td></tr>");
 						}
 					});
-					$("#reserveDiv").append("</div></tbody>");
+					$("#reserveDiv").append("</tbody>");
 				}
 				else {
 					$("#reserveDiv").append("<tr><td colspan='3'>수업이 없습니다.</td></tr>");
@@ -457,22 +457,15 @@
 	}
 	
 	table {
-		
 	    width: 100%;
 	    border: 1px solid #444444;
 	    text-align: center;
 	    
 	  }
 	  th, td {
-	  	
 	    border: 1px solid #444444;
 	    border-collapse;
 	    padding: 10px;
-	  }
-	  tbody{
-	  	
-	  	height:200px;
-	  	overflow: auto;
 	  }
 	  
 	 #calendar{
