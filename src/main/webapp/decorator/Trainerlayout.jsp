@@ -25,7 +25,7 @@ li {
 .hbody {
 	background-color: black;
 	width: 100%;
-	height: 100px;
+	height: 110px;
 }
 
 .nav {
@@ -150,7 +150,18 @@ footer {
 					</div>
 				</c:if>
 				<c:if test="${not empty sessionScope.memberVO }">
-				(${sessionScope.memberVO.name })님 반갑습니다.
+					<c:if test="${sessionScope.memberVO.lev == 1}">
+						${sessionScope.memberVO.name } 님 반갑습니다.
+						<br />
+						나의 PT이용권 : ${sessionScope.memberVO.pt }
+						<br />
+						등록일 : <fmt:formatDate value="${sessionScope.memberVO.startDay }" pattern="yyyy-MM-dd"/>
+						<br />
+						만기일 : <fmt:formatDate value="${sessionScope.memberVO.endDay }" pattern="yyyy-MM-dd"/>
+					</c:if>
+					<c:if test="${sessionScope.memberVO.lev == 3}">
+						(${sessionScope.memberVO.name })님 반갑습니다.
+					</c:if>
 				</c:if>
 			</article>
 		</section>
