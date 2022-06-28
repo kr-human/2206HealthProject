@@ -200,7 +200,7 @@
 					
 					//alert('성공\n' + data);
 					// 받은 데이터를 가공한다. 입맞에 맞게....
-					$("#reserveDiv").append("<tbody>");
+					$("#reserveDiv").append("<tbody><div style='overflow: auto;'>");
 					$.each(data, function(index, item){
 						console.log('index', index, item);
 						if(item.pttime > date){ // pt수업시간이 지났다면 pt취소를 할수없도록한다.
@@ -209,7 +209,7 @@
 								$("#reserveDiv").append("<tr><td>"+item.pttime+"</td><td>"+(item.name!=null?item.name:'예약인원없음')+"</td><td>시간초과</td></tr>");
 						}
 					});
-					$("#reserveDiv").append("</tbody>");
+					$("#reserveDiv").append("</div></tbody>");
 				}
 				else {
 					$("#reserveDiv").append("<tr><td colspan='3'>수업이 없습니다.</td></tr>");
@@ -244,6 +244,7 @@
 				},
 				fail : function(){
 					alert('실패\n');
+					location.reload();
 				}
 			});
 			
@@ -279,9 +280,11 @@
 				},
 				success: function(){
 					alert('pt등록이 되었습니다.');
+					location.reload();
 				},
 				fail: function(){
 					alert('pt등록 실패하였습니다.');
+					location.reload();
 				}
 			})
 			
@@ -393,11 +396,16 @@
 					"idx" : idx				
 					},
 				success: function(data){
-					alert('예약 완료!\n');
-					location.reload(); // 화면 다시 읽어라
+					if(data==1){
+						alert('예약 완료!\n');
+						location.reload(); // 화면 다시 읽어라
+					} else{
+						alert('예약 실패 PT권이 모두 소진되었습니다.!\n');
+						location.reload();
+					}
 				},
-				fail : function(){
-					alert('예약 실패\n');
+				fail : function(data){
+					//alert('예약 실패 PT권이 모두 소진되었습니다.\n');
 				}
 			});
 			
@@ -449,14 +457,22 @@
 	}
 	
 	table {
+		
 	    width: 100%;
 	    border: 1px solid #444444;
 	    text-align: center;
+	    
 	  }
 	  th, td {
+	  	
 	    border: 1px solid #444444;
 	    border-collapse;
 	    padding: 10px;
+	  }
+	  tbody{
+	  	
+	  	height:200px;
+	  	overflow: auto;
 	  }
 	  
 	 #calendar{
@@ -483,7 +499,7 @@
 			<button class="btn btn-success insertPT" >PT시간 등록하기</button>
 			<button class="btn btn-success cancelBtn" >닫기</button>
 		</div>
-		<div id="inputPTInfo" style="padding:10px">
+		<div id="inputPTInfo" style="padding:10px;">
 			<h2>PT수업 등록</h2>
 			<table id="resultPtTime" class="table"></table>
 			<div style=" padding: 10px;">

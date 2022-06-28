@@ -30,6 +30,7 @@
 		
 	}else{
 		out.println("<script>alert('로그인후 이용해주세요'); location.href='../login.jsp';</script>");
+		return;
 	}
 	
 	request.setAttribute("myTrainer", myTrainer);
@@ -43,6 +44,7 @@
 <style type="text/css">
 	#container{
 		padding: 10px;
+		height: 100vh;
 	}
 	
 	#TrainerName{
@@ -50,11 +52,14 @@
 	}
 	
 	.sbox{
-		width: 35%;
-		height: 100%;		
+		width: 500px;
+		height: 300px;
 		padding:10px;
 		border: 3px solid navy;
 		border-radius: 20px;
+		margin: auto;
+		margin-top: 10%;
+		
 	}
 </style>
 <script type="text/javascript">
@@ -71,11 +76,13 @@
 		<div>
 			<h3><%=MyTrainerVO.getName()%> (<%=MyTrainerVO.getGender()!="M"?"남":"여" %>) 트레이너</h3>
 			<br>
-			<h4>생활체육지도자자격증2급(보디빌딩) </h4>
-			<h4>생활체육지도자자격증2급(MMA)</h4>
-			<h4>근막이완자격증 이수</h4>
-			<h4>기능성재활트레이닝자격증 이수</h4>
-			<h4>한국체육대학교 / 몬스터 크로스핏강사</h4>
+			<h3>주요 이력</h3>
+			<br />
+			<h4>* 생활체육지도자자격증2급(보디빌딩) </h4>
+			<h4>* 생활체육지도자자격증2급(MMA)</h4>
+			<h4>* 근막이완자격증 이수</h4>
+			<h4>* 기능성재활트레이닝자격증 이수</h4>
+			<h4>* 한국체육대학교 / 몬스터 크로스핏강사</h4>
 		</div>
 	</div>
 	<div>

@@ -136,8 +136,14 @@ public class MemberServiceImpl implements MemberService{
 			if(sqlSession!=null) {
 				reservationDAO.checkUpdate(sqlSession, ptClassVO);
 				
-				if("insert".equals(ptClassVO.getType())) reservationDAO.insertReservation(sqlSession, ptClassVO);
-				else if("delete".equals(ptClassVO.getType())) reservationDAO.deleteReservation(sqlSession, ptClassVO);
+				if("insert".equals(ptClassVO.getType())) {
+					reservationDAO.insertReservation(sqlSession, ptClassVO);
+					reservationDAO.MinusPT(sqlSession, ptClassVO.getId());
+				}
+				else if("delete".equals(ptClassVO.getType())) {
+					reservationDAO.deleteReservation(sqlSession, ptClassVO);
+					reservationDAO.PlusPT(sqlSession, ptClassVO.getId());
+				}
 			}
 			sqlSession.commit();
 		} catch(Exception e) {
@@ -204,7 +210,22 @@ public class MemberServiceImpl implements MemberService{
 		}
 	}
 	
-	
+	public int CheckPT(String id) {
+		SqlSession sqlSession = null;
+		ReservationDAO reservationDAO = ReservationDAOImpl.getInstance();
+		int count = 0;
+		try {
+			sqlSession = MybatisApp.getSqlSessionFactory().openSession(false);
+			if(sqlSession!=null) {
+				count = reservationDAO.CheckPT(sqlSession, id);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlSession.close();
+		}
+		return count;
+	}
 	
 	
 }

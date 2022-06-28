@@ -50,6 +50,19 @@
 	<delete id="deletePT" parameterType="int">
 		delete from reservation where idx=#{idx}
 	</delete>
+	
+	<!-- 예약을 하기위해서 pt권의 여부확인 -->
+	<select id="seletByPtCoupon" parameterType="string" resultType="int">
+		select PT from members where id=#{id}
+	</select>
+	<!-- 예약을 하면 pt권이 차감 -->
+	<update id="MinusPt" parameterType="string">
+		update members set pt=pt-1 where id=#{id}
+	</update>
+	<!-- 예약을 취소하면 pt권이 복원 -->
+	<update id="PulsPt" parameterType="string">
+		update members set pt=pt+1 where id=#{id}
+	</update>
 </mapper>
 
 

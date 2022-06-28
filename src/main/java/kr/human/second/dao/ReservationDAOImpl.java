@@ -57,4 +57,18 @@ public class ReservationDAOImpl implements ReservationDAO{
 		sqlSession.delete("reservation.deletePT",idx);
 		
 	}
+	@Override
+	public void MinusPT(SqlSession sqlSession, String id) throws SQLException {
+		sqlSession.update("reservation.MinusPt",id);
+		
+	}
+	@Override
+	public void PlusPT(SqlSession sqlSession, String id) throws SQLException {
+		sqlSession.update("reservation.PulsPt",id);
+		
+	}
+	@Override
+	public int CheckPT(SqlSession sqlSession, String id) throws SQLException {
+		return sqlSession.selectOne("reservation.seletByPtCoupon",id);
+	}
 }

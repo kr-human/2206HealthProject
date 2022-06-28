@@ -26,7 +26,13 @@ text-align: center;
 .box {
     width: 500px;
     padding: 80px;
+<<<<<<< HEAD
     left: 37%;
+=======
+
+    left: 37%;
+
+>>>>>>> Member(ver.4)
     position: absolute;
     background: #191919;
     text-align: center;
