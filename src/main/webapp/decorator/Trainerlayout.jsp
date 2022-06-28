@@ -120,14 +120,14 @@ footer {
 			<article class="nav">
 				<div class="mashtitle">
 					<c:if test="${empty sessionScope.memberVO }">
-						<a href="${pageContext.request.contextPath }/index.jsp">로고</a>
+						<a href="${pageContext.request.contextPath }/index.jsp"><img src="${pageContext.request.contextPath }/img/logo.png"/></a>
 					</c:if>
 					<c:if test="${not empty sessionScope.memberVO }">
 						<c:if test="${sessionScope.memberVO.lev == 1}">
-							<a href="${pageContext.request.contextPath }/index.jsp">로고</a>
+							<a href="${pageContext.request.contextPath }/index.jsp"><img src="${pageContext.request.contextPath }/img/logo.png"/></a>
 						</c:if>
 						<c:if test="${sessionScope.memberVO.lev == 3}">
-							<a href="${pageContext.request.contextPath }/index.jsp">로고</a>
+							<a href="${pageContext.request.contextPath }/index.jsp"><img src="${pageContext.request.contextPath }/img/logo.png"/></a>
 						</c:if>
 					</c:if>
 				</div>
