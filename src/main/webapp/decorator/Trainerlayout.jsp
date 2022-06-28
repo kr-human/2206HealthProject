@@ -25,7 +25,11 @@ li {
 .hbody {
 	background-color: black;
 	width: 100%;
+<<<<<<< HEAD
 	height: 130px;
+=======
+	height: 110px;
+>>>>>>> 21fdf3d4615d1552a059b06f84c3bfe69508156b
 }
 
 .nav {
@@ -119,9 +123,23 @@ footer {
 		<section class="hbody">
 			<article class="nav">
 				<div class="mashtitle">
+<<<<<<< HEAD
 					<a href="/webapp./index.jsp">
 						<img alt="로고" src="logo.png">
 					</a>
+=======
+					<c:if test="${empty sessionScope.memberVO }">
+						<a href="${pageContext.request.contextPath }/index.jsp"><img src="${pageContext.request.contextPath }/img/logo.png"/></a>
+					</c:if>
+					<c:if test="${not empty sessionScope.memberVO }">
+						<c:if test="${sessionScope.memberVO.lev == 1}">
+							<a href="${pageContext.request.contextPath }/index.jsp"><img src="${pageContext.request.contextPath }/img/logo.png"/></a>
+						</c:if>
+						<c:if test="${sessionScope.memberVO.lev == 3}">
+							<a href="${pageContext.request.contextPath }/index.jsp"><img src="${pageContext.request.contextPath }/img/logo.png"/></a>
+						</c:if>
+					</c:if>
+>>>>>>> 21fdf3d4615d1552a059b06f84c3bfe69508156b
 				</div>
 				<ul id="menu">
 					<c:if test="${not empty sessionScope.memberVO }">
@@ -152,7 +170,18 @@ footer {
 					</div>
 				</c:if>
 				<c:if test="${not empty sessionScope.memberVO }">
-				(${sessionScope.memberVO.name })님 반갑습니다.
+					<c:if test="${sessionScope.memberVO.lev == 1}">
+						${sessionScope.memberVO.name } 님 반갑습니다.
+						<br />
+						나의 PT이용권 : ${sessionScope.memberVO.pt }
+						<br />
+						등록일 : <fmt:formatDate value="${sessionScope.memberVO.startDay }" pattern="yyyy-MM-dd"/>
+						<br />
+						만기일 : <fmt:formatDate value="${sessionScope.memberVO.endDay }" pattern="yyyy-MM-dd"/>
+					</c:if>
+					<c:if test="${sessionScope.memberVO.lev == 3}">
+						(${sessionScope.memberVO.name })님 반갑습니다.
+					</c:if>
 				</c:if>
 			</article>
 		</section>
