@@ -79,7 +79,7 @@
 						<c:url var="url" value="PTupdateForm.jsp">
 							<c:param name="id" value="${vo.id }"/>
 						</c:url>
-						<button onclick="location.href='${url}'" class="btn btn-outline-light" style="color: white;">등록 및 수정</button>
+						<button onclick="location.href='${url}'" class="btn btn-outline-light" id="submitBtn" >등록 및 수정</button>
 						</td>
 					</tr>
 				</c:forEach>
@@ -123,7 +123,7 @@
 						<c:url var="url" value="PTupdateForm.jsp">
 							<c:param name="id" value="${myUserList.id }"/>
 						</c:url>
-						<button onclick="location.href='${url}'" class="btn btn-outline-light" style="color: white;">등록 및 수정</button>
+						<button onclick="location.href='${url}'" class="btn btn-outline-light" id="submitBtn" >등록 및 수정</button>
 						</td>
 					</tr>			
 				</c:forEach>
