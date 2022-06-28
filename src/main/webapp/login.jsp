@@ -110,7 +110,7 @@ text-align: center;
 						<c:if test="${not empty msg }">
 							<div style="color: green;font-size: 15pt;">${msg }</div>
 						</c:if>
-						<h1>login</h1>
+						<h1>Login</h1>
 						<p class= "text-muted">Please enter your login and password!</p>
 						<div class="input-group input-sm">
 							<label class="input-group-addon" for="username">								
@@ -132,7 +132,7 @@ text-align: center;
 						</div>
 						<div style="text-align: center;margin: 15px;">
 							<!-- 여기서 아이디 찾기 패스워드찾기 기능 추가  -->
-							[<a href="${pageContext.request.contextPath }">홈으로</a>]
+							[<a href="${pageContext.request.contextPath }">HOME</a>]
 						</div>
 					</form>
 				

@@ -203,13 +203,13 @@ margin-top:70%;
 					<div class="col-sm-1"></div>
 					<div class="col-sm-2">
 					  <input type="button" class="btn-check" id="zipCodebtn" onclick="daumPostcode();">
-					  <label class="btn btn-outline-primary" for="zipCodebtn">우편번호찾기</label>
+					  <label class="btn btn-outline-light" for="zipCodebtn">우편번호찾기</label>
 					</div>
 				</div>
 				<div class="mb-3 row">
 					<label class="col-sm-2 col-form-label" for="addr1">주소</label>
 					<div class="col-sm-10">
-					  <input class="form-control" type="text" name="addr1" id="addr1" readonly  required onclick="daumPostcode();">
+					  <input class="form-control" type="text" name="addr1" id="addr1" placeholder="주소" readonly  required onclick="daumPostcode();">
 					</div>
 				</div>
 				<div class="mb-3 row">
@@ -221,11 +221,11 @@ margin-top:70%;
 				<div class="mb-3 row">
 					<div class="col-sm-12" style="text-align: right;">
 						  <input type="submit" class="btn-check" id="submitBtn" >
-						  <label class="btn btn-outline-success" for="submitBtn">회원가입</label>
+						  <label class="btn btn-outline-light" for="submitBtn">회원가입</label>
 						  <input type="reset" class="btn-check" id="resetBtn" >
-						  <label class="btn btn-outline-success" for="resetBtn">다시쓰기</label>
+						  <label class="btn btn-outline-light" for="resetBtn">다시쓰기</label>
 						  <input type="button" class="btn-check" id="cancelBtn" onclick="location.href='${pageContext.request.contextPath}'">
-						  <label class="btn btn-outline-success" for="cancelBtn">돌아가기</label>
+						  <label class="btn btn-outline-light" for="cancelBtn">돌아가기</label>
 					</div>
 				</div>
 			</form>

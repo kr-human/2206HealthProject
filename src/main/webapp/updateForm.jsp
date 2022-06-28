@@ -90,13 +90,30 @@ function formCheck(){
 		alert('상세 주소는 반드시 입력해야 합니다.');
 		$("#addr2").val("");
 		$("#addr2").focus();
-		return false;
+		return false;ㄴ
 	}
 }
 </script>
 
 <style type="text/css">
-	.title { font-size: 18pt;text-align: center; padding: 10px; font-weight: bold;}
+	.title { 
+	color:white;
+	font-size: 18pt;
+	text-align: center; 
+	padding: 10px; 
+	font-weight: bold;
+}
+#body-wrapper{
+padding: 8px 16px;
+background: linear-gradient(to bottom, rgba(26, 111, 118, 1) 50%, rgba(40, 30, 101, 1) 100%, rgba(125, 185,232,1) 100%)
+}
+.container{
+background-color: black;
+margin-top:70%;
+}
+.col-sm-2{
+	color: white;
+}
 </style>
 </head>
 <body>
@@ -107,7 +124,7 @@ function formCheck(){
 
 			  	<label for="userid" class="col-sm-2 col-form-label">사용자 아이디</label>
 			  	<div class="col-sm-2">
-				<input type="text" class="form-control" id="id" name="id" readonly value="${memberVO.id }">
+				<input type="text" style="background-color: silver;" class="form-control" id="id" name="id" readonly value="${memberVO.id }">
 				</div>
 				<div class="col-sm-1 col-form-label" id="msg"></div>
 				<div class="col-sm-2"></div>
@@ -119,7 +136,7 @@ function formCheck(){
 			<div class="mb-3 row">
 			  	<label for="name" class="col-sm-2 col-form-label">사용자 이름</label>
 			  	<div class="col-sm-3">
-				<input type="text" class="form-control" id="name" name="name" value="${sessionScope.memberVO.name }" readonly>
+				<input type="text" style="background-color: silver;" class="form-control" id="name" name="name" value="${sessionScope.memberVO.name }" readonly>
 				</div>
 				<div class="col-sm-2"></div>
 			  	<label for="newPassword" class="col-sm-2 col-form-label">새로운 비번</label>
@@ -147,7 +164,7 @@ function formCheck(){
 			<div class="mb-3 row">
 				<label class="col-sm-2 col-form-label" for="postCode">우편번호</label>
 				<div class="col-sm-2">
-				  <input class="form-control" type="text" name="postcode" id="postcode" readonly  required value="${memberVO.postcode }">
+				  <input class="form-control" style="background-color: silver;" type="text" name="postcode" id="postcode" readonly  required value="${memberVO.postcode }">
 				</div>
 				<div class="col-sm-1"></div>
 				<div class="col-sm-2">
@@ -158,23 +175,23 @@ function formCheck(){
 			<div class="mb-3 row">
 				<label class="col-sm-2 col-form-label" for="addr1">주소</label>
 				<div class="col-sm-10">
-				  <input class="form-control" type="text" name="addr1" id="addr1" readonly  required value="${memberVO.addr1 }">
+				  <input class="form-control" style="background-color: silver; "type="text" name="addr1" id="addr1" readonly  required value="${memberVO.addr1 }">
 				</div>
 			</div>
 			<div class="mb-3 row">
 				<label class="col-sm-2 col-form-label" for="addr2">상세주소</label>
 				<div class="col-sm-10">
-				  <input class="form-control" type="text" name="addr2" id="addr2"  readonly  value="${memberVO.addr2 }">
+				  <input class="form-control" style="background-color: silver; "type="text" name="addr2" id="addr2"  readonly  value="${memberVO.addr2 }">
 				</div>
 			</div>
 			<div class="mb-3 row">
 				<div class="col-sm-12" style="text-align: right;">
 					  <input type="submit" class="btn-check" id="submitBtn" >
-					  <label class="btn btn-outline-success" for="submitBtn">정보수정</label>
+					  <label class="btn btn-outline-light" for="submitBtn">정보수정</label>
 					  <input type="reset" class="btn-check" id="resetBtn" >
-					  <label class="btn btn-outline-success" for="resetBtn">다시쓰기</label>
+					  <label class="btn btn-outline-light" for="resetBtn">다시쓰기</label>
 					  <input type="button" class="btn-check" id="cancelBtn" onclick="location.href='${pageContext.request.contextPath}'">
-					  <label class="btn btn-outline-success" for="cancelBtn">돌아가기</label>
+					  <label class="btn btn-outline-light" for="cancelBtn">돌아가기</label>
 				</div>
 			</div>
 		</form>
