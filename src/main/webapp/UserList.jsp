@@ -62,7 +62,7 @@
 		<tbody>
 			<c:if test="${empty Alllist }">
 				<tr>
-					<td align="center" colspan="8">등록된 글이 없습니다.</td>
+					<td align="center" colspan="8">등록된 회원이 없습니다.</td>
 				</tr>		
 			</c:if>
 			<c:if test="${not empty Alllist }">
@@ -79,7 +79,7 @@
 						<c:url var="url" value="PTupdateForm.jsp">
 							<c:param name="id" value="${vo.id }"/>
 						</c:url>
-						<button onclick="location.href='${url}'" style="color: black">등록 및 수정</button>
+						<button onclick="location.href='${url}'" class="btn btn-outline-light" id="submitBtn" >등록 및 수정</button>
 						</td>
 					</tr>
 				</c:forEach>
@@ -106,7 +106,7 @@
 		<tbody>
 			<c:if test="${empty myUserList }">
 				<tr>
-					<td align="center" colspan="8">등록된 글이 없습니다.</td>
+					<td align="center" colspan="8">등록된 회원이 없습니다.</td>
 				</tr>		
 			</c:if>
 			<c:if test="${not empty myUserList }">
@@ -120,10 +120,10 @@
 						<td><fmt:formatDate value="${myUserList.endDay }" pattern="yyyy-MM-dd"/></td>
 						<td>${myUserList.myTrainer }</td>
 						<td>
-						<c:url var="url" value="PTupdateForm2.jsp">
+						<c:url var="url" value="PTupdateForm.jsp">
 							<c:param name="id" value="${myUserList.id }"/>
 						</c:url>
-						<button onclick="location.href='${url}'" style="color: black">등록 및 수정</button>
+						<button onclick="location.href='${url}'" class="btn btn-outline-light" id="submitBtn" >등록 및 수정</button>
 						</td>
 					</tr>			
 				</c:forEach>

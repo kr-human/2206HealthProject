@@ -36,8 +36,8 @@
 	table { width: 800px; margin: auto; padding: 5px;}
 	th {padding: 5px; border: 1px solid gray; background-color: silver;text-align: center;}
 	td {padding: 5px; border: 1px solid gray; }
-	.title6 {border: none; font-size: 20pt; text-align: center;}
-	.item { width: 100px; background-color: silver; text-align: right;}
+	.title {border: none; font-size: 20pt; text-align: center;}
+	.item { width: 100px; background-color: black; color: white; text-align: center;}
 </style>
 </head>
 <body>
@@ -51,7 +51,7 @@
 	<input type="hidden" name="isClick" value="false"/>
 	<table>
 		<tr>
-			<td colspan="4" class="title6">공지사항 삭제하기</td>
+			<td colspan="4" class="title"><b>공지사항 삭제하기</b></td>
 		</tr>
 		<tr>
 			<td class="item">제목</td>
@@ -73,10 +73,10 @@
 
 		<tr>
 			<td colspan="4" style="border: none;text-align: right;">
-				<input type="submit" value="삭제하기" class="btn btn-outline-success btn-sm" />
-				<input type="button" class="btn btn-outline-success btn-sm" 
+				<input type="submit" value="삭제하기" class="btn btn-dark" />
+				<input type="button" class="btn btn-dark" 
 				onclick='sendPost("view.jsp",{"p":${p},"s":${s },"b":${b },"idx":${vo.idx }})' value="내용보기">
-				<input type="button" class="btn btn-outline-success btn-sm" 
+				<input type="button" class="btn btn-dark" 
 				onclick='sendPost("index.jsp",{"p":${p},"s":${s },"b":${b }})' value="목록으로">
 			</td>
 		</tr>

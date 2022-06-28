@@ -25,7 +25,7 @@ li {
 .hbody {
 	background-color: black;
 	width: 100%;
-	height: 100px;
+	height: 110px;
 }
 
 .nav {
@@ -45,7 +45,7 @@ li {
 	color: white;
 }
 
-.title>a {
+.mashtitle>a {
 	color: white;
 	text-decoration: none;
 }
@@ -91,8 +91,7 @@ html, body {
 }
 
 #body-content {
-	margin-top: 100px;
-	padding-bottom: 165px; /* body-content의 높이 */
+	padding-bottom: 200px;
 }
 
 footer {
@@ -120,7 +119,17 @@ footer {
 		<section class="hbody">
 			<article class="nav">
 				<div class="mashtitle">
-					<a href="./index.html">로고</a>
+					<c:if test="${empty sessionScope.memberVO }">
+						<a href="${pageContext.request.contextPath }/index.jsp"><img src="${pageContext.request.contextPath }/img/logo.png"/></a>
+					</c:if>
+					<c:if test="${not empty sessionScope.memberVO }">
+						<c:if test="${sessionScope.memberVO.lev == 1}">
+							<a href="${pageContext.request.contextPath }/index.jsp"><img src="${pageContext.request.contextPath }/img/logo.png"/></a>
+						</c:if>
+						<c:if test="${sessionScope.memberVO.lev == 3}">
+							<a href="${pageContext.request.contextPath }/index.jsp"><img src="${pageContext.request.contextPath }/img/logo.png"/></a>
+						</c:if>
+					</c:if>
 				</div>
 				<ul id="menu">
 					<c:if test="${not empty sessionScope.memberVO }">
@@ -151,7 +160,18 @@ footer {
 					</div>
 				</c:if>
 				<c:if test="${not empty sessionScope.memberVO }">
-				(${sessionScope.memberVO.name })님 반갑습니다.
+					<c:if test="${sessionScope.memberVO.lev == 1}">
+						${sessionScope.memberVO.name } 님 반갑습니다.
+						<br />
+						나의 PT이용권 : ${sessionScope.memberVO.pt }
+						<br />
+						등록일 : <fmt:formatDate value="${sessionScope.memberVO.startDay }" pattern="yyyy-MM-dd"/>
+						<br />
+						만기일 : <fmt:formatDate value="${sessionScope.memberVO.endDay }" pattern="yyyy-MM-dd"/>
+					</c:if>
+					<c:if test="${sessionScope.memberVO.lev == 3}">
+						(${sessionScope.memberVO.name })님 반갑습니다.
+					</c:if>
 				</c:if>
 			</article>
 		</section>
@@ -162,10 +182,9 @@ footer {
 			<sitemesh:write property='body' />
 		</div>
 		<footer class="footer">
-				<br><br><b>humanfitness Inc.&nbsp;&nbsp;경기 수원시 팔달구</b><br><br>
-				<p>대표 : 휴먼&nbsp;&nbsp;&nbsp;&nbsp;사업자등록번호:001-01-00002</p><br>
+				<br/><br/><b>humanfitness Inc.&nbsp;&nbsp;경기 수원시 팔달구</b>
+				<br><br><p>대표 : 휴먼&nbsp;&nbsp;&nbsp;&nbsp;사업자등록번호:001-01-00002</p>
 				<p>대표번호: +82)123-4567&nbsp;&nbsp;&nbsp;팩스번호 : +82)323-8567&nbsp;&nbsp;&nbsp;홈페이지 : humanfitness.com </p>
-			
 		</footer>
 	</div>
 </body>
