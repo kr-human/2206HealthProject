@@ -53,6 +53,8 @@ INSERT INTO MEMBERS VALUES
 INSERT INTO MEMBERS VALUES 
 ('user01','1234','한사람',' ',' ',' ','ithuman202204@gmail.com','F',0,'2022-05-30','2023-05-30',1,'root');
 INSERT INTO MEMBERS VALUES 
+('user10','1234','human1',' ',' ',' ','ithuman202204@gmail.com','M',0,'2022-05-30','2023-05-30',1,'root');
+INSERT INTO MEMBERS VALUES 
 ('user09','1234','두번째사람',' ',' ',' ','ithuman202204@gmail.com','F',0,'2022-05-30','2023-05-30',1,'admin');
 
 SELECT * FROM members;
