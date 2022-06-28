@@ -46,6 +46,12 @@
 	#body-wrapper{ padding: 8px 16px; background: linear-gradient(to bottom, rgba(26, 111, 118, 1) 50%, rgba(40, 30, 101, 1) 100%, rgba(125, 185,232,1) 100%)}
 	.container{ background-color: black; margin-top:70%;}
 	.col-sm-2{ color: white;}
+	body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: linear-gradient(to right, #b92b27, #1565c0)
+}
 </style>
 </head>
 <body>
