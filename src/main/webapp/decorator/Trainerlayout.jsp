@@ -119,7 +119,7 @@ footer {
 		<section class="hbody">
 			<article class="nav">
 				<div class="mashtitle">
-					<a href="./index.html">로고</a>
+					<a href="./index.jsp">로고</a>
 				</div>
 				<ul id="menu">
 					<c:if test="${not empty sessionScope.memberVO }">
