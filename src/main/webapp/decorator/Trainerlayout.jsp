@@ -119,21 +119,18 @@ footer {
 		<section class="hbody">
 			<article class="nav">
 				<div class="mashtitle">
-<<<<<<< HEAD
 					<c:if test="${empty sessionScope.memberVO }">
-						<a href="${pageContext.request.contextPath }/index.jsp"><img src="${pageContext.request.contextPath }/img/logo.png"/></a>
+						<a href="${pageContext.request.contextPath }/index.jsp"><img src="${pageContext.request.contextPath }/images/logo.png"/></a>
 					</c:if>
 					<c:if test="${not empty sessionScope.memberVO }">
 						<c:if test="${sessionScope.memberVO.lev == 1}">
-							<a href="${pageContext.request.contextPath }/index.jsp"><img src="${pageContext.request.contextPath }/img/logo.png"/></a>
+							<a href="${pageContext.request.contextPath }/index.jsp"><img src="${pageContext.request.contextPath }/images/logo.png"/></a>
 						</c:if>
 						<c:if test="${sessionScope.memberVO.lev == 3}">
-							<a href="${pageContext.request.contextPath }/index.jsp"><img src="${pageContext.request.contextPath }/img/logo.png"/></a>
+							<a href="${pageContext.request.contextPath }/index.jsp"><img src="${pageContext.request.contextPath }/images/logo.png"/></a>
 						</c:if>
 					</c:if>
-=======
-					<a href="./index.jsp">로고</a>
->>>>>>> hwan91
+
 				</div>
 				<ul id="menu">
 					<c:if test="${not empty sessionScope.memberVO }">
