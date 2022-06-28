@@ -25,7 +25,7 @@ li {
 .hbody {
 	background-color: black;
 	width: 100%;
-	height: 100px;
+	height: 130px;
 }
 
 .nav {
@@ -119,7 +119,9 @@ footer {
 		<section class="hbody">
 			<article class="nav">
 				<div class="mashtitle">
-					<a href="./index.html">로고</a>
+					<a href="/webapp./index.jsp">
+						<img alt="로고" src="logo.png">
+					</a>
 				</div>
 				<ul id="menu">
 					<c:if test="${not empty sessionScope.memberVO }">
@@ -161,9 +163,9 @@ footer {
 			<sitemesh:write property='body' />
 		</div>
 		<footer class="footer">
-				<br/><br/><b>humanfitness Inc.&nbsp;&nbsp;경기 수원시 팔달구</b>
-				<br><br><p>대표 : 휴먼&nbsp;&nbsp;&nbsp;&nbsp;사업자등록번호:001-01-00002</p>
-				<p>대표번호: +82)123-4567&nbsp;&nbsp;&nbsp;팩스번호 : +82)323-8567&nbsp;&nbsp;&nbsp;홈페이지 : humanfitness.com </p>
+				<br /><br /><b>humanfitness Inc.&nbsp;&nbsp;경기 수원시 팔달구</b>
+				<br /><br /><p>대표 : 휴먼&nbsp;&nbsp;&nbsp;&nbsp;사업자등록번호:001-01-00002</p>
+				<br /><p>대표번호: +82)123-4567&nbsp;&nbsp;&nbsp;팩스번호 : +82)323-8567&nbsp;&nbsp;&nbsp;홈페이지 : humanfitness.com </p>
 		</footer>
 	</div>
 </body>
