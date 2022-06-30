@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reservation">
+
+	<!-- 일별 pt수강 목록 가져오기 -->
+	<select id="selectPtOneDay" parameterType="hashmap" resultType="ptClassVO">
+		select * from ptclass where id=#{id} AND TO_CHAR(pttime,'YYYY-MM-dd') = TO_DATE(#{pttime},'YYYY-MM-dd') ORDER BY TO_CHAR(pttime,'YYYY-MM-dd HH24:MI') asc
+	</select>
+	
+	<!-- 예약 하기 -->
+	<insert id="insertReservation" parameterType="ptClassVO">
+		insert into reservation values(#{id},#{idx})
+	</insert>
+	
+	<!-- 예약 취소하기 -->
+	<delete id="deleteReservation" parameterType="ptClassVO">
+		delete from reservation where id=#{id} and idx=#{idx}
+	</delete>
+	
+	<!-- 나의 예약목록 확인하기 -->
+	<select id="selectMyReservation" parameterType="string" resultType="ReservationVO">
+		select * from reservation where id=#{id}
+	</select>
+	
+	<!-- 예약/예약취소시 PTClass check값 변경  -->
+	<update id="checkUpdate" parameterType="PTClassVO">
+		update ptclass set r_check=#{r_check} where idx=#{idx}
+	</update>
+	
+	<!-- 나의 예약체크하기 -->
+	<select id="CheckMyReservation" parameterType="hashmap" resultType="int">
+		select count(*) from reservation where id=#{id} and idx=#{idx}
+	</select>
+	
+	<!-- PT수업시간과 예약된 회원 이름가져오기 -->
+	<select id="SelectByReservationInfo" parameterType="hashmap" resultType="ReservationInfoVO">
+		SELECT p.idx, p.PTTIME, m.id, m.name 
+		FROM PTCLASS p 
+		LEFT JOIN RESERVATION r 
+		ON p.IDX = r.IDX 
+		LEFT JOIN MEMBERS m 
+		ON r.ID = m.ID 
+		where p.id=#{id} and TO_CHAR(pttime,'YYYY-MM-dd') = TO_DATE(#{pttime},'YYYY-MM-dd')
+		ORDER BY pttime
+	</select>
+	
+	<!-- ptclass삭제하기위한놈 -->
+	<delete id="deletePT" parameterType="int">
+		delete from reservation where idx=#{idx}
+	</delete>
+	
+	<!-- 예약을 하기위해서 pt권의 여부확인 -->
+	<select id="seletByPtCoupon" parameterType="string" resultType="int">
+		select PT from members where id=#{id}
+	</select>
+	<!-- 예약을 하면 pt권이 차감 -->
+	<update id="MinusPt" parameterType="string">
+		update members set pt=pt-1 where id=#{id}
+	</update>
+	<!-- 예약을 취소하면 pt권이 복원 -->
+	<update id="PulsPt" parameterType="string">
+		update members set pt=pt+1 where id=#{id}
+	</update>
+</mapper>
+
+
